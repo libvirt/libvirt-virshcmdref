@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-Virsh_Command_Reference-Command_Listing">
+  <title>Command List</title>
+  <para>
+    These are the commands presently available in <command>virsh</command>.
+  </para>
+
+  <table id="table-Virtual_Networking">
+    <title>Virtual Networking</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-net-autostart" /></para></entry>
+          <entry><para>libvirt 0.2.1</para></entry>
+          <entry>
+            <para>
+              Configure a network to be automatically started at boot
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</chapter>

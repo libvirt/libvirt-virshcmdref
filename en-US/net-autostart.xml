@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<section id="sect-net-autostart" xreflabel="net-autostart">
+
+  <title>net-autostart</title>
+  <para>
+    Used to enable and disable the automatic starting of a given
+    <emphasis>persistent</emphasis> virtual network, by the libvirt daemon.
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>Usage</term>
+      <listitem>
+        <para>
+          <command>net-autostart</command>
+          <parameter>--network</parameter>
+          <replaceable>network-identifier</replaceable>
+          <parameter>--disable</parameter>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Options</term>
+      <listitem>
+        <table id="table-net-autostart-options">
+          <title>Options</title>
+          <tgroup cols="3">
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Required</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>
+                    <parameter>--network</parameter>
+                    <replaceable>network-identifier</replaceable>
+                  </para>
+                </entry>
+                <entry><para>Mandatory</para></entry>
+                <entry>
+                  <para>
+                    The name or UUID for the virtual network being configured.
+                  </para>
+                  <para>
+                    The word "<parameter>--network</parameter>" itself is
+                    optional.
+                  </para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para><parameter>--disable</parameter></para>
+                </entry>
+                <entry><para>Optional</para></entry>
+                <entry>
+                  <para>
+                    Disables the automatic starting of the virtual network.
+                  </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Availability</term>
+      <listitem>
+        <para>
+          Available from libvirt 0.2.1 onwards
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Platform or Hypervisor specific notes</term>
+      <listitem>
+        <para>
+          <emphasis>None yet</emphasis>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Examples</term>
+      <listitem>
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-autostart</command> <replaceable>default</replaceable> <parameter>--disable</parameter>
+</screen>
+          <para>
+            Stops the virtual network named
+            "<replaceable>default</replaceable>" from automatically starting
+            when the libvirt daemon starts.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-autostart</command> <parameter>--network</parameter> <replaceable>default</replaceable> <parameter>--disable</parameter>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-autostart</command> <replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable> <parameter>--disable</parameter>
+</screen>
+          <para>
+            Stops the virtual network with UUID
+            "<replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable>"
+            from automatically starting when the libvirt daemon starts.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-autostart</command> <parameter>--network</parameter> <replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable> <parameter>--disable</parameter>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-autostart</command> <replaceable>default</replaceable>
+</screen>
+          <para>
+            Enables the automatic starting of the virtual network named
+            "<replaceable>default</replaceable>", by the libvirt daemon
+            when it starts.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-autostart</command> <parameter>--network</parameter> <replaceable>default</replaceable>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Example in context</term>
+      <listitem>
+        <example>
+          <title></title>
+          <para>
+            Starting with an XML file we've already created, using the [http://libvirt.org/formatnetwork.html required XML format]:
+          </para>
+<screen>
+&lt;network>
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;
+</screen>
+
+<screen>
+# <command>ls -al</command> <replaceable>/root/examplenetwork.xml</replaceable>
+<computeroutput>-rw-r--r--. 1 root root 162 Nov  7 16:43 <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
+</screen>
+
+          <para>
+            We start virsh interactively, then create a <emphasis>persistent</emphasis> virtual
+            network:
+          </para>
+
+<screen>
+# <command>virsh</command>
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit
+</screen>
+
+<screen>
+virsh # <command>net-list</command>
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+</screen>
+
+<screen>
+virsh # <command>net-define</command> <replaceable>/root/examplenetwork.xml</replaceable>
+<computeroutput>Network <replaceable>examplenetwork</replaceable> defined from <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
+</screen>
+
+          <para>
+            Newly defined virtual networks aren't set to automatically be
+            started, as can be seen here:
+          </para>
+
+<screen>
+virsh # <command>net-list</command> <parameter>--all</parameter>
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<replaceable>examplenetwork</replaceable>        inactive   <emphasis>no</emphasis>
+</screen>
+
+          <para>
+            We enable automatic starting for it:
+          </para>
+
+<screen>
+virsh # <command>net-autostart</command> <replaceable>examplenetwork</replaceable>
+<computeroutput>Network <replaceable>examplenetwork</replaceable> marked as autostarted</computeroutput>
+</screen>
+
+          <para>
+            Checking, to make sure:
+          </para>
+
+<screen>
+virsh # <command>net-list</command> <parameter>--all</parameter>
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<replaceable>examplenetwork</replaceable>        inactive   <emphasis>yes</emphasis>
+</screen>
+
+          <para>
+            From now on, whenever the libvirt daemon is started, it will
+            automatically start this virtual network too (unless it's already
+            running).
+          </para>
+
+          <para>
+            If at some point we want to turn off automatic starting of the
+            virtual network, we use the <parameter>--disable</parameter>
+            option to the command:
+          </para>
+
+<screen>
+# <command>net-autostart</command> <parameter>--disable</parameter> <replaceable>examplenetwork</replaceable>
+<computeroutput>Network <replaceable>examplenetwork</replaceable> unmarked as autostarted</computeroutput>
+</screen>
+
+<screen>
+virsh # <command>net-list</command> <parameter>--all</parameter>
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<replaceable>examplenetwork</replaceable>        inactive   <emphasis>no</emphasis>
+</screen>
+
+            
+        </example>
+      </listitem>
+    </varlistentry>
+<!--
+    <varlistentry>
+      <term>See also</term>
+      <listitem>
+        <para>
+          TBD
+        </para>
+      </listitem>
+    </varlistentry>
+-->
+
+  </variablelist>
+</section>
