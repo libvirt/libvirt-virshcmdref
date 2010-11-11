@@ -182,17 +182,17 @@ virsh # <command>net-autostart</command> <parameter>--network</parameter> <repla
 </screen>
 
 <screen>
-# <command>ls -al</command> <replaceable>/root/examplenetwork.xml</replaceable>
-<computeroutput>-rw-r--r--. 1 root root 162 Nov  7 16:43 <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
 </screen>
 
           <para>
-            We start virsh interactively, then create a <emphasis>persistent</emphasis> virtual
+            We start virsh interactively, then define a <emphasis>persistent</emphasis> virtual
             network:
           </para>
 
 <screen>
-# <command>virsh</command>
+# virsh
 Welcome to virsh, the virtualization interactive terminal.
 
 Type:  'help' for help with commands
@@ -200,14 +200,14 @@ Type:  'help' for help with commands
 </screen>
 
 <screen>
-virsh # <command>net-list</command>
+virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
 </screen>
 
 <screen>
-virsh # <command>net-define</command> <replaceable>/root/examplenetwork.xml</replaceable>
+virsh # net-define /root/examplenetwork.xml
 <computeroutput>Network <replaceable>examplenetwork</replaceable> defined from <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
 </screen>
 
@@ -217,11 +217,11 @@ virsh # <command>net-define</command> <replaceable>/root/examplenetwork.xml</rep
           </para>
 
 <screen>
-virsh # <command>net-list</command> <parameter>--all</parameter>
+virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<replaceable>examplenetwork</replaceable>        inactive   <emphasis>no</emphasis>
+<command>examplenetwork</command>       <command>inactive</command>   <emphasis><command>no</command></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
           <para>
@@ -238,11 +238,11 @@ virsh # <command>net-autostart</command> <replaceable>examplenetwork</replaceabl
           </para>
 
 <screen>
-virsh # <command>net-list</command> <parameter>--all</parameter>
+virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<replaceable>examplenetwork</replaceable>        inactive   <emphasis>yes</emphasis>
+<command>examplenetwork</command>       <command>inactive</command>   <emphasis><command>yes</command></emphasis>      <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
           <para>
@@ -263,11 +263,11 @@ default              active     yes
 </screen>
 
 <screen>
-virsh # <command>net-list</command> <parameter>--all</parameter>
+virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<replaceable>examplenetwork</replaceable>        inactive   <emphasis>no</emphasis>
+<replaceable>examplenetwork</replaceable>       <command>inactive</command>   <emphasis><command>no</command></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
             
