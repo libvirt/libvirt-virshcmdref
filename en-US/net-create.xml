@@ -32,7 +32,7 @@
             <thead>
               <row>
                 <entry>Name</entry>
-                <entry>Required</entry>
+                <entry>Required?</entry>
                 <entry>Description</entry>
               </row>
             </thead>
@@ -110,13 +110,12 @@ virsh # <command>net-create</command> <parameter>--file</parameter> <replaceable
     <varlistentry>
       <term>Example in context</term>
       <listitem>
-        <example>
-          <title></title>
-          <para>
-            Starting with an XML file we've already created, using the
-            <ulink url="http://libvirt.org/formatnetwork.html">required XML
-            format</ulink>:
-          </para>
+        <para>
+          Starting with an XML file we've already created, using the
+          <ulink url="http://libvirt.org/formatnetwork.html">required XML
+          format</ulink>:
+        </para>
+
 <screen>
 &lt;network>
   &lt;name&gt;examplenetwork&lt;/name&gt;
@@ -131,10 +130,10 @@ virsh # <command>net-create</command> <parameter>--file</parameter> <replaceable
 -rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
 </screen>
 
-          <para>
-            We start virsh interactively, then create the
-            <emphasis>transient</emphasis> virtual network:
-          </para>
+        <para>
+          We start virsh interactively, then create the
+          <emphasis>transient</emphasis> virtual network:
+        </para>
 
 <screen>
 # virsh
@@ -156,9 +155,9 @@ virsh # <command>net-create</command> <replaceable>/root/examplenetwork.xml</rep
 <computeroutput>Network <replaceable>examplenetwork</replaceable> created from <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
 </screen>
 
-          <para>
-            Created.  Now we confirm:
-          </para>
+        <para>
+          Created.  Now we confirm:
+        </para>
 
 <screen>
 virsh # net-list
@@ -168,11 +167,11 @@ default              active     yes
 <command>examplenetwork</command>       <command>active</command>     <command>no</command>
 </screen>
 
-          <para>
-            We check the details of the created network from virsh.  This
-            shows us the generated UUID, and anything else that may be in
-            effect (ie Spanning Tree Protocol).
-          </para>
+        <para>
+          We check the details of the created network from virsh.  This
+          shows us the generated UUID, and anything else that may be in
+          effect (ie Spanning Tree Protocol).
+        </para>
 
 <screen>
 virsh # net-dumpxml examplenetwork
@@ -186,10 +185,10 @@ virsh # net-dumpxml examplenetwork
 &lt;/network&gt;
 </screen>
 
-          <para>
-            Then, after exiting virsh, we check how it appears to the host
-            Linux OS:
-          </para>
+        <para>
+          Then, after exiting virsh, we check how it appears to the host
+          Linux OS:
+        </para>
 
 <screen>
 # <command>ifconfig</command> <replaceable>virbr100</replaceable>
@@ -202,7 +201,6 @@ virsh # net-dumpxml examplenetwork
           RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)
 </screen>
 
-        </example>
       </listitem>
     </varlistentry>
 <!--

@@ -31,7 +31,7 @@
             <thead>
               <row>
                 <entry>Name</entry>
-                <entry>Required</entry>
+                <entry>Required?</entry>
                 <entry>Description</entry>
               </row>
             </thead>
@@ -177,13 +177,11 @@ virsh # <command>net-destroy</command> <parameter>--network</parameter> <replace
     <varlistentry>
       <term>Example in context</term>
       <listitem>
-        <example>
-          <title></title>
-          <para>
-            Starting with a virtual network named
-            <replaceable>examplenetwork</replaceable>, already running on a
-            virtualisation host server:
-          </para>
+        <para>
+          Starting with a virtual network named
+          <replaceable>examplenetwork</replaceable>, already running on a
+          virtualisation host server:
+        </para>
 
 <screen>
 virsh # net-list
@@ -193,20 +191,20 @@ default              active     yes
 <command>examplenetwork</command>       <emphasis><command>active</command></emphasis>     <command>yes</command>
 </screen>
 
-          <para>
-            The network is shut down by simply using the
-            <command>net-destroy</command> command on it:
-          </para>
+        <para>
+          The network is shut down by simply using the
+          <command>net-destroy</command> command on it:
+        </para>
 
 <screen>
 # <command>net-destroy</command> <replaceable>examplenetwork</replaceable>
 <computeroutput>Network examplenetwork destroyed</computeroutput>
 </screen>
 
-          <para>
-            The <!-- <xref linkend="sect-net-list" />  -->command now shows it as
-            inactive:
-          </para>
+        <para>
+          The <!-- <xref linkend="sect-net-list" />  -->command now shows it as
+          inactive:
+        </para>
 
 <screen>
 virsh # net-list --all
@@ -216,9 +214,6 @@ default              active     yes
 <command>examplenetwork</command>       <emphasis><command>inactive</command></emphasis>   <command>yes</command>
 </screen>
 
-
-            
-        </example>
       </listitem>
     </varlistentry>
 <!--

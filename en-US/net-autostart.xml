@@ -33,7 +33,7 @@
             <thead>
               <row>
                 <entry>Name</entry>
-                <entry>Required</entry>
+                <entry>Required?</entry>
                 <entry>Description</entry>
               </row>
             </thead>
@@ -165,13 +165,11 @@ virsh # <command>net-autostart</command> <parameter>--network</parameter> <repla
     <varlistentry>
       <term>Example in context</term>
       <listitem>
-        <example>
-          <title></title>
-          <para>
-            Starting with an XML file we've already created, using the
-            <ulink url="http://libvirt.org/formatnetwork.html">required XML
-            format</ulink>:
-          </para>
+        <para>
+          Starting with an XML file we've already created, using the
+          <ulink url="http://libvirt.org/formatnetwork.html">required XML
+          format</ulink>:
+        </para>
 <screen>
 &lt;network>
   &lt;name&gt;examplenetwork&lt;/name&gt;
@@ -186,10 +184,10 @@ virsh # <command>net-autostart</command> <parameter>--network</parameter> <repla
 -rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
 </screen>
 
-          <para>
-            We start virsh interactively, then define a <emphasis>persistent</emphasis> virtual
-            network:
-          </para>
+        <para>
+          We start virsh interactively, then define a <emphasis>persistent</emphasis> virtual
+          network:
+        </para>
 
 <screen>
 # virsh
@@ -211,10 +209,10 @@ virsh # net-define /root/examplenetwork.xml
 <computeroutput>Network <replaceable>examplenetwork</replaceable> defined from <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
 </screen>
 
-          <para>
-            Newly defined virtual networks aren't set to automatically be
-            started, as can be seen here:
-          </para>
+        <para>
+          Newly defined virtual networks aren't set to automatically be
+          started, as can be seen here:
+        </para>
 
 <screen>
 virsh # net-list --all
@@ -224,18 +222,18 @@ default              active     yes
 <command>examplenetwork</command>       <command>inactive</command>   <emphasis><command>no</command></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
-          <para>
-            We enable automatic starting for it:
-          </para>
+        <para>
+          We enable automatic starting for it:
+        </para>
 
 <screen>
 virsh # <command>net-autostart</command> <replaceable>examplenetwork</replaceable>
 <computeroutput>Network <replaceable>examplenetwork</replaceable> marked as autostarted</computeroutput>
 </screen>
 
-          <para>
-            Checking, to make sure:
-          </para>
+        <para>
+          Checking, to make sure:
+        </para>
 
 <screen>
 virsh # net-list --all
@@ -245,17 +243,17 @@ default              active     yes
 <command>examplenetwork</command>       <command>inactive</command>   <emphasis><command>yes</command></emphasis>      <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
-          <para>
-            From now on, whenever the libvirt daemon is started, it will
-            automatically start this virtual network too (unless it's already
-            running).
-          </para>
+        <para>
+          From now on, whenever the libvirt daemon is started, it will
+          automatically start this virtual network too (unless it's already
+          running).
+        </para>
 
-          <para>
-            If at some point we want to turn off automatic starting of the
-            virtual network, we use the <parameter>--disable</parameter>
-            option to the command:
-          </para>
+        <para>
+          If at some point we want to turn off automatic starting of the
+          virtual network, we use the <parameter>--disable</parameter>
+          option to the command:
+        </para>
 
 <screen>
 # <command>net-autostart</command> <parameter>--disable</parameter> <replaceable>examplenetwork</replaceable>
@@ -270,8 +268,6 @@ default              active     yes
 <replaceable>examplenetwork</replaceable>       <command>inactive</command>   <emphasis><command>no</command></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
-            
-        </example>
       </listitem>
     </varlistentry>
 <!--
