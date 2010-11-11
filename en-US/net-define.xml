@@ -54,7 +54,7 @@
                     <replaceable>file-name</replaceable>
                   </para>
                 </entry>
-                <entry><para>Mandatory</para></entry>
+                <entry><para>Required</para></entry>
                 <entry>
                   <para>
                     The full path (and file name) to an XML file containing

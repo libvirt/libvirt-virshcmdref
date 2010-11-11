@@ -61,7 +61,7 @@
                     <replaceable>network-identifier</replaceable>
                   </para>
                 </entry>
-                <entry><para>Mandatory</para></entry>
+                <entry><para>Required</para></entry>
                 <entry>
                   <para>
                     The name or UUID of the virtual network whose XML

@@ -43,7 +43,7 @@
                     <replaceable>network-identifier</replaceable>
                   </para>
                 </entry>
-                <entry><para>Mandatory</para></entry>
+                <entry><para>Required</para></entry>
                 <entry>
                   <para>
                     The name or UUID of the network to be shut down..
@@ -202,7 +202,7 @@ default              active     yes
 </screen>
 
         <para>
-          The <!-- <xref linkend="sect-net-list" />  -->command now shows it as
+          The <xref linkend="sect-net-list" /> command now shows it as
           inactive:
         </para>
 
