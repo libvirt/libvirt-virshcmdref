@@ -10,8 +10,8 @@
   <xi:include href="net-define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-destroy.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-<!--
   <xi:include href="net-edit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+<!--
   <xi:include href="net-info.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-name.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />

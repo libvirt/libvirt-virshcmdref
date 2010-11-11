@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<section id="sect-net-edit" xreflabel="net-edit">
+
+  <title>net-edit</title>
+  <para>
+    Allows the user to edit the XML configuration of a virtual network,
+    using their preferred editor.
+  </para>
+
+  <para>
+    <command>net-edit</command> launches the command (or script) is defined
+    in the users <emphasis>$EDITOR</emphasis> environment variable, passing
+    it a temporary copy of the XML configuration for the virtual network.
+  </para>
+
+  <para>
+    When the user exits the editor, <command>net-edit</command> checks if the
+    temporary file was changed.
+  </para>
+
+  <para>
+  If it was, then <command>net-edit</command> validates it to ensure it's
+  error free. If no errors are found, <command>net-edit</command> then
+  overwrites the existing saved virtual network configuration using it. 
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>Usage</term>
+      <listitem>
+        <para>
+          <command>net-edit</command>
+          <parameter>--network</parameter>
+          <replaceable>network-identifier</replaceable>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Options</term>
+      <listitem>
+        <table id="table-net-edit-options">
+          <title>Options</title>
+          <tgroup cols="3">
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Required?</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>
+                    <parameter>--network</parameter>
+                    <replaceable>network-identifier</replaceable>
+                  </para>
+                </entry>
+                <entry><para>Mandatory</para></entry>
+                <entry>
+                  <para>
+                    The name or UUID of the virtual network whose XML
+                    configuration is to be edited.
+                  </para>
+                  <para>
+                    The word "<parameter>--network</parameter>" itself is
+                    optional.
+                  </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Availability</term>
+      <listitem>
+        <para>
+          Available from libvirt 0.4.6 onwards
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Platform or Hypervisor specific notes</term>
+      <listitem>
+        <para>
+          <emphasis>None yet</emphasis>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Examples</term>
+      <listitem>
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-edit</command> <replaceable>mynetwork</replaceable>
+</screen>
+          <para>
+            Edits the XML configuration for the virtual network named
+            "<replaceable>mynetwork</replaceable>". 
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-edit</command> <parameter>--network</parameter> <replaceable>mynetwork</replaceable>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-edit</command> <replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable>
+</screen>
+          <para>
+            Edits the XML configuration for the virtual network having UUID
+            "<replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable>". 
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-edit</command> <parameter>--network</parameter> <replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Example in context</term>
+      <listitem>
+        <para>
+          Starting with a few virtual networks already defined:
+        </para>
+
+<screen>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       active     no
+</screen>
+
+        <para>
+          We use <xref linkend="sect-net-dumpxml" /> to look at the XML
+          configuration for the "<replaceable>examplenetwork</replaceable>"
+          one:
+        </para>
+
+<screen>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='0' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+</screen>
+
+        <para>
+          We want to change one of the values, for example, the Spanning
+          Tree Protocol delay of 0.  Let's say want it to be 30
+          (seconds) instead.
+        </para>
+
+        <para>
+          Using <command>net-edit</command>, we launch an editor on the XML
+          fragment. (<command>vi</command> is the editor shown):
+        </para>
+
+<screen>
+virsh # <command>net-edit</command> <replaceable>examplenetwork</replaceable>
+</screen>
+
+        <para>
+          The editor window appears, and we make the change directly:
+        </para>
+
+<screen>
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='<emphasis>30</emphasis>' /&gt;      <command>&lt;-- 0 changed to 30 here</command>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+~
+~
+~
+~
+~
+~
+"/tmp/virsht2UZ6L" 8L, 238C
+</screen>
+
+        <para>
+          Then save the (temporary) file and exit the editor.
+          <command>net-edit</command> automatically copies the temporary
+          XML to the saved configuration, if no errors in it were detected.
+        </para>
+
+<screen>
+<emphasis><computeroutput>Network examplenetwork XML configuration edited.</computeroutput></emphasis>
+</screen>
+
+        <para>
+          The next time the "<replaceable>examplenetwork</replaceable>"
+          virtual network is started, it will use the new value.
+        </para>
+
+      </listitem>
+    </varlistentry>
+<!--
+    <varlistentry>
+      <term>See also</term>
+      <listitem>
+        <para>
+          TBD
+        </para>
+      </listitem>
+    </varlistentry>
+-->
+
+  </variablelist>
+</section>

@@ -66,7 +66,6 @@
             </para>
           </entry>
         </row>
-<!--
         <row>
           <entry><para><xref linkend="sect-net-edit" /></para></entry>
           <entry><para>libvirt 0.4.6</para></entry>
@@ -77,6 +76,7 @@
             </para>
           </entry>
         </row>
+<!--
         <row>
           <entry><para><xref linkend="sect-net-info" /></para></entry>
           <entry><para>libvirt 0.8.6</para></entry>
