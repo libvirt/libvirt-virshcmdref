@@ -29,6 +29,111 @@
             </para>
           </entry>
         </row>
+        <row>
+          <entry><para><xref linkend="sect-net-create" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              Creates a new transient virtual network from an XML file
+            </para>
+          </entry>
+        </row>
+<!--
+        <row>
+          <entry><para><xref linkend="sect-net-define" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              Adds a new permanent virtual network from an XML file, without
+              starting it 
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-destroy" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              Shuts down a running virtual network
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              Displays the XML configuration for a virtual network (to stdout)
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-edit" /></para></entry>
+          <entry><para>libvirt 0.4.6</para></entry>
+          <entry>
+            <para>
+              Allows the user to edit the XML configuration of a virtual
+              network, using their prefered editor
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-info" /></para></entry>
+          <entry><para>libvirt 0.8.6</para></entry>
+          <entry>
+            <para>
+              Displays detailed information about a selected virtual network
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-list" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              Lists the virtual networks libvirt is aware of
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-name" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              When given a network UUID, returns its corresponding network
+              name
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-start" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              Starts a (previously defined) inactive virtual network
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-undefine" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+                Removes an inactive virtual network from the libvirt
+                configuration
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-net-uuid" /></para></entry>
+          <entry><para>libvirt 0.2.0</para></entry>
+          <entry>
+            <para>
+              When given a network name, returns its corresponding UUID
+            </para>
+          </entry>
+        </row>
+-->
       </tbody>
     </tgroup>
   </table>

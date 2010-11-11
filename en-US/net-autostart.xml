@@ -168,7 +168,9 @@ virsh # <command>net-autostart</command> <parameter>--network</parameter> <repla
         <example>
           <title></title>
           <para>
-            Starting with an XML file we've already created, using the [http://libvirt.org/formatnetwork.html required XML format]:
+            Starting with an XML file we've already created, using the
+            <ulink url="http://libvirt.org/formatnetwork.html">required XML
+            format</ulink>:
           </para>
 <screen>
 &lt;network>

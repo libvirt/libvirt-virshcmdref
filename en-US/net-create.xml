@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<section id="sect-net-create" xreflabel="net-create">
+
+  <title>net-create</title>
+  <para>
+    Creates a running, <emphasis>transient</emphasis> virtual network, using
+    settings from an XML file.
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>Usage</term>
+      <listitem>
+        <para>
+          <command>net-create</command>
+          <parameter>--file</parameter>
+          <replaceable>file-name</replaceable>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Options</term>
+      <listitem>
+        <table id="table-net-create-options">
+          <title>Options</title>
+          <tgroup cols="3">
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Required</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>
+                    <parameter>--file</parameter>
+                    <replaceable>file-name</replaceable>
+                  </para>
+                </entry>
+                <entry><para>Mandatory</para></entry>
+                <entry>
+                  <para>
+                    The full path (and file name) to an XML file containing
+                    the <ulink url="http://libvirt.org/formatnetwork.html">
+                    network settings required</ulink>.
+                  </para>
+                  <para>
+                    The word "<parameter>--file</parameter>" itself is
+                    optional.
+                  </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Availability</term>
+      <listitem>
+        <para>
+          Available from libvirt 0.2.0 onwards
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Platform or Hypervisor specific notes</term>
+      <listitem>
+        <para>
+          <emphasis>None yet</emphasis>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Examples</term>
+      <listitem>
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-create</command> <replaceable>/root/examplenetwork.xml</replaceable>
+</screen>
+          <para>
+            Creates a new, transient, virtual network using the settings from
+            <replaceable>/root/examplenetwork.xml</replaceable>. 
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-create</command> <parameter>--file</parameter> <replaceable>/root/examplenetwork.xml</replaceable>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Example in context</term>
+      <listitem>
+        <example>
+          <title></title>
+          <para>
+            Starting with an XML file we've already created, using the
+            <ulink url="http://libvirt.org/formatnetwork.html">required XML
+            format</ulink>:
+          </para>
+<screen>
+&lt;network>
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;
+</screen>
+
+<screen>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
+</screen>
+
+          <para>
+            We start virsh interactively, then create the
+            <emphasis>transient</emphasis> virtual network:
+          </para>
+
+<screen>
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit
+</screen>
+
+<screen>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+</screen>
+
+<screen>
+virsh # <command>net-create</command> <replaceable>/root/examplenetwork.xml</replaceable>
+<computeroutput>Network <replaceable>examplenetwork</replaceable> created from <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
+</screen>
+
+          <para>
+            Created.  Now we confirm:
+          </para>
+
+<screen>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<command>examplenetwork</command>       <command>active</command>     <command>no</command>
+</screen>
+
+          <para>
+            We check the details of the created network from virsh.  This
+            shows us the generated UUID, and anything else that may be in
+            effect (ie Spanning Tree Protocol).
+          </para>
+
+<screen>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;97ce3914-231e-4026-0a78-822e1e2e7226&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  <computeroutput>&lt;bridge name='<command>virbr100</command>' stp='on' delay='0' /&gt;</computeroutput>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+</screen>
+
+          <para>
+            Then, after exiting virsh, we check how it appears to the host
+            Linux OS:
+          </para>
+
+<screen>
+# <command>ifconfig</command> <replaceable>virbr100</replaceable>
+<emphasis>virbr100</emphasis>  Link encap:Ethernet  HWaddr 02:95:C3:06:A5:BF  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <emphasis>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</emphasis>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)
+</screen>
+
+        </example>
+      </listitem>
+    </varlistentry>
+<!--
+    <varlistentry>
+      <term>See also</term>
+      <listitem>
+        <para>
+          TBD
+        </para>
+      </listitem>
+    </varlistentry>
+-->
+
+  </variablelist>
+</section>
