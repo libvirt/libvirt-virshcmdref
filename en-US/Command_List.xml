@@ -96,7 +96,6 @@
             </para>
           </entry>
         </row>
-<!--
         <row>
           <entry><para><xref linkend="sect-net-name" /></para></entry>
           <entry><para>libvirt 0.2.0</para></entry>
@@ -107,7 +106,6 @@
             </para>
           </entry>
         </row>
--->
         <row>
           <entry><para><xref linkend="sect-net-start" /></para></entry>
           <entry><para>libvirt 0.2.0</para></entry>
