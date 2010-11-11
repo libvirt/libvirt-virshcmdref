@@ -115,7 +115,6 @@
             </para>
           </entry>
         </row>
-<!--
         <row>
           <entry><para><xref linkend="sect-net-undefine" /></para></entry>
           <entry><para>libvirt 0.2.0</para></entry>
@@ -126,6 +125,7 @@
             </para>
           </entry>
         </row>
+<!--
         <row>
           <entry><para><xref linkend="sect-net-uuid" /></para></entry>
           <entry><para>libvirt 0.2.0</para></entry>
