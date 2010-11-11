@@ -7,7 +7,7 @@
 
   <title>net-start</title>
   <para>
-    Foo
+    Starts an inactive, previously defined, virtual network.
   </para>
 
   <variablelist>
@@ -16,8 +16,8 @@
       <listitem>
         <para>
           <command>net-start</command>
-          <parameter>--file</parameter>
-          <replaceable>file-name</replaceable>
+          <parameter>--network</parameter>
+          <replaceable>network-identifier</replaceable>
         </para>
       </listitem>
     </varlistentry>
@@ -31,7 +31,7 @@
             <thead>
               <row>
                 <entry>Name</entry>
-                <entry>Required</entry>
+                <entry>Required?</entry>
                 <entry>Description</entry>
               </row>
             </thead>
@@ -39,19 +39,17 @@
               <row>
                 <entry>
                   <para>
-                    <parameter>--file</parameter>
-                    <replaceable>file-name</replaceable>
+                    <parameter>--network</parameter>
+                    <replaceable>network-identifier</replaceable>
                   </para>
                 </entry>
-                <entry><para>Mandatory</para></entry>
+                <entry><para>Required</para></entry>
                 <entry>
                   <para>
-                    The full path (and file name) to a XML file containing
-                    the <ulink url="http://libvirt.org/formatnetwork.html">
-                    network settings required</ulink>.
+                    The name or UUID of the virtual network to start.
                   </para>
                   <para>
-                    The word "<parameter>--file</parameter>" itself is
+                    The word "<parameter>--network</parameter>" itself is
                     optional.
                   </para>
                 </entry>
@@ -85,19 +83,39 @@
         <example>
           <title></title>
           <screen>
-virsh # <command>net-start</command> <replaceable>default</replaceable> <parameter>--disable</parameter>
+virsh # <command>net-start</command> <replaceable>examplenetwork</replaceable>
 </screen>
           <para>
-            Stops the virtual network named
-            "<replaceable>default</replaceable>" from automatically starting
-            when the libvirt daemon starts.
+            Starts the virtual network named
+            "<replaceable>examplenetwork</replaceable>".
           </para>
         </example>
 
         <example>
           <title></title>
           <screen>
-virsh # <command>net-start</command> <parameter>--network</parameter> <replaceable>default</replaceable> <parameter>--disable</parameter>
+virsh # <command>net-start</command> <parameter>--network</parameter> <replaceable>examplenetwork</replaceable>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-start</command> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>
+</screen>
+          <para>
+            Starts the virtual network that has a UUID of
+            "<replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>".
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-start</command> <parameter>--network</parameter> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>
 </screen>
           <para>
             Same as the above example.
@@ -110,15 +128,13 @@ virsh # <command>net-start</command> <parameter>--network</parameter> <replaceab
     <varlistentry>
       <term>Example in context</term>
       <listitem>
-        <example>
-          <title></title>
-          <para>
-            Starting with an XML file we've already created, using the
-            <ulink url="http://libvirt.org/formatnetwork.html">required XML
-            format</ulink>:
-          </para>
+        <para>
+          Starting with an XML file we've already created, using the
+          <ulink url="http://libvirt.org/formatnetwork.html">required XML
+          format</ulink>:
+        </para>
 <screen>
-&lt;network>
+&lt;network&gt;
   &lt;name&gt;examplenetwork&lt;/name&gt;
   &lt;bridge name="virbr100" /&gt;
   &lt;forward mode="route" /&gt;
@@ -127,26 +143,100 @@ virsh # <command>net-start</command> <parameter>--network</parameter> <replaceab
 </screen>
 
 <screen>
-# <command>ls -al</command> <replaceable>/root/examplenetwork.xml</replaceable>
-<computeroutput>-rw-r--r--. 1 root root 162 Nov  7 16:43 <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
 </screen>
 
-          <para>
-            We start virsh interactively, then create the
-            <emphasis>transient</emphasis> virtual network:
-          </para>
+        <para>
+          We start virsh interactively, then define a
+          <emphasis>persistent</emphasis> virtual network using the XML
+          file:
+        </para>
 
 <screen>
-# <command>virsh</command>
+# virsh
 Welcome to virsh, the virtualization interactive terminal.
 
 Type:  'help' for help with commands
        'quit' to quit
 </screen>
 
+<screen>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes       
+</screen>
 
-            
-        </example>
+<screen>
+virsh # net-define /root/examplenetwork.xml
+Network examplenetwork defined from /root/examplenetwork.xml
+</screen>
+
+        <para>
+          Defined.  Now we confirm:
+        </para>
+
+<screen>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <command>inactive</command>   no    <command>&lt;-- new persistent networks start out inactive</command>
+</screen>
+
+        <para>
+          Newly defined virtual networks aren't automatically started, so
+          we manually start it now:
+        </para>
+
+<screen>
+virsh # <command>net-start</command> <replaceable>examplenetwork</replaceable>      <command>&lt;-- this is</command> <emphasis><command>net-start</command></emphasis> <command>in action</command>
+<computeroutput>Network examplenetwork started</computeroutput>
+</screen>
+
+<screen>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <emphasis><command>active</command></emphasis>     no       <command>&lt;-- the persistent network is now running (active)</command>
+</screen>
+
+        <para>
+          We check the details of the started network from virsh, using
+          <xref linkend="sect-net-dumpxml" />.  This shows us the name of
+          the bridge network interface.
+        </para>
+
+<screen>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='<command>virbr100</command>' stp='on' delay='0' /&gt;      <command>&lt;-- the "virbr100" here</command>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+</screen>
+
+        <para>
+          If the virtualisation server is running Linux, we can check how
+          the bridge interface appears to the host OS:
+        </para>
+
+<screen>
+# <command>ifconfig</command> <replaceable>virbr100</replaceable>
+<command>virbr100</command>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <command>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</command>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)
+</screen>
+
       </listitem>
     </varlistentry>
 <!--
