@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<section id="sect-net-start" xreflabel="net-start">
+
+  <title>net-start</title>
+  <para>
+    Foo
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>Usage</term>
+      <listitem>
+        <para>
+          <command>net-start</command>
+          <parameter>--file</parameter>
+          <replaceable>file-name</replaceable>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Options</term>
+      <listitem>
+        <table id="table-net-start-options">
+          <title>Options</title>
+          <tgroup cols="3">
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Required</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>
+                    <parameter>--file</parameter>
+                    <replaceable>file-name</replaceable>
+                  </para>
+                </entry>
+                <entry><para>Mandatory</para></entry>
+                <entry>
+                  <para>
+                    The full path (and file name) to a XML file containing
+                    the <ulink url="http://libvirt.org/formatnetwork.html">
+                    network settings required</ulink>.
+                  </para>
+                  <para>
+                    The word "<parameter>--file</parameter>" itself is
+                    optional.
+                  </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Availability</term>
+      <listitem>
+        <para>
+          Available from libvirt 0.2.0 onwards
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Platform or Hypervisor specific notes</term>
+      <listitem>
+        <para>
+          <emphasis>None yet</emphasis>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Examples</term>
+      <listitem>
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-start</command> <replaceable>default</replaceable> <parameter>--disable</parameter>
+</screen>
+          <para>
+            Stops the virtual network named
+            "<replaceable>default</replaceable>" from automatically starting
+            when the libvirt daemon starts.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-start</command> <parameter>--network</parameter> <replaceable>default</replaceable> <parameter>--disable</parameter>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Example in context</term>
+      <listitem>
+        <example>
+          <title></title>
+          <para>
+            Starting with an XML file we've already created, using the
+            <ulink url="http://libvirt.org/formatnetwork.html">required XML
+            format</ulink>:
+          </para>
+<screen>
+&lt;network>
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;
+</screen>
+
+<screen>
+# <command>ls -al</command> <replaceable>/root/examplenetwork.xml</replaceable>
+<computeroutput>-rw-r--r--. 1 root root 162 Nov  7 16:43 <replaceable>/root/examplenetwork.xml</replaceable></computeroutput>
+</screen>
+
+          <para>
+            We start virsh interactively, then create the
+            <emphasis>transient</emphasis> virtual network:
+          </para>
+
+<screen>
+# <command>virsh</command>
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit
+</screen>
+
+
+            
+        </example>
+      </listitem>
+    </varlistentry>
+<!--
+    <varlistentry>
+      <term>See also</term>
+      <listitem>
+        <para>
+          TBD
+        </para>
+      </listitem>
+    </varlistentry>
+-->
+
+  </variablelist>
+</section>

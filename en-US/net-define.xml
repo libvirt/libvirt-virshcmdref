@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<section id="sect-net-define" xreflabel="net-define">
+
+  <title>net-define</title>
+  <para>
+    Adds a new <emphasis>persistent</emphasis> virtual network to libvirt,
+    without starting it, using settings from an XML file.
+  </para>
+
+  <para>
+    Unless you enable automatic starting of it, by the libvirt daemon when
+    it starts, you will need to manually start this virtual network as
+    needed, using <xref linkend="sect-net-start" />.
+  </para>
+
+  <para>
+    To enable automatic starting of this virtual network, use the 
+    virsh <xref linkend="sect-net-autostart" /> command.
+  </para> 
+  <variablelist>
+    <varlistentry>
+      <term>Usage</term>
+      <listitem>
+        <para>
+          <command>net-define</command>
+          <parameter>--file</parameter>
+          <replaceable>file-name</replaceable>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Options</term>
+      <listitem>
+        <table id="table-net-define-options">
+          <title>Options</title>
+          <tgroup cols="3">
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Required</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>
+                    <parameter>--file</parameter>
+                    <replaceable>file-name</replaceable>
+                  </para>
+                </entry>
+                <entry><para>Mandatory</para></entry>
+                <entry>
+                  <para>
+                    The full path (and file name) to an XML file containing
+                    the <ulink url="http://libvirt.org/formatnetwork.html">
+                    network settings required</ulink>.
+                  </para>
+                  <para>
+                    The word "<parameter>--file</parameter>" itself is
+                    optional.
+                  </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Availability</term>
+      <listitem>
+        <para>
+          Available from libvirt 0.2.0 onwards
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Platform or Hypervisor specific notes</term>
+      <listitem>
+        <para>
+          <emphasis>None yet</emphasis>
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Examples</term>
+      <listitem>
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-define</command> <replaceable>/root/examplenetwork.xml</replaceable>
+</screen>
+          <para>
+            Creates a new, persistent, virtual network using the settings
+            from the XML file
+            <replaceable>/root/examplenetwork.xml</replaceable>.
+          </para>
+        </example>
+
+        <example>
+          <title></title>
+          <screen>
+virsh # <command>net-define</command> <parameter>--file</parameter> <replaceable>/root/examplenetwork.xml</replaceable>
+</screen>
+          <para>
+            Same as the above example.
+          </para>
+        </example>
+
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Example in context</term>
+      <listitem>
+        <example>
+          <title></title>
+          <para>
+            Starting with an XML file we've already created, using the
+            <ulink url="http://libvirt.org/formatnetwork.html">required XML
+            format</ulink>:
+          </para>
+<screen>
+&lt;network>
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;
+</screen>
+
+<screen>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
+</screen>
+
+          <para>
+            We start virsh interactively, then create the
+            <emphasis>transient</emphasis> virtual network:
+          </para>
+
+<screen>
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit
+</screen>
+
+<screen>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes       
+</screen>
+
+<screen>
+virsh # <command>net-define</command> /root/examplenetwork.xml
+<computeroutput>Network examplenetwork defined from /root/examplenetwork.xml</computeroutput>
+</screen>
+
+          <para>
+            Defined.  Now we confirm:
+          </para>
+
+<screen>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<command>examplenetwork</command>       <command>inactive</command>   <command>no</command>
+</screen>
+
+          <para>
+            Newly defined virtual networks aren't automatically started, so
+            we manually start it now:
+          </para>
+
+<screen>
+virsh # net-start examplenetwork
+<computeroutput>Network examplenetwork started</computeroutput>
+</screen>
+
+<screen>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<command>examplenetwork</command>       <command>active</command>     <command>no</command>
+</screen>
+
+          <para>
+            We check the details of the started network from virsh.  This
+            shows us the generated UUID, and anything else that may be in
+            effect (ie Spanning Tree Protocol).
+          </para>
+
+<screen>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;97ce3914-231e-4026-0a78-822e1e2e7226&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  <computeroutput>&lt;bridge name='<command>virbr100</command>' stp='on' delay='0' /&gt;</computeroutput>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+</screen>
+
+          <para>
+            If the virtualisation server is running Linux, we can check how
+            it appears to the host OS:
+          </para>
+
+<screen>
+# <command>ifconfig</command> <replaceable>virbr100</replaceable>
+<command>virbr100</command>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <command>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</command>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)
+</screen>
+
+        </example>
+      </listitem>
+    </varlistentry>
+<!--
+    <varlistentry>
+      <term>See also</term>
+      <listitem>
+        <para>
+          TBD
+        </para>
+      </listitem>
+    </varlistentry>
+-->
+
+  </variablelist>
+</section>
