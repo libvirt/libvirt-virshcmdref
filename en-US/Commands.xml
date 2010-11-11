@@ -18,7 +18,5 @@
   <xi:include href="net-name.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-start.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-<!--
   <xi:include href="net-uuid.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
--->
 </chapter>
