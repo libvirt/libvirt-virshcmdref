@@ -239,24 +239,18 @@ virsh # net-dumpxml examplenetwork
         <itemizedlist>
           <listitem>
             <para>
+              <xref linkend="sect-net-autostart" /> - Used to enable and
+              disable the automatic starting of a virtual network.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
               <xref linkend="sect-net-create" /> - An alternative to
               <xref linkend="sect-net-define" />. Use this when you want a
               <emphasis role="strong">transient</emphasis> virtual network
               that will disappear when the host is rebooted or shutdown,
               rather than a <emphasis role="strong">persistent</emphasis> one
-              created by <xref linkend="sect-net-define" />.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-start" /> - Manually starts a virtual
-              network that isn't running.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-autostart" /> - Used to enable and
-              disable the automatic starting of a virtual network.
+              created using <xref linkend="sect-net-define" />.
             </para>
           </listitem>
           <listitem>
@@ -265,6 +259,12 @@ virsh # net-dumpxml examplenetwork
               virtual network, as started with
               <xref linkend="sect-net-create" /> or
               <xref linkend="sect-net-start" />.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-start" /> - Manually starts a virtual
+              network that isn't running.
             </para>
           </listitem>
           <listitem>
