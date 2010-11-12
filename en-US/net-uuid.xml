@@ -124,8 +124,8 @@ virsh # <command>net-uuid</command> <replaceable>examplenetwork</replaceable>
 <screen>
 virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0
 &lt;network&gt;
-  &lt;name&gt;<command>examplenetwork</command>&lt;/name&gt;                        <command>&lt;-- the name is here</command>
-  &lt;uuid&gt;<command>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</command>&lt;/uuid&gt;  <command>&lt;-- the UUID is here</command>
+  &lt;name&gt;<emphasis role="strong">examplenetwork</emphasis>&lt;/name&gt;                        <emphasis role="strong">&lt;-- the name is here</emphasis>
+  &lt;uuid&gt;<emphasis role="strong">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis>&lt;/uuid&gt;  <emphasis role="strong">&lt;-- the UUID is here</emphasis>
   &lt;forward mode='route'/&gt;
   &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
   &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
@@ -141,16 +141,26 @@ virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-dumpxml" /> - Outputs the XML
+              configuration for a virtual network, to stdout
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-list" /> - Lists the virtual networks
+              livirt is aware of
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
