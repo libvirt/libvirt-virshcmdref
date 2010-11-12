@@ -177,16 +177,36 @@ default              active     yes
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-define" /> - Adds a new
+              <emphasis role="strong">persistent</emphasis> virtual network
+              to libvirt, without starting it, using settings from an XML
+              file.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-destroy" /> - Shuts down a running
+              virtual network, as started with
+              <xref linkend="sect-net-create" /> or
+              <xref linkend="sect-net-start" />.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-list" /> - Displays a list of the
+              virtual networks libvirt is aware of.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
