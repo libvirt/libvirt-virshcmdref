@@ -239,16 +239,34 @@ virsh # net-dumpxml examplenetwork
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-define" /> - Adds a new
+              <emphasis role="strong">persistent</emphasis> virtual network
+              to libvirt, without starting it, using settings from an XML
+              file.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-dumpxml" /> - Outputs the XML
+              configuration for a virtual network, to stdout.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-list" /> - Displays a list of the
+              virtual networks libvirt is aware of.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
