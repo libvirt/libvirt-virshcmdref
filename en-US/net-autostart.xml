@@ -219,7 +219,7 @@ virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<command>examplenetwork</command>       <command>inactive</command>   <emphasis><command>no</command></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis><emphasis role="strong">no</emphasis></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
         <para>
@@ -228,7 +228,7 @@ default              active     yes
 
 <screen>
 virsh # <command>net-autostart</command> <replaceable>examplenetwork</replaceable>
-<computeroutput>Network <replaceable>examplenetwork</replaceable> marked as autostarted</computeroutput>
+<computeroutput>Network examplenetwork</computeroutput> <emphasis><emphasis role="strong">marked as autostarted</emphasis></emphasis>
 </screen>
 
         <para>
@@ -240,7 +240,7 @@ virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<command>examplenetwork</command>       <command>inactive</command>   <emphasis><command>yes</command></emphasis>      <emphasis>&lt;-- this is the important bit</emphasis>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis><emphasis role="strong">yes</emphasis></emphasis>      <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
         <para>
@@ -257,7 +257,7 @@ default              active     yes
 
 <screen>
 # <command>net-autostart</command> <parameter>--disable</parameter> <replaceable>examplenetwork</replaceable>
-<computeroutput>Network <replaceable>examplenetwork</replaceable> unmarked as autostarted</computeroutput>
+<computeroutput>Network examplenetwork</computeroutput> <emphasis><emphasis role="strong">unmarked as autostarted</emphasis></emphasis>
 </screen>
 
 <screen>
@@ -265,7 +265,7 @@ virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<replaceable>examplenetwork</replaceable>       <command>inactive</command>   <emphasis><command>no</command></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis><emphasis role="strong">no</emphasis></emphasis>       <emphasis>&lt;-- this is the important bit</emphasis>
 </screen>
 
       </listitem>
