@@ -1,4 +1,4 @@
 <!ENTITY PRODUCT "virsh">
 <!ENTITY BOOKID "Virsh_Command_Reference">
 <!ENTITY YEAR "2010">
-<!ENTITY HOLDER "| You need to change the HOLDER entity in the en-US/Virsh_Command_Reference.ent file |">
+<!ENTITY HOLDER "Red Hat, Inc.">
