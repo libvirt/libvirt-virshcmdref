@@ -216,16 +216,33 @@ default              active     yes
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-create" /> - Creates a running,
+              <emphasis role="strong">transient</emphasis> virtual network,
+              using settings from an XML file.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-list" /> - Displays a list of the
+              virtual networks libvirt is aware of.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-start" /> - Manually starts a virtual
+              network that isn't running.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
