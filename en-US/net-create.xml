@@ -203,16 +203,38 @@ virsh # net-dumpxml examplenetwork
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-define" /> - An alternative to
+              <xref linkend="sect-net-create" />.  Use this when you want a
+              <emphasis role="strong">persistent</emphasis> virtual network,
+              that will last through reboots and shutdowns, rather than a
+              transient one created by <xref linkend="sect-net-create" />.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-destroy" /> - Shuts down a running
+              virtual network, as started by
+              <xref linkend="sect-net-create" /> or
+              <xref linkend="sect-net-start" />. 
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <ulink url="http://libvirt.org/formatnetwork.html">XML Network
+              Format Reference page</ulink> - Gives the details of the XML
+              needed by <xref linkend="sect-net-create" />".
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
