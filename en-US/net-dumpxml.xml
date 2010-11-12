@@ -164,16 +164,20 @@ virsh # <command>net-dumpxml</command> <replaceable>examplenetwork</replaceable>
         </para>
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-list" /> - Displays a list of the
+              virtual networks libvirt is aware of. 
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
