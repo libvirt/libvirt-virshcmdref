@@ -175,7 +175,7 @@ virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<command>examplenetwork</command>       <command>inactive</command>   <command>no</command>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis role="strong">no</emphasis>
 </screen>
 
         <para>
@@ -193,7 +193,7 @@ virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<command>examplenetwork</command>       <command>active</command>     <command>no</command>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">active</emphasis>     <emphasis role="strong">no</emphasis>
 </screen>
 
         <para>
@@ -208,7 +208,7 @@ virsh # net-dumpxml examplenetwork
   &lt;name&gt;examplenetwork&lt;/name&gt;
   &lt;uuid&gt;97ce3914-231e-4026-0a78-822e1e2e7226&lt;/uuid&gt;
   &lt;forward mode='route'/&gt;
-  <computeroutput>&lt;bridge name='<command>virbr100</command>' stp='on' delay='0' /&gt;</computeroutput>
+  <computeroutput>&lt;bridge name='</computeroutput><emphasis><emphasis role="strong">virbr100</emphasis></emphasis><computeroutput>' stp='on' delay='0' /&gt;</computeroutput>
   &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
   &lt;/ip&gt;
 &lt;/network&gt;
@@ -221,9 +221,9 @@ virsh # net-dumpxml examplenetwork
 
 <screen>
 # <command>ifconfig</command> <replaceable>virbr100</replaceable>
-<command>virbr100</command>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+<emphasis role="strong">virbr100</emphasis>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
           inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
-          <command>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</command>
+          <emphasis role="strong">UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</emphasis>
           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
           TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0 
