@@ -143,8 +143,9 @@ examplenetwork       active     no
 </screen>
 
         <para>
-          We use <command>net-dumpxml</command> to look at the XML
-          configuration for "<replaceable>examplenetwork</replaceable>":
+          We use <emphasis role="strong">net-dumpxml</emphasis> to look at
+          the XML configuration for
+          "<replaceable>examplenetwork</replaceable>":
         </para>
 
 <screen>
