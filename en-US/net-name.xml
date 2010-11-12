@@ -142,16 +142,20 @@ virsh # <command>net-dumpxml</command> <replaceable>examplenetwork</replaceable>
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-dumpxml" /> - Outputs the XML
+              configuration for a virtual network, to stdout. 
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
