@@ -163,7 +163,7 @@ Name                 State      Autostart
           <listitem>
             <para>
               <xref linkend="sect-net-destroy" /> - Shuts down a running
-              virtual network, as started by
+              virtual network, as started with
               <xref linkend="sect-net-create" /> or
               <xref linkend="sect-net-start" />.
             </para>
