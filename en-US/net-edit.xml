@@ -160,9 +160,8 @@ examplenetwork       active     no
 </screen>
 
         <para>
-          We use <xref linkend="sect-net-dumpxml" /> to look at the XML
-          configuration for the "<replaceable>examplenetwork</replaceable>"
-          one:
+          We use <xref linkend="sect-net-dumpxml" /> to view the XML
+          configuration for "<replaceable>examplenetwork</replaceable>":
         </para>
 
 <screen>
@@ -201,7 +200,7 @@ virsh # <command>net-edit</command> <replaceable>examplenetwork</replaceable>
   &lt;name&gt;examplenetwork&lt;/name&gt;
   &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
   &lt;forward mode='route'/&gt;
-  &lt;bridge name='virbr100' stp='on' delay='<emphasis>30</emphasis>' /&gt;      <command>&lt;-- 0 changed to 30 here</command>
+  &lt;bridge name='virbr100' stp='on' delay='<emphasis>30</emphasis>' /&gt;      <emphasis role="strong">&lt;-- 0 changed to 30 here</emphasis>
   &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
   &lt;/ip&gt;
 &lt;/network&gt;
