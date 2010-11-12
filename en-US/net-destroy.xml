@@ -80,8 +80,8 @@
           </para>
         </formalpara>
         <para>
-          Look for the name value of the <command>bridge</command> line.
-          <command>virbr100</command> in this instance:
+          Look for the name value of the <emphasis role="strong">bridge</emphasis> line.
+          <emphasis role="strong">virbr100</emphasis> in this instance:
         </para>
 
 <screen>
@@ -98,15 +98,15 @@ virsh # net-dumpxml examplenetwork
 
         <para>
           Using <command>ifconfig</command>, or a similar tool such as
-          <command>ip</command>, the <command>virbr100</command> interface
+          <command>ip</command>, the <emphasis role="strong">virbr100</emphasis> interface
           will be seen on the host when the virtual network is running:
         </para>
         
 <screen>
 # ifconfig virbr100
-<command>virbr100</command>  Link encap:Ethernet  HWaddr D2:43:D9:47:FA:AA  
+<emphasis role="strong">virbr100</emphasis>  Link encap:Ethernet  HWaddr D2:43:D9:47:FA:AA  
           inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
-          <command>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</command>
+          <emphasis role="strong">UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</emphasis>
           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
           TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0 
@@ -188,7 +188,7 @@ virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<command>examplenetwork</command>       <emphasis><command>active</command></emphasis>     <command>yes</command>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis><emphasis role="strong">active</emphasis></emphasis>     <emphasis role="strong">yes</emphasis>
 </screen>
 
         <para>
@@ -211,7 +211,7 @@ virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<command>examplenetwork</command>       <emphasis><command>inactive</command></emphasis>   <command>yes</command>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis><emphasis role="strong">inactive</emphasis></emphasis>   <emphasis role="strong">yes</emphasis>
 </screen>
 
       </listitem>
