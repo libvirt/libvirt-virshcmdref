@@ -125,8 +125,8 @@ virsh # <command>net-name</command> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301
 <screen>
 virsh # <command>net-dumpxml</command> <replaceable>examplenetwork</replaceable>
 &lt;network&gt;
-  &lt;name&gt;<command>examplenetwork</command>&lt;/name&gt;                        <command>&lt;-- the name is here</command>
-  &lt;uuid&gt;<command>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</command>&lt;/uuid&gt;  <command>&lt;-- the UUID is here</command>
+  &lt;name&gt;<emphasis role="strong">examplenetwork</emphasis>&lt;/name&gt;                        <emphasis role="strong">&lt;-- the name is here</emphasis>
+  &lt;uuid&gt;<emphasis role="strong">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis>&lt;/uuid&gt;  <emphasis role="strong">&lt;-- the UUID is here</emphasis>
   &lt;forward mode='route'/&gt;
   &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
   &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
