@@ -140,7 +140,7 @@ virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-examplenetwork       <command>active</command>     yes
+examplenetwork       <emphasis role="strong">active</emphasis>     yes
 </screen>
 
         <para>
@@ -155,11 +155,11 @@ examplenetwork       <command>active</command>     yes
 </screen>
 
         <para>
-          Then remove it using <command>net-undefine</command>:
+          Then remove it using <emphasis role="strong">net-undefine</emphasis>:
         </para>
 
 <screen>
-virsh # <command>net-undefine</command> <replaceable>examplenetwork</replaceable>       <command>&lt;-- this is</command> <emphasis><command>net-undefine</command></emphasis> <command>in action</command>
+virsh # <command>net-undefine</command> <replaceable>examplenetwork</replaceable>       <emphasis role="strong">&lt;-- this is</emphasis> <emphasis><emphasis role="strong">net-undefine</emphasis></emphasis> <emphasis role="strong">in action</emphasis>
 <computeroutput>Network examplenetwork has been undefined</computeroutput>
 </screen>
 
