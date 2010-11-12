@@ -229,7 +229,7 @@ virsh # net-dumpxml examplenetwork
             <para>
               <ulink url="http://libvirt.org/formatnetwork.html">XML Network
               Format Reference page</ulink> - Gives the details of the XML
-              needed by <xref linkend="sect-net-create" />".
+              needed by <xref linkend="sect-net-create" />.
             </para>
           </listitem>
         </itemizedlist>
