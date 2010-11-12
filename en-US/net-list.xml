@@ -149,16 +149,34 @@ Name                 State      Autostart
 
       </listitem>
     </varlistentry>
-<!--
+
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <para>
-          TBD
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-autostart" /> - Used to enable and
+              disable the automatic starting of a virtual network.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-destroy" /> - Shuts down a running
+              virtual network, as started by
+              <xref linkend="sect-net-create" /> or
+              <xref linkend="sect-net-start" />.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="sect-net-start" /> - Manually starts a virtual
+              network that isn't running.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </varlistentry>
--->
 
   </variablelist>
 </section>
