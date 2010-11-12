@@ -143,8 +143,8 @@ virsh # <command>net-list</command> <parameter>--inactive</parameter>
 virsh # <command>net-list</command> <parameter>--all</parameter>
 Name                 State      Autostart
 -----------------------------------------
-<command>default</command>              <command>active</command>     <command>yes</command>      <emphasis><command>&lt;-- this is a virtual network</command></emphasis>
-<command>examplenetwork</command>       <command>inactive</command>   <command>no</command>       <emphasis><command>&lt;-- this is a virtual network</command></emphasis>
+<emphasis role="strong">default</emphasis>              <emphasis role="strong">active</emphasis>     <emphasis role="strong">yes</emphasis>      <emphasis><emphasis role="strong">&lt;-- this is a virtual network</emphasis></emphasis>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis role="strong">no</emphasis>       <emphasis><emphasis role="strong">&lt;-- this is a virtual network</emphasis></emphasis>
 </screen>
 
       </listitem>
