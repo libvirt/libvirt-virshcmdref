@@ -420,17 +420,15 @@
             </para>
           </entry>
         </row>
-<!--
         <row>
           <entry><para><xref linkend="sect-net-info" /></para></entry>
           <entry><para>libvirt 0.8.6</para></entry>
           <entry>
             <para>
-              Displays detailed information about a selected virtual network
+              Displays basic information for a virtual network
             </para>
           </entry>
         </row>
--->
         <row>
           <entry><para><xref linkend="sect-net-list" /></para></entry>
           <entry><para>libvirt 0.2.0</para></entry>
