@@ -226,7 +226,8 @@
           <entry><para>libvirt 0.6.4</para></entry>
           <entry>
             <para>
-              To be done
+              Copies an existing storage volume, including data, to a new
+              storage volume
             </para>
           </entry>
         </row>
@@ -235,7 +236,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Creates a new storage volume, on a given storage pool, using
+              settings from an XML file
             </para>
           </entry>
         </row>
@@ -244,7 +246,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Creates a new storage volume, on a given storage pool, using
+              settings passed as options
             </para>
           </entry>
         </row>
@@ -262,7 +265,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Removes a storage volume from a storage pool
             </para>
           </entry>
         </row>
@@ -271,7 +274,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Displays the XML configuration for a storage volume, to
+              stdout
             </para>
           </entry>
         </row>
@@ -280,7 +284,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Returns basic information about a storage volume
             </para>
           </entry>
         </row>
@@ -289,7 +293,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              When given a storage volume name or path, returns the
+              corresponding key for that volume
             </para>
           </entry>
         </row>
@@ -298,7 +303,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Displays a list of the storage volumes libvirt is aware of,
+              in a given storage pool
             </para>
           </entry>
         </row>
@@ -307,7 +313,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              When given a storage volume path or key, returns the
+              corresponding name for that volume
             </para>
           </entry>
         </row>
@@ -316,7 +323,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              When given a storage volume name or key, returns the
+              corresponding path for that volume
             </para>
           </entry>
         </row>
@@ -325,7 +333,8 @@
           <entry><para>libvirt 0.8.2</para></entry>
           <entry>
             <para>
-              To be done
+              Returns the storage pool name or UUID for a given storage
+              volume
             </para>
           </entry>
         </row>
@@ -334,7 +343,8 @@
           <entry><para>libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              To be done
+              Ensure data previously on a volume is not accessible to future
+              reads
             </para>
           </entry>
         </row>
