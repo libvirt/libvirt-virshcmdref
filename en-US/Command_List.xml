@@ -9,6 +9,324 @@
     These are the commands presently available in <command>virsh</command>.
   </para>
 
+  <table id="table-Storage_Pools">
+    <title>Storage Pools</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para>find-storage-pool-sources</para></entry>
+          <entry><para>libvirt 0.4.6</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>find-storage-pool-sources-as</para></entry>
+          <entry><para>libvirt 0.4.6</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-autostart</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-build</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-create</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-create-as</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-define</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-define-as</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-delete</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-destroy</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-dumpxml</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-edit</para></entry>
+          <entry><para>libvirt 0.4.6</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-info</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-list</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-name</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-refresh</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-start</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-undefine</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>pool-uuid</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-Storage_Volumes">
+    <title>Storage Volumes</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para>vol-clone</para></entry>
+          <entry><para>libvirt 0.6.4</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-create</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-create-as</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-create-from</para></entry>
+          <entry><para>libvirt 0.6.4</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-delete</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-dumpxml</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-info</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-key</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-list</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-name</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-path</para></entry>
+          <entry><para>libvirt 0.4.1</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-pool</para></entry>
+          <entry><para>libvirt 0.8.2</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para>vol-wipe</para></entry>
+          <entry><para>libvirt 0.8.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
   <table id="table-Virtual_Networking">
     <title>Virtual Networking</title>
     <tgroup cols="3">
