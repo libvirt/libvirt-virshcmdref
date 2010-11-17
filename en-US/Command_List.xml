@@ -25,7 +25,7 @@
           <entry><para>libvirt 0.4.6</para></entry>
           <entry>
             <para>
-              To be done
+              Discover potential storage pool sources
             </para>
           </entry>
         </row>
@@ -34,7 +34,7 @@
           <entry><para>libvirt 0.4.6</para></entry>
           <entry>
             <para>
-              To be done
+              Discover potential storage pool sources
             </para>
           </entry>
         </row>
@@ -43,7 +43,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Enable or disable the automatic starting of a storage pool,
+              when the libvirt daemon starts
             </para>
           </entry>
         </row>
@@ -52,7 +53,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Build a storage pool
             </para>
           </entry>
         </row>
@@ -61,7 +62,9 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Create and start a <emphasis>transient</emphasis> storage
+              pool, that will not persist across system restarts, using
+              settings from an XML file
             </para>
           </entry>
         </row>
@@ -70,7 +73,9 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Create and start a <emphasis>transient</emphasis> storage
+              pool, that will not persist across system restarts, using
+              settings passed as options
             </para>
           </entry>
         </row>
@@ -79,7 +84,9 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Add a new <emphasis>persistent</emphasis> storage pool to the
+              configuration, without starting it, using settings from an XML
+              file
             </para>
           </entry>
         </row>
@@ -88,7 +95,9 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Add a new <emphasis>persistent</emphasis> storage pool to the
+              configuration, without starting it, using settings passed as
+              options
             </para>
           </entry>
         </row>
@@ -106,7 +115,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Shuts down a storage pool (from the libvirt point of view),
+              releasing any resources in use by it
             </para>
           </entry>
         </row>
@@ -115,7 +125,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Displays the XML configuration for a storage pool (to stdout)
             </para>
           </entry>
         </row>
@@ -124,7 +134,8 @@
           <entry><para>libvirt 0.4.6</para></entry>
           <entry>
             <para>
-              To be done
+              Allows the user to edit the XML configuration of a storage
+              pool, using their preferred editor
             </para>
           </entry>
         </row>
@@ -133,7 +144,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Returns basic information about a storage pool
             </para>
           </entry>
         </row>
@@ -142,7 +153,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Displays a list of the storage pools libvirt is aware of
             </para>
           </entry>
         </row>
@@ -151,7 +162,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              When given a pool UUID, returns the name of the corresponding
+              storage pool
             </para>
           </entry>
         </row>
@@ -160,7 +172,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Re-examines the storage in a storage pool, updating the
+              internal list of volumes present and their details
             </para>
           </entry>
         </row>
@@ -169,7 +182,7 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Starts a (previously defined) inactive storage pool
             </para>
           </entry>
         </row>
@@ -178,7 +191,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              Removes an inactive storage pool from the libvirt
+              configuration
             </para>
           </entry>
         </row>
@@ -187,7 +201,8 @@
           <entry><para>libvirt 0.4.1</para></entry>
           <entry>
             <para>
-              To be done
+              When given a storage pool name, returns the corresponding
+              storage pool UUID
             </para>
           </entry>
         </row>
@@ -343,7 +358,8 @@
           <entry><para>libvirt 0.2.1</para></entry>
           <entry>
             <para>
-              Configure a network to be automatically started at boot
+              Enable or disable the automatic starting of a virtual network,
+              when the libvirt daemon starts
             </para>
           </entry>
         </row>
@@ -390,7 +406,7 @@
           <entry>
             <para>
               Allows the user to edit the XML configuration of a virtual
-              network, using their prefered editor
+              network, using their preferred editor
             </para>
           </entry>
         </row>
