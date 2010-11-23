@@ -155,7 +155,7 @@ virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0
           <listitem>
             <para>
               <xref linkend="sect-net-list" /> - Lists the virtual networks
-              livirt is aware of
+              libvirt is aware of
             </para>
           </listitem>
         </itemizedlist>
