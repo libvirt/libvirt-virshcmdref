@@ -2,26 +2,15 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0">
 
-  <xsl:output
-    method="xml"
-    indent="yes"
-  />
-
-<!-- 
-  <xsl:output
-    doctype-system="http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
-    doctype-public="-//OASIS//DTD DocBook XML V4.5//EN"
-    method="xml"
-    indent="yes"
-  />
- -->
+ <!-- Indenting of the output is enabled -->
+  <xsl:output method="xml" indent="yes" />
 
   <!-- Main document template -->
   <xsl:template match="/">
 
     <!-- Outputs the DocBook 4.5 header -->
     <xsl:text disable-output-escaping="yes">
-&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+&lt;!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 &lt;!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent"&gt;
 %BOOK_ENTITIES;
 ]&gt;
