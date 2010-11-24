@@ -181,11 +181,35 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <!-- NOTE - this loop doesn't work properly, as it has no idea how to
             handle the formatting tags -->
-
       <xsl:for-each select="usageexamples/example">
         <xsl:text disable-output-escaping="yes">
 &lt;para&gt;</xsl:text>
-        <xsl:value-of select="*" />
+
+<!-- 
+        <xsl:template match="*">
+        </xsl:template>
+ -->
+
+<!-- 
+  <xsl:template match="/api">
+    <book title="{@name} Reference Manual" link="index.html" author="" name="{@name}">
+      <xsl:apply-templates select="files"/>
+      <xsl:apply-templates select="symbols"/>
+    </book>
+    <xsl:call-template name="generate_index"/>
+    <xsl:call-template name="generate_general"/>
+  </xsl:template>
+  <xsl:template match="/api/files">
+    <chapters>
+      <sub name="API" link="general.html">
+        <xsl:apply-templates select="file"/>
+      </sub>
+    </chapters>
+  </xsl:template>
+ -->
+
+<xsl:value-of select="self::*" />
+
         <xsl:text disable-output-escaping="yes">
 &lt;/para&gt;</xsl:text>
       </xsl:for-each>
