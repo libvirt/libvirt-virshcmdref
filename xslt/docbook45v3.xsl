@@ -33,8 +33,9 @@
       <variablelist>
 
       <!-- Applies the templates -->
-      <xsl:call-template name="usage" match="/command/options" />
-      <xsl:call-template name="options" />
+      <xsl:call-template name="usage" match="/command/usage" />
+      <xsl:call-template name="options" match="/command/options" />
+      <xsl:call-template name="availability" match="/command/availability" />
 
 
       <!-- End the DocBook variable list, used to divide the page sections -->
@@ -49,7 +50,7 @@
   <!-- Usage -->
 
  
-  <xsl:template name="usage">
+  <xsl:template name="usage" >
     <varlistentry>
       <term>Usage</term>
       <listitem>
@@ -68,12 +69,12 @@
     </varlistentry>
   </xsl:template>
 
-  <xsl:template match="options" name="options">
+  <xsl:template name="options">
     <varlistentry>
       <term>Options</term>
       <listitem>
         <xsl:text disable-output-escaping="yes">&lt;table id="table-</xsl:text>
-          <xsl:value-of select="name" />
+          <xsl:value-of select="/command/name" />
           <xsl:text disable-output-escaping="yes">-options"</xsl:text>
           <title>Options</title>
           <tgroup cols="3">
@@ -89,21 +90,21 @@
                 <entry>
                   <para>
                     <parameter>
-                      <xsl:value-of select="options/parameter/keyword" />
+                      <xsl:value-of select="/command/options/parameter/keyword" />
                     </parameter>
                     <replaceable>
-                      <xsl:value-of select="options/parameter/value" />
+                      <xsl:value-of select="/command/options/parameter/value" />
                     </replaceable>
                   </para>
                 </entry>
                 <entry>
                   <para>
-                    <xsl:value-of select="options/parameter/@requirement" />
+                    <xsl:value-of select="/command/options/parameter/@requirement" />
                   </para>
                 </entry>
                 <entry>
                   <para>
-                    <xsl:value-of select="options/parameter/description" />
+                    <xsl:value-of select="/command/options/parameter/description" />
                   </para>
                 </entry>
               </row>
@@ -113,17 +114,17 @@
       </listitem>
     </varlistentry>
   </xsl:template>
-<!-- 
 
-  <xsl:template match="availability" mode="availability">
+  <xsl:template name="availability">
     <varlistentry>
       <term>Availability</term>
       <listitem>
-        <para>Available from libvirt <xsl:value-of select="availability/@version" /> onwards</para>
+        <para>Available from libvirt <xsl:value-of select="/command/availability/@version" /> onwards</para>
       </listitem>
     </varlistentry>
   </xsl:template>
 
+<!-- 
   <xml:template match="notes" mode="notes">
     <xsl:choose>
       <xsl:when test="notes = ''">
