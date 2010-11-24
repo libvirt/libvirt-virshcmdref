@@ -2,8 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0">
 
-
-  <!-- Main document template starts here -->
+  <!-- Main document template -->
   <xsl:template match="/">
 
     <!-- Outputs the DocBook 4.5 header -->
@@ -37,6 +36,9 @@
       <xsl:call-template name="options" match="/command/options" />
       <xsl:call-template name="availability" match="/command/availability" />
       <xsl:call-template name="notes" match="/command/notes" />
+      <xsl:call-template name="usageexamples" match="/command/usageexamples" />
+      <xsl:call-template name="fullcontextexample" match="/command/fullcontextexample" />
+      <xsl:call-template name="seealso" match="/command/seealso" />
 
       <!-- End the DocBook variable list, used to divide the page sections -->
       </variablelist>
@@ -44,12 +46,11 @@
     <!-- Finish the DocBook source  -->
     <xsl:text disable-output-escaping="yes">&lt;/section&gt;</xsl:text>
 
+  <!-- End of the main template -->
   </xsl:template>
 
 
-  <!-- Usage -->
-
- 
+  <!-- Usage template -->
   <xsl:template name="usage" >
     <varlistentry>
       <term>Usage</term>
@@ -69,6 +70,7 @@
     </varlistentry>
   </xsl:template>
 
+  <!-- Options template -->
   <xsl:template name="options">
     <varlistentry>
       <term>Options</term>
@@ -115,6 +117,7 @@
     </varlistentry>
   </xsl:template>
 
+  <!-- Availability template -->
   <xsl:template name="availability">
     <varlistentry>
       <term>Availability</term>
@@ -124,6 +127,7 @@
     </varlistentry>
   </xsl:template>
 
+  <!-- Notes template -->
   <xsl:template name="notes">
     <xsl:choose>
       <xsl:when test="/command/notes = ''">
@@ -142,36 +146,39 @@
     </xsl:choose>
   </xsl:template>
 
-<!-- 
-  <xsl:template match="usageexamples" mode="usageexamples">
+  <!-- Usage examples template -->
+  <xsl:template name="usageexamples">
     <varlistentry>
       <term>Examples</term>
-      <xsl:for-each select="usageexamples/example">
+      <xsl:for-each select="/command/usageexamples/example">
       <para>
         <xsl:apply-templates />
       </para>
       </xsl:for-each>
-
     </varlistentry>
   </xsl:template>
 
-  <xsl:template match="fullcontextexample" mode="fullcontextexample">
+  <!-- Full context examples template -->
+  <xsl:template name="fullcontextexample">
     <varlistentry>
       <term>Example in context</term>
+      <xsl:for-each select="/command/fullcontextexample/example">
       <listitem>
-        <para>
+      <para>
         <xsl:apply-templates />
-        </para>
+      </para>
       </listitem>
+      </xsl:for-each>
     </varlistentry>
   </xsl:template>
 
-  <xsl:template match="seealso" mode="seealso">
+  <!-- See also template -->
+  <xsl:template name="seealso">
     <varlistentry>
       <term>See also</term>
       <listitem>
         <itemizedlist>
-          <xsl:for-each select="seealso/item">
+          <xsl:for-each select="/command/seealso/item">
           <listitem>
             <para>
             <xsl:choose>
@@ -192,15 +199,15 @@
       </listitem>
     </varlistentry>
   </xsl:template>
--->
-  <!-- Tag for terminal/screen text -->
+
+  <!-- Tag template for terminal/screen text -->
   <xsl:template match="terminal">
     <screen>
       <xsl:apply-templates />
     </screen>
   </xsl:template>
 
-  <!-- Tag for bold text -->
+  <!-- Tag template for bold text -->
   <xsl:template match="bold">
     <emphasis role="strong">
       <xsl:value-of select="." />
