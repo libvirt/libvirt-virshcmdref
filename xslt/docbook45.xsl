@@ -7,6 +7,22 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
   <!-- The result is in XML -->
   <xsl:output method="xml" encoding="UTF-8" indent="yes" />
 
+  <!-- Template for outputting terminal text -->
+<!-- 
+  <xsl:template match="terminal" name="terminal">
+    <xsl:text disable-output-escaping="yes">&lt;screen&gt;</xsl:text>
+    <xsl:value-of select="self::*" disable-output-escaping="no" />
+    <xsl:text disable-output-escaping="yes">&lt;/screen&gt;</xsl:text>
+  </xsl:template>
+ -->
+
+  <!-- Template for outputting bold text -->
+  <xsl:template match="bold" name="bold">
+    <xsl:text disable-output-escaping="yes">&lt;emphasis role="strong"&gt;</xsl:text>
+    <xsl:value-of select="self::*" disable-output-escaping="no" />
+    <xsl:text disable-output-escaping="yes">&lt;/emphasis role="strong"&gt;</xsl:text>
+  </xsl:template>
+
   <!-- Start of the DocBook 4.5 output -->
   <xsl:template match="/">
 
@@ -172,6 +188,8 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
   WARNING - Text formatting of the examples sections doesn't yet work, so
   the results could be pretty bad.
 </xsl:message>
+
+
     <xsl:text disable-output-escaping="yes">
 
     &lt;varlistentry&gt;
@@ -184,6 +202,8 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
       <xsl:for-each select="usageexamples/example">
         <xsl:text disable-output-escaping="yes">
 &lt;para&gt;</xsl:text>
+
+<xsl:apply-templates name="bold" select="self::*"/>
 
 <!-- 
         <xsl:template match="*">
@@ -207,8 +227,9 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
     </chapters>
   </xsl:template>
  -->
-
+<!-- 
 <xsl:value-of select="self::*" />
+ -->
 
         <xsl:text disable-output-escaping="yes">
 &lt;/para&gt;</xsl:text>
