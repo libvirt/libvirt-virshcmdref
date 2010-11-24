@@ -6,38 +6,39 @@
   <!-- Main document template starts here -->
   <xsl:template match="/">
 
-  <!-- Outputs the DocBook 4.5 header -->
-  <xsl:text disable-output-escaping="yes">
+    <!-- Outputs the DocBook 4.5 header -->
+    <xsl:text disable-output-escaping="yes">
 &lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 &lt;!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent"&gt;
 %BOOK_ENTITIES;
 ]&gt;
 </xsl:text>
 
-    <!-- Outputs the top section header -->
-    <xsl:text disable-output-escaping="yes">&lt;section id="sect-</xsl:text>
-    <xsl:value-of select="/command/name" />
-    <xsl:text disable-output-escaping="yes">" xreflabel="</xsl:text>
-    <xsl:value-of select="/command/name" />
-    <xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+      <!-- Outputs the top section header -->
+      <xsl:text disable-output-escaping="yes">&lt;section id="sect-</xsl:text>
+      <xsl:value-of select="/command/name" />
+      <xsl:text disable-output-escaping="yes">" xreflabel="</xsl:text>
+      <xsl:value-of select="/command/name" />
+      <xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+
+      <!-- Output the title element -->
+      <title><xsl:value-of select="/command/name" /></title>
+
+      <!-- Output the command description -->
+      <para>
+        <xsl:value-of select="/command/description" />
+      </para>
+
+      <!-- Begin the DocBook variable list dividing the page sections -->
+      <variablelist>
+
+      <!-- Applies the templates -->
+      <xsl:call-template name="usage" match="/command/options" />
+      <xsl:call-template name="options" />
 
 
-    <!-- Output the title element -->
-    <title><xsl:value-of select="/command/name" /></title>
-
-    <!-- Output the command description -->
-    <para>
-      <xsl:value-of select="/command/description" />
-    </para>
-
-    <!-- Begin the DocBook variable list dividing the page sections -->
-    <variablelist>
-
-    <!-- Applies the templates -->
-    <xsl:apply-templates mode="usage"/>
-
-    <!-- End the DocBook variable list, used to divide the page sections -->
-    </variablelist>
+      <!-- End the DocBook variable list, used to divide the page sections -->
+      </variablelist>
 
     <!-- Finish the DocBook source  -->
     <xsl:text disable-output-escaping="yes">&lt;/section&gt;</xsl:text>
@@ -46,7 +47,9 @@
 
 
   <!-- Usage -->
-  <xsl:template match="/command/usage" mode="usage">
+
+ 
+  <xsl:template name="usage">
     <varlistentry>
       <term>Usage</term>
       <listitem>
@@ -65,8 +68,7 @@
     </varlistentry>
   </xsl:template>
 
-  <!-- Options -->
-  <xsl:template match="options">
+  <xsl:template match="options" name="options">
     <varlistentry>
       <term>Options</term>
       <listitem>
@@ -87,21 +89,21 @@
                 <entry>
                   <para>
                     <parameter>
-                      <xsl:value-of select="/command/options/parameter/keyword" />
+                      <xsl:value-of select="options/parameter/keyword" />
                     </parameter>
                     <replaceable>
-                      <xsl:value-of select="/command/options/parameter/value" />
+                      <xsl:value-of select="options/parameter/value" />
                     </replaceable>
                   </para>
                 </entry>
                 <entry>
                   <para>
-                    <xsl:value-of select="/command/options/parameter/@requirement" />
+                    <xsl:value-of select="options/parameter/@requirement" />
                   </para>
                 </entry>
                 <entry>
                   <para>
-                    <xsl:value-of select="/command/options/parameter/description" />
+                    <xsl:value-of select="options/parameter/description" />
                   </para>
                 </entry>
               </row>
@@ -111,9 +113,9 @@
       </listitem>
     </varlistentry>
   </xsl:template>
+<!-- 
 
-  <!-- Availability -->
-  <xsl:template match="availability">
+  <xsl:template match="availability" mode="availability">
     <varlistentry>
       <term>Availability</term>
       <listitem>
@@ -122,8 +124,7 @@
     </varlistentry>
   </xsl:template>
 
-  <!-- Platform or Hypervisor notes -->
-  <xml:template match="notes">
+  <xml:template match="notes" mode="notes">
     <xsl:choose>
       <xsl:when test="notes = ''">
     <varlistentry>
@@ -141,11 +142,9 @@
     </xsl:choose>
   </xml:template>
 
-  <!-- Usage examples -->
-  <xsl:template match="usageexamples">
+  <xsl:template match="usageexamples" mode="usageexamples">
     <varlistentry>
       <term>Examples</term>
-      <!-- Loop around, creating each example -->
       <xsl:for-each select="usageexamples/example">
       <para>
         <xsl:apply-templates />
@@ -155,8 +154,7 @@
     </varlistentry>
   </xsl:template>
 
-  <!-- Full context example -->
-  <xsl:template match="fullcontextexample">
+  <xsl:template match="fullcontextexample" mode="fullcontextexample">
     <varlistentry>
       <term>Example in context</term>
       <listitem>
@@ -167,8 +165,7 @@
     </varlistentry>
   </xsl:template>
 
-  <!-- See also -->
-  <xsl:template match="seealso">
+  <xsl:template match="seealso" mode="seealso">
     <varlistentry>
       <term>See also</term>
       <listitem>
@@ -194,7 +191,7 @@
       </listitem>
     </varlistentry>
   </xsl:template>
-
+-->
   <!-- Tag for terminal/screen text -->
   <xsl:template match="terminal">
     <screen>
