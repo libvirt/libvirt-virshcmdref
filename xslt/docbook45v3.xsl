@@ -36,7 +36,7 @@
       <xsl:call-template name="usage" match="/command/usage" />
       <xsl:call-template name="options" match="/command/options" />
       <xsl:call-template name="availability" match="/command/availability" />
-
+      <xsl:call-template name="notes" match="/command/notes" />
 
       <!-- End the DocBook variable list, used to divide the page sections -->
       </variablelist>
@@ -124,10 +124,9 @@
     </varlistentry>
   </xsl:template>
 
-<!-- 
-  <xml:template match="notes" mode="notes">
+  <xsl:template name="notes">
     <xsl:choose>
-      <xsl:when test="notes = ''">
+      <xsl:when test="/command/notes = ''">
     <varlistentry>
       <term>Platform or Hypervisor specific notes</term>
       <listitem>
@@ -138,11 +137,12 @@
     </varlistentry>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="notes" />
+        <xsl:value-of select="/command/notes" />
       </xsl:otherwise>
     </xsl:choose>
-  </xml:template>
+  </xsl:template>
 
+<!-- 
   <xsl:template match="usageexamples" mode="usageexamples">
     <varlistentry>
       <term>Examples</term>
