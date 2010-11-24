@@ -168,6 +168,10 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 
     <!-- Outputs the Usage Example sections -->
+<xsl:message>
+  WARNING - Text formatting of the examples sections doesn't yet work, so
+  the results could be pretty bad.
+</xsl:message>
     <xsl:text disable-output-escaping="yes">
 
     &lt;varlistentry&gt;
