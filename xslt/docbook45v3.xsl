@@ -16,12 +16,10 @@
   <!-- Starts the main document processing, so we can pull variables
        out of the source doc
     -->
-  <xsl:for-each select="command">
+    <xsl:for-each select="command">
 
 
-    <!-- Outputs the top section header:
-           <section id="sect-net-uuid" xreflabel="net-uuid">
-      -->
+    <!-- Outputs the top section header -->
     <xsl:text disable-output-escaping="yes">&lt;section id="sect-</xsl:text>
     <xsl:value-of select="name" />
     <xsl:text disable-output-escaping="yes">" xreflabel="</xsl:text>
@@ -29,100 +27,22 @@
     <xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
 
 
-    <!-- Output the title element:
-           <title>net-uuid</title>
-      -->
-    <xsl:text disable-output-escaping="yes">
-  &lt;title&gt;</xsl:text>
-    <xsl:value-of select="name" />
-    <xsl:text disable-output-escaping="yes">&lt;/title&gt;
+    <!-- Output the title element -->
+    <title><xsl:value-of select="name" /></title>
 
-  </xsl:text>
+    <!-- Output the command description -->
+    <para>
+      <xsl:value-of select="description" />
+    </para>
 
-
-    <!-- Output the command description:
-           <para>
-             When given a network name, returns its corresponding UUID 
-           </para>
-      -->
-    <xsl:text disable-output-escaping="yes">&lt;para&gt;</xsl:text>
-    <xsl:value-of select="description" />
-    <xsl:text disable-output-escaping="yes">&lt;/para&gt;</xsl:text>
-
-
-    <!-- Begin the DocBook variable list, used to divide the page sections
-      -->
-    <xsl:text disable-output-escaping="yes">
-
-  &lt;variablelist&gt;</xsl:text>
+    <!-- Begin the DocBook variable list dividing the page sections -->
+    <variablelist>
 
 
     <!-- Outputs the command Usage section -->
-    <xsl:text disable-output-escaping="yes">
-    &lt;varlistentry&gt;
-      &lt;term&gt;Usage&lt;/term&gt;
-      &lt;listitem&gt;
-        &lt;para&gt;
-          &lt;command&gt;</xsl:text>
-          <xsl:value-of select="name" />
-          <xsl:text disable-output-escaping="yes">&lt;/command&gt;
-          &lt;parameter&gt;</xsl:text>
-          <xsl:value-of select="usage/parameter" />
-          <xsl:text disable-output-escaping="yes">&lt;/parameter&gt;
-          &lt;replaceable&gt;</xsl:text>
-          <xsl:value-of select="usage/value" />
-          <xsl:text disable-output-escaping="yes">&lt;/replaceable&gt;
-        &lt;/para&gt;
-      &lt;/listitem&gt;</xsl:text>
-    <xsl:text disable-output-escaping="yes">
-    &lt;/varlistentry&gt;</xsl:text>
 
 
-    <!-- Outputs the Options section 
-      -->
-    <xsl:text disable-output-escaping="yes">
-
-    &lt;varlistentry&gt;
-      &lt;term&gt;Options&lt;/term&gt;
-      &lt;listitem&gt;
-        &lt;table id="table-</xsl:text>
-          <xsl:value-of select="name" />
-          <xsl:text disable-output-escaping="yes">-options"&lt;
-          &lt;title&gt;Options&lt;/title&gt;
-          &lt;tgroup cols="3"&gt;
-            &lt;thead&gt;
-              &lt;row&gt;
-                &lt;entry&gt;Name&lt;/entry&gt;
-                &lt;entry&gt;Required?&lt;/entry&gt;
-                &lt;entry&gt;Description&lt;/entry&gt;
-              &lt;/row&gt;
-            &lt;/thead&gt;
-            &lt;tbody&gt;
-              &lt;row&gt;
-                &lt;entry&gt;
-                  &lt;para&gt;
-                    &lt;parameter&gt;</xsl:text>
-          <xsl:value-of select="options/parameter/keyword" />
-          <xsl:text disable-output-escaping="yes">&lt;/parameter&gt;
-                    &lt;replaceable&gt;</xsl:text>
-          <xsl:value-of select="options/parameter/value" />
-          <xsl:text disable-output-escaping="yes">&lt;/replaceable&gt;
-                  &lt;/para&gt;
-                &lt;/entry&gt;
-                &lt;entry&gt;&lt;para&gt;</xsl:text>
-          <xsl:value-of select="options/parameter/@requirement" />
-          <xsl:text disable-output-escaping="yes">&lt;/para&gt;&lt;/entry&gt;
-                &lt;entry&gt;
-                  &lt;para&gt;</xsl:text>
-          <xsl:value-of select="options/parameter/description" />
-          <xsl:text disable-output-escaping="yes">              &lt;/para&gt;
-                &lt;/entry&gt;
-              &lt;/row&gt;
-            &lt;/tbody&gt;
-          &lt;/tgroup&gt;
-        &lt;/table&gt;
-      &lt;/listitem&gt;
-    &lt;/varlistentry&gt;</xsl:text>
+    <!-- Outputs the Options section -->
 
 
     <!-- Outputs the Availability section -->
@@ -142,14 +62,84 @@
 
 
     <!-- End the DocBook variable list, used to divide the page sections -->
-    <xsl:text disable-output-escaping="yes">
-    
-  &lt;/variablelist&gt;</xsl:text>
+    </variablelist>
 
     <!-- Finish the DocBook source  -->
-    <xsl:text disable-output-escaping="yes">
-&lt;/section&gt;</xsl:text>
+    <xsl:text disable-output-escaping="yes">&lt;/section&gt;</xsl:text>
     </xsl:for-each>
+  </xsl:template>
+
+
+
+  <xsl:template match="description">
+    <para>
+      <xsl:value-of select="description" />
+    </para>
+  </xsl:template>
+
+  <xsl:template match="usage">
+    <varlistentry>
+      <term>Usage</term>
+      <listitem>
+        <para>
+          <command>
+            <xsl:value-of select="name" />
+          </command>
+          <parameter>
+            <xsl:value-of select="usage/parameter" />
+          </parameter>
+          <replaceable>
+            <xsl:value-of select="usage/value" />
+          </replaceable>
+        </para>
+      </listitem>
+    </varlistentry>
+  </xsl:template>
+
+  <xsl:template match="options">
+    <varlistentry>
+      <term>Options</term>
+      <listitem>
+        <xsl:text disable-output-escaping="yes">&lt;table id="table-</xsl:text>
+          <xsl:value-of select="name" />
+          <xsl:text disable-output-escaping="yes">-options"</xsl:text>
+          <title>Options</title>
+          <tgroup cols="3">
+            <thead>
+              <row>
+                <entry>Name</entry>
+                <entry>Required?</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>
+                    <parameter>
+                      <xsl:value-of select="options/parameter/keyword" />
+                    </parameter>
+                    <replaceable>
+                      <xsl:value-of select="options/parameter/value" />
+                    </replaceable>
+                  </para>
+                </entry>
+                <entry>
+                  <para>
+                    <xsl:value-of select="options/parameter/@requirement" />
+                  </para>
+                </entry>
+                <entry>
+                  <para>
+                    <xsl:value-of select="options/parameter/description" />
+                  </para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        <xsl:text disable-output-escaping="yes">&lt;/table&gt;</xsl:text>
+      </listitem>
+    </varlistentry>
   </xsl:template>
 
   <xsl:template match="availability">
