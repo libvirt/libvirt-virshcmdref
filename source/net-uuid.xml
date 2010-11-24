@@ -1,99 +1,102 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<command>net-uuid</command>
+<command>
+  <name>net-uuid</name>
 
-<description>
-  When given a network name, returns its corresponding UUID 
-</description>
+  <description>
+    When given a network name, returns its corresponding UUID 
+  </description>
 
-<!-- The usage info can probably be assembled automatically from the
-     contents of the options tags -->
-<usage>
-  <parameter>--network</parameter>
-  <value>network-name</value>
-</usage>
+<!-- The usage structure could probably be assembled automatically from
+     the contents of the options tags -->
+  <usage>
+    <parameter>--network</parameter>
+    <value>network-name</value>
+  </usage>
 
-<options>
-  <parameter requirement="required">
-    <keyword requirement="optional">--network</keyword>
-    <value requirement="required">network-name</value>
-    <description>
-      The name of the virtual network you want the UUID for.
-      <br />
-      The word "<bold>--network<bold>" itself is optional.
-    </description>
-  </parameter>
-</options>
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-name</value>
+      <description>
+        The name of the virtual network you want the UUID for.
+        <br /><br />
+        The word "<bold>--network</bold>" itself is optional.
+      </description>
+    </parameter>
+  </options>
 
-<availability version="0.2.0" />
+  <availability version="0.2.0" />
+ 
+  <notes />
+ 
+  <usageexamples>
+    <example>
+      <terminal>
+        virsh # <bold>net-uuid</bold> <value>mynetwork</value>
+        <br />
+        <bold>fa3642ab-e113-7eaa-528f-14ed78bca20</bold>
+      </terminal>
+      Returns the UUID of the virtual network named "<bold>mynetwork</bold>".
+    </example>
+    <example>
+      <terminal>
+        virsh # <bold>net-uuid</bold> <parameter>&#8210;&#8210;network</parameter>
+        <value>mynetwork</value>
+        <br />
+        fa3642ab-e113-7eaa-528f-14ed78bca20
+      </terminal>
+      Same as the previous example.
+    </example>
+  </usageexamples>
 
-<notes />
+  <fullcontextexample>
+    <example>
+      Given a virtual network name, we can get its UUID:
+      <terminal>
+        virsh # <bold>net-uuid</bold> <value>examplenetwork</value>
+        <br />
+        <bold>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</bold>
+      </terminal>
+      We can confirm by using the <a href="net-dumpxml">net-dumpxml</a>
+      command on the returned network UUID:
+      <terminal>
+        virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 <br />
+        &lt;network&gt; <br />
+          &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;
+          <highlight>the name is here</highlight> <br />
+          &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>
+          &lt;/uuid&gt;<highlight>the UUID is here</highlight><br />
+          &lt;forward mode='route'/&gt;<br />
+          &lt;bridge name='virbr100' stp='on' delay='1' /&gt;<br />
+          &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;<br />
+          &lt;/ip&gt;<br />
+        &lt;/network&gt;
+      </terminal>
+      Using <bold>net-uuid</bold> is more efficient than dumping the XML for
+      the virtual network and manually extracting the <bold>uuid</bold> value.
+    </example>
+  </fullcontextexample>
 
-<usageexample>
-  <example>
-    <terminal>
-      virsh # <bold>net-uuid</bold> <value>mynetwork</value>
-      <br />
-      <bold>fa3642ab-e113-7eaa-528f-14ed78bca20</bold>
-    </terminal>
-    Returns the UUID of the virtual network named "<bold>mynetwork</bold>".
-  </example>
-  <example>
-    <terminal>
-      virsh # <bold>net-uuid</bold> <parameter>--network</parameter>
-      <value>mynetwork</value>
-      <br />
-      fa3642ab-e113-7eaa-528f-14ed78bca20
-    </terminal>
-    Same as the previous example.
-  </example>
-</usageexample>
+  <seealso>
+    <item>
+      <link type="internal" href="net-dumpxml" />
+      <name>
+        net-dumpxml
+      </name>
+      <description>
+        Outputs the XML configuration for a virtual network, to stdout
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net=list
+      </name>
+      <description>
+        Lists the virtual networks libvirt is aware of
+      </description>
+    </item>
+  </seealso>
 
-<fullcontextexample>
-  <example>
-    Given a virtual network name, we can get its UUID:
-    <terminal>
-      virsh # <bold>net-uuid</bold> <value>examplenetwork</value>
-      <br />
-      <bold>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</bold>
-    </terminal>
-    We can confirm by using the <a href="net-dumpxml">net-dumpxml</a>
-    command on the returned network UUID:
-    <terminal>
-      virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 <br />
-      &lt;network&gt; <br />
-        &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;
-        <highlight>the name is here</highlight> <br />
-        &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>
-        &lt;/uuid&gt;<highlight>the UUID is here</highlight><br />
-        &lt;forward mode='route'/&gt;<br />
-        &lt;bridge name='virbr100' stp='on' delay='1' /&gt;<br />
-        &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;<br />
-        &lt;/ip&gt;<br />
-      &lt;/network&gt;
-    </terminal>
-    Using <bold>net-uuid</bold> is more efficient than dumping the XML for
-    the virtual network and manually extracting the <bold>uuid</bold> value.
-  </example>
-</fullcontextexample>
-
-<seealso>
-  <item>
-    <link href="net-dumpxml" />
-    <name>
-      net-dumpxml
-    </name>
-    <description>
-      Outputs the XML configuration for a virtual network, to stdout
-    </description>
-  </item>
-  <item>
-    <link href="net-list" />
-    <name>
-      net=list
-    </name>
-    <description>
-      Lists the virtual networks libvirt is aware of
-    </description>
-  </item>
-</seealso>
+</command>
