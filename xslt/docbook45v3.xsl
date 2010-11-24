@@ -125,62 +125,13 @@
     &lt;/varlistentry&gt;</xsl:text>
 
 
-    <!-- Outputs the Availability section 
-      -->
-    <xsl:text disable-output-escaping="yes">
-
-    &lt;varlistentry&gt;
-      &lt;term&gt;Availability&lt;/term&gt;
-      &lt;listitem&gt;
-        &lt;para&gt;
-          Available from libvirt </xsl:text>
-    <xsl:value-of select="availability/@version" />
-    <xsl:text disable-output-escaping="yes"> onwards
-        &lt;/para&gt;
-      &lt;/listitem&gt;
-    &lt;/varlistentry&gt;</xsl:text>
+    <!-- Outputs the Availability section -->
 
 
-    <!-- Outputs the Platform or Hypervisor specific notes section 
-      -->
-    <xsl:choose>
-      <xsl:when test="notes = ''">
-        <xsl:text disable-output-escaping="yes">
-
-    &lt;varlistentry&gt;
-      &lt;term&gt;Platform or Hypervisor specific notes&lt;/term&gt;
-      &lt;listitem&gt;
-        &lt;para&gt;
-          &lt;emphasis&gt;None yet&lt;/emphasis&gt;
-        &lt;/para&gt;
-      &lt;/listitem&gt;
-    &lt;/varlistentry&gt;</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="notes" />
-      </xsl:otherwise>
-    </xsl:choose>
+    <!-- Outputs the Platform or Hypervisor specific notes section -->
 
 
     <!-- Outputs the Usage Example sections -->
-    <xsl:text disable-output-escaping="yes">
-
-    &lt;varlistentry&gt;
-      &lt;term&gt;Examples&lt;/term&gt;</xsl:text>
-
-      <!-- Loops around, creating each example -->
-      <xsl:for-each select="usageexamples/example">
-        <xsl:text disable-output-escaping="yes">
-      &lt;para&gt;</xsl:text>
-
-        <xsl:apply-templates />
-
-        <xsl:text disable-output-escaping="yes">
-      &lt;/para&gt;</xsl:text>
-      </xsl:for-each>
-
-    <xsl:text disable-output-escaping="yes">
-    &lt;/varlistentry&gt;</xsl:text>
 
 
     <!-- Create the full context example -->
@@ -190,8 +141,7 @@
     <!-- Create the See also section -->
 
 
-    <!-- End the DocBook variable list, used to divide the page sections
-      -->
+    <!-- End the DocBook variable list, used to divide the page sections -->
     <xsl:text disable-output-escaping="yes">
     
   &lt;/variablelist&gt;</xsl:text>
@@ -200,6 +150,47 @@
     <xsl:text disable-output-escaping="yes">
 &lt;/section&gt;</xsl:text>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="availability">
+    <varlistentry>
+      <term>Availability</term>
+      <listitem>
+        <para>Available from libvirt <xsl:value-of select="availability/@version" /> onwards</para>
+      </listitem>
+    </varlistentry>
+  </xsl:template>
+
+  <xml:template match="notes">
+    <xsl:choose>
+      <xsl:when test="notes = ''">
+    <varlistentry>
+      <term>Platform or Hypervisor specific notes</term>
+      <listitem>
+        <para>
+          <emphasis>None yet</emphasis>
+        </para>
+      </listitem>
+    </varlistentry>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="notes" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xml:template>
+
+  <xsl:template match="usageexamples">
+    <varlistentry>
+      <term>Examples</term>
+
+      <!-- Loops around, creating each example -->
+      <xsl:for-each select="usageexamples/example">
+      <para>
+        <xsl:apply-templates />
+      </para>
+      </xsl:for-each>
+
+    </varlistentry>
   </xsl:template>
 
   <xsl:template match="fullcontextexample">
