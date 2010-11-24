@@ -2,7 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0">
 
-  <!-- Start of the DocBook 4.5 output -->
+
+  <!-- Main document template starts here -->
   <xsl:template match="/">
 
   <!-- Outputs the DocBook 4.5 header -->
@@ -12,14 +13,6 @@
 %BOOK_ENTITIES;
 ]&gt;
 </xsl:text>
-
-  <!-- Starts the main document processing, so we can pull variables
-       out of the source doc
-    -->
-<!-- 
-    <xsl:for-each select="command">
- -->
-
 
     <!-- Outputs the top section header -->
     <xsl:text disable-output-escaping="yes">&lt;section id="sect-</xsl:text>
@@ -49,10 +42,8 @@
     <!-- Finish the DocBook source  -->
     <xsl:text disable-output-escaping="yes">&lt;/section&gt;</xsl:text>
 
-<!-- 
-    </xsl:for-each>
- -->
   </xsl:template>
+
 
   <!-- Usage -->
   <xsl:template match="/command/usage" mode="usage">
