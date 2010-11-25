@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-  <xsl:output method="html" indent="yes" />
+  <xsl:output method="xml" indent="yes" />
 
   <!-- Main template -->
   <xsl:template match="/">
 
     <!-- Outputs the HTML5 doctype header -->
-    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;
+</xsl:text>
 
     <!-- Display the command name as the browser window title -->
     <html>
     <head>
-    <!-- xsltproc doesn't close the meta tag when in html mode, so we have
-         create our own closing tag manually -->
-    <xsl:text disable-output-escaping="yes">&lt;/meta&gt;</xsl:text>
+    <meta charset="UTF-8" />
     <title><xsl:value-of select="/command/name" /></title></head>
 
     <!-- Output the name of the command -->
@@ -26,8 +26,20 @@
         <xsl:apply-templates select="/command/description" />
       </span>
 
+      <!-- Output the command usage -->
+      <section>
+        <h2>Usage</h2>
+        <strong><xsl:value-of select="/command/name" /></strong>
+        &#160;
+        <xsl:for-each select="/command/options/parameter">
+          <strong><xsl:value-of select="keyword" /></strong>
+          &#160;
+          <em><xsl:value-of select="value" /></em>
+          &#160;
+        </xsl:for-each>
+      </section>
+
       <!-- Main content -->
-      <xsl:apply-templates select="/command/usage" />
       <xsl:apply-templates select="/command/options" />
       <xsl:apply-templates select="/command/availability" />
       <xsl:apply-templates select="/command/notes" />
@@ -40,16 +52,6 @@
     </html>
   </xsl:template>
 
-
-  <!-- Usage template -->
-  <xsl:template match="usage" >
-    <section>
-      <h2>Usage</h2>
-      <strong><xsl:value-of select="/command/name" /></strong>
-      <strong><xsl:value-of select="/command/usage/parameter" /></strong>
-      <strong><xsl:value-of select="/command/usage/value" /></strong>
-    </section>
-  </xsl:template>
 
   <!-- Options template -->
   <xsl:template match="options">
@@ -64,16 +66,18 @@
         <xsl:for-each select="/command/options/parameter">
           <tr>
             <td>
-              <xsl:value-of select="keyword" />
-              <xsl:text>&amp;nbsp;</xsl:text>
-              <xsl:value-of select="value" />
+              <strong><xsl:value-of select="keyword" /></strong>
+              &#160;
+              <em><xsl:value-of select="value" /></em>
             </td>
             <td>
               <xsl:value-of select="@requirement" />
             </td>
             <td>
               <xsl:for-each select="description">
-                <xsl:apply-templates />
+                <div>
+                  <xsl:apply-templates />
+                </div>
               </xsl:for-each>
             </td>
           </tr>
@@ -106,7 +110,7 @@
   </xsl:template>
 
   <!-- Usage examples template -->
-  <xsl:template name="usageexamples">
+  <xsl:template match="usageexamples">
     <section>
       <h2>Examples</h2>
       <xsl:for-each select="/command/usageexamples/example">
@@ -116,7 +120,7 @@
   </xsl:template>
 
   <!-- Full context examples template -->
-  <xsl:template name="fullcontextexample">
+  <xsl:template match="fullcontextexample">
     <section>
       <h2>Example in context</h2>
       <xsl:for-each select="/command/fullcontextexample/example">
@@ -157,8 +161,7 @@
   </xsl:template>
 
   <!-- Tag template for highlighted text -->
-  <xsl:template match="highlight">
-<strong>&lt;-- <xsl:value-of select="." /></strong>
+  <xsl:template match="highlight">&#160;&#160;&#160;&#160;<strong>&lt;-- <xsl:value-of select="." /></strong>
   </xsl:template>
 
   <!-- Tag template for italic text -->
@@ -177,7 +180,7 @@
         <xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="@href" disable-output-escaping="yes" />.html<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
+        <xsl:value-of select="@href" disable-output-escaping="yes" /><xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
