@@ -98,6 +98,7 @@
                       <parameter>
                         <xsl:value-of select="keyword" />
                       </parameter>
+                      <xsl:text>&amp;nbsp;</xsl:text>
                       <replaceable>
                         <xsl:value-of select="value" />
                       </replaceable>
