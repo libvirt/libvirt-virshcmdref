@@ -49,12 +49,12 @@
       </varlistentry>
 
       <!-- Applies the templates -->
-      <xsl:call-template name="options" match="/command/options" />
-      <xsl:call-template name="availability" match="/command/availability" />
-      <xsl:call-template name="notes" match="/command/notes" />
-      <xsl:call-template name="usageexamples" match="/command/usageexamples" />
-      <xsl:call-template name="fullcontextexample" match="/command/fullcontextexample" />
-      <xsl:call-template name="seealso" match="/command/seealso" />
+      <xsl:apply-templates select="/command/options" />
+      <xsl:apply-templates select="/command/availability" />
+      <xsl:apply-templates select="/command/notes" />
+      <xsl:apply-templates select="/command/usageexamples" />
+      <xsl:apply-templates select="/command/fullcontextexample" />
+      <xsl:apply-templates select="/command/seealso" />
 
       <!-- End the DocBook variable list, used to divide the page sections -->
       </variablelist>
@@ -66,7 +66,7 @@
   </xsl:template>
 
   <!-- Options template -->
-  <xsl:template name="options">
+  <xsl:template match="options">
     <varlistentry>
       <term>Options</term>
       <listitem>
@@ -118,7 +118,7 @@
   </xsl:template>
 
   <!-- Availability template -->
-  <xsl:template name="availability">
+  <xsl:template match="availability">
     <varlistentry>
       <term>Availability</term>
       <listitem>
@@ -128,7 +128,7 @@
   </xsl:template>
 
   <!-- Notes template -->
-  <xsl:template name="notes">
+  <xsl:template match="notes">
     <xsl:choose>
       <xsl:when test="/command/notes = ''">
     <varlistentry>
@@ -147,7 +147,7 @@
   </xsl:template>
 
   <!-- Usage examples template -->
-  <xsl:template name="usageexamples">
+  <xsl:template match="usageexamples">
     <varlistentry>
       <term>Examples</term>
       <listitem>
@@ -161,7 +161,7 @@
   </xsl:template>
 
   <!-- Full context examples template -->
-  <xsl:template name="fullcontextexample">
+  <xsl:template match="fullcontextexample">
     <varlistentry>
       <term>Example in context</term>
       <listitem>
@@ -175,7 +175,7 @@
   </xsl:template>
 
   <!-- See also template -->
-  <xsl:template name="seealso">
+  <xsl:template match="seealso">
     <varlistentry>
       <term>See also</term>
       <listitem>
