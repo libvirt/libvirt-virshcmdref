@@ -20,7 +20,8 @@
       <value type="string" requirement="required">network-name</value>
       <description>
         The name of the virtual network you want the UUID for.
-        <br /><br />
+      </description>
+      <description>
         The word "<bold>--network</bold>" itself is optional.
       </description>
     </parameter>
@@ -41,7 +42,7 @@
     </example>
     <example>
       <terminal>
-        virsh # <bold>net-uuid</bold> <parameter>&#8210;&#8210;network</parameter>
+        virsh # <bold>net-uuid</bold> <parameter>--network</parameter>
         <value>mynetwork</value>
         <br />
         fa3642ab-e113-7eaa-528f-14ed78bca20
