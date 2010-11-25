@@ -191,17 +191,11 @@
           <xsl:for-each select="/command/seealso/item">
           <listitem>
             <para>
-            <xsl:choose>
-              <xsl:when test="link/@type = 'internal'">
-                <xsl:text disable-output-escaping="yes">        &lt;xref linkend="sect-</xsl:text>
-                <xsl:value-of select="link/@href" disable-output-escaping="yes" />
-                <xsl:text disable-output-escaping="yes">" /&gt; - </xsl:text>
-                <xsl:value-of select="description" disable-output-escaping="yes" />
-              </xsl:when>
-              <xsl:otherwise>
-                External link goes here
-              </xsl:otherwise>
-            </xsl:choose>
+              <xsl:for-each select=".">
+                <xsl:apply-templates select="link"/>
+              </xsl:for-each>
+              - <xsl:value-of select="description"
+                  disable-output-escaping="yes" />
             </para>
           </listitem>
           </xsl:for-each>
@@ -227,6 +221,20 @@
   <!-- Tag template for highlighted text -->
   <xsl:template match="highlight">
     <emphasis role="strong">    &lt;-- <xsl:value-of select="." /></emphasis>
+  </xsl:template>
+
+  <!-- Tag template for links -->
+  <xsl:template match="link">
+    <xsl:choose>
+      <xsl:when test="@type = 'internal'">
+        <xsl:text disable-output-escaping="yes">&lt;xref linkend="sect-</xsl:text>
+        <xsl:value-of select="@href" disable-output-escaping="yes" />
+        <xsl:text disable-output-escaping="yes">" /&gt;</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        External link goes here
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>
