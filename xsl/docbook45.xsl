@@ -191,11 +191,8 @@
           <xsl:for-each select="/command/seealso/item">
           <listitem>
             <para>
-              <xsl:for-each select=".">
-                <xsl:apply-templates select="link"/>
-              </xsl:for-each>
-              - <xsl:value-of select="description"
-                  disable-output-escaping="yes" />
+              <xsl:apply-templates select="link"/> -
+              <xsl:apply-templates select="description"/>
             </para>
           </listitem>
           </xsl:for-each>
