@@ -63,10 +63,8 @@
       <terminal>
         virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 <br />
         &lt;network&gt; <br />
-          &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;
-          <highlight>the name is here</highlight> <br />
-          &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>
-          &lt;/uuid&gt;<highlight>the UUID is here</highlight><br />
+          &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;<highlight>the name is here</highlight> <br />
+          &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>&lt;/uuid&gt;<highlight>the UUID is here</highlight><br />
           &lt;forward mode='route'/&gt;<br />
           &lt;bridge name='virbr100' stp='on' delay='1' /&gt;<br />
           &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;<br />
