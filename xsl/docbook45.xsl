@@ -80,7 +80,7 @@
       <listitem>
         <xsl:text disable-output-escaping="yes">&lt;table id="table-</xsl:text>
           <xsl:value-of select="/command/name" />
-          <xsl:text disable-output-escaping="yes">-options"</xsl:text>
+          <xsl:text disable-output-escaping="yes">-options"&gt;</xsl:text>
           <title>Options</title>
           <tgroup cols="3">
             <thead>
@@ -153,11 +153,13 @@
   <xsl:template name="usageexamples">
     <varlistentry>
       <term>Examples</term>
-      <xsl:for-each select="/command/usageexamples/example">
-      <para>
-        <xsl:apply-templates />
-      </para>
-      </xsl:for-each>
+      <listitem>
+        <xsl:for-each select="/command/usageexamples/example">
+          <para>
+            <xsl:apply-templates />
+          </para>
+        </xsl:for-each>
+      </listitem>
     </varlistentry>
   </xsl:template>
 
@@ -165,13 +167,13 @@
   <xsl:template name="fullcontextexample">
     <varlistentry>
       <term>Example in context</term>
-      <xsl:for-each select="/command/fullcontextexample/example">
       <listitem>
-      <para>
-        <xsl:apply-templates />
-      </para>
+        <xsl:for-each select="/command/fullcontextexample/example">
+          <para>
+            <xsl:apply-templates />
+          </para>
+        </xsl:for-each>
       </listitem>
-      </xsl:for-each>
     </varlistentry>
   </xsl:template>
 
@@ -215,6 +217,11 @@
     <emphasis role="strong">
       <xsl:value-of select="." />
     </emphasis>
+  </xsl:template>
+
+  <!-- Tag template for highlighted text -->
+  <xsl:template match="highlight">
+    <emphasis role="strong">    &lt;-- <xsl:value-of select="." /></emphasis>
   </xsl:template>
 
 </xsl:stylesheet>
