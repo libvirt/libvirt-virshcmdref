@@ -246,4 +246,9 @@
     </xsl:choose>
   </xsl:template>
 
+  <!-- Tag template for value -->
+  <xsl:template match="value">
+    <emphasis><xsl:value-of select="." /></emphasis>
+  </xsl:template>
+
 </xsl:stylesheet>
