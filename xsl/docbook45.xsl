@@ -28,7 +28,7 @@
 
       <!-- Output the command description -->
       <para>
-        <xsl:value-of select="/command/description" />
+        <xsl:apply-templates select="/command/description" />
       </para>
 
       <!-- Begin the DocBook variable list dividing the page sections -->
@@ -191,8 +191,8 @@
           <xsl:for-each select="/command/seealso/item">
           <listitem>
             <para>
-              <xsl:apply-templates select="link"/> -
-              <xsl:apply-templates select="description"/>
+              <xsl:apply-templates select="link" /> -
+              <xsl:apply-templates select="description" />
             </para>
           </listitem>
           </xsl:for-each>
