@@ -211,13 +211,27 @@
   <!-- Tag template for bold text -->
   <xsl:template match="bold">
     <emphasis role="strong">
-      <xsl:value-of select="." />
+      <xsl:apply-templates />
     </emphasis>
+  </xsl:template>
+
+  <!-- Tag template for bold italic text -->
+  <xsl:template match="bolditalic">
+    <emphasis role="strong"><emphasis>
+      <xsl:apply-templates />
+    </emphasis></emphasis>
   </xsl:template>
 
   <!-- Tag template for highlighted text -->
   <xsl:template match="highlight">
-    <emphasis role="strong">    &lt;-- <xsl:value-of select="." /></emphasis>
+    <emphasis role="strong">&lt;-- <xsl:value-of select="." /></emphasis>
+  </xsl:template>
+
+  <!-- Tag template for italic text -->
+  <xsl:template match="italic">
+    <emphasis role="italic">
+      <xsl:apply-templates />
+    </emphasis>
   </xsl:template>
 
   <!-- Tag template for links -->
@@ -244,6 +258,13 @@
         </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- Tag template for para -->
+  <xsl:template match="para">
+    <para>
+      <xsl:apply-templates />
+    </para>
   </xsl:template>
 
   <!-- Tag template for value -->
