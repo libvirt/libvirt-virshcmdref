@@ -26,20 +26,20 @@
         <xsl:apply-templates select="/command/description" />
       </span>
 
+      <!-- Main content -->
       <xsl:apply-templates select="/command/usage" />
       <xsl:apply-templates select="/command/options" />
       <xsl:apply-templates select="/command/availability" />
-
       <xsl:apply-templates select="/command/notes" />
-<!-- 
-      <xsl:call-template name="usageexamples" match="/command/usageexamples" />
-      <xsl:call-template name="fullcontextexample" match="/command/fullcontextexample" />
- -->
+      <xsl:apply-templates select="/command/usageexamples" />
+      <xsl:apply-templates select="/command/fullcontextexample" />
       <xsl:apply-templates select="/command/seealso" />
 
+    <!-- End of Main template -->
     </body>
     </html>
   </xsl:template>
+
 
   <!-- Usage template -->
   <xsl:template match="usage" >
@@ -105,6 +105,27 @@
     </section>
   </xsl:template>
 
+  <!-- Usage examples template -->
+  <xsl:template name="usageexamples">
+    <section>
+      <h2>Examples</h2>
+      <xsl:for-each select="/command/usageexamples/example">
+        <xsl:apply-templates />
+      </xsl:for-each>
+    </section>
+  </xsl:template>
+
+  <!-- Full context examples template -->
+  <xsl:template name="fullcontextexample">
+    <section>
+      <h2>Example in context</h2>
+      <xsl:for-each select="/command/fullcontextexample/example">
+        <xsl:apply-templates />
+      </xsl:for-each>
+    </section>
+  </xsl:template>
+
+
   <!-- See also template -->
   <xsl:template match="seealso">
     <section>
@@ -120,9 +141,29 @@
     </section>
   </xsl:template>
 
+  <!-- Tag template for terminal/screen text -->
+  <xsl:template match="terminal">
+<pre><xsl:apply-templates /></pre>
+  </xsl:template>
+
   <!-- Tag template for bold text -->
   <xsl:template match="bold">
 <strong><xsl:apply-templates /></strong>
+  </xsl:template>
+
+  <!-- Tag template for bold italic text -->
+  <xsl:template match="bolditalic">
+<strong><em><xsl:apply-templates /></em></strong>
+  </xsl:template>
+
+  <!-- Tag template for highlighted text -->
+  <xsl:template match="highlight">
+<strong>&lt;-- <xsl:value-of select="." /></strong>
+  </xsl:template>
+
+  <!-- Tag template for italic text -->
+  <xsl:template match="italic">
+<em><xsl:apply-templates /></em>
   </xsl:template>
 
   <!-- Tag template for links -->
@@ -131,15 +172,26 @@
     <xsl:value-of select="@href" disable-output-escaping="yes" />
     <xsl:text disable-output-escaping="yes">.html"&gt;</xsl:text>
     <xsl:choose>
-      <xsl:when test=".">
+      <xsl:when test="text()">
         <xsl:value-of select="." disable-output-escaping="yes" />
         <xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="@href" disable-output-escaping="yes" />
-        <xsl:text disable-output-escaping="yes">.html&lt;/a&gt;</xsl:text>
+        <xsl:value-of select="@href" disable-output-escaping="yes" />.html<xsl:text disable-output-escaping="yes">&lt;/a&gt;</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- Tag template for para -->
+  <xsl:template match="para">
+    <div>
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
+
+  <!-- Tag template for value -->
+  <xsl:template match="value">
+    <em><xsl:value-of select="." /></em>
   </xsl:template>
 
 </xsl:stylesheet>
