@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>net-autostart</title>
+  </head>
+  <body>
+    <h1>net-autostart</h1>
+    <span>
+    Used to enable and disable the automatic starting of a given
+    <strong>persistent</strong> virtual network, by the libvirt daemon.
+  </span>
+    <section><h2>Usage</h2><strong>net-autostart</strong>
+         
+        <strong>--network</strong>
+           
+          <em>network-identifier</em>
+           
+        <strong>--disable</strong>
+           
+          <em></em>
+           
+        </section>
+    <section>
+      <h2>Options</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Required?</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><strong>--network</strong>
+               
+              <em>network-identifier</em></td>
+          <td>required</td>
+          <td>
+            <div>
+        The name or UUID for the virtual network being configured.
+      </div>
+            <div>
+        The word "<strong>--network</strong>" itself is optional.
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>--disable</strong>
+               
+              <em></em></td>
+          <td>optional</td>
+          <td>
+            <div>
+        Disables the automatic starting of the virtual network.
+      </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section><h2>Availability</h2>
+      Available from libvirt 0.2.1 onwards
+    </section>
+    <section>
+      <h2>Platform or Hypervisor specific notes</h2>
+      <em>None yet</em>
+    </section>
+    <section><h2>Examples</h2>
+      <pre>
+virsh # <strong>net-autostart</strong> <em>default</em> --disable
+      </pre>
+      Stops the virtual network named "<em>default</em>" from
+      automatically starting when the libvirt daemon starts.
+    
+      <pre>
+virsh # <strong>net-autostart</strong> --network <em>default</em> --disable
+      </pre>
+      Same as the above example.
+    
+      <pre>
+virsh # <strong>net-autostart</strong> <em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em> --disable
+      </pre>
+      Stops the virtual network with UUID
+      "<em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em>" from
+      automatically starting when the libvirt daemon starts.
+    
+      <pre>
+virsh # <strong>net-autostart</strong> --network <em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em> --disable
+      </pre>
+      Same as the above example.
+    
+      <pre>
+virsh # <strong>net-autostart</strong> <em>default</em>
+      </pre>
+      Enables the automatic starting of the virtual network named
+      "<em>default</em>", by the libvirt daemon when it starts.
+    
+      <pre>
+virsh # <strong>net-autostart</strong> --network <em>default</em>
+      </pre>
+      Same as the above example.
+    </section>
+    <section><h2>Example in context</h2>
+      Starting with an XML file we've already created, using the
+      <a href="http://libvirt.org/formatnetwork.html.html">required XML format</a>:
+      <pre>
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;
+      </pre>
+      <pre>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
+      </pre>
+      We start virsh interactively, then define a <strong>persistent</strong>
+      virtual network:
+      <pre>
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit
+      </pre>
+      <pre>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+      </pre>
+      <pre>
+virsh # net-define /root/examplenetwork.xml
+<strong>Network</strong> <strong><em>examplenetwork</em></strong> <strong>defined from</strong> <strong><em>/root/examplenetwork.xml</em></strong>
+      </pre>
+      Newly defined virtual networks aren't set to automatically be started,
+      as can be seen here:
+      <pre>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>        <strong>&lt;-- this is the important piece</strong>
+      </pre>
+      We enable automatic starting for it:
+      <pre>
+virsh # <strong>net-autostart</strong> <em>examplenetwork</em>
+<strong>Network examplenetwork</strong> <strong>marked as autostarted</strong>
+      </pre>
+      Checking, to make sure:
+      <pre>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>yes</strong>        <strong>&lt;-- this is the important piece</strong>
+      </pre>
+      From now on, whenever the libvirt daemon is started, it will
+      automatically start this virtual network too (unless it's already
+      running).  If at some point we want to turn off automatic starting of
+      the virtual network, we use the --disable
+      option to the command:
+      <pre>
+# <strong>net-autostart</strong> --disable <em>examplenetwork</em>
+<strong>Network examplenetwork</strong> <strong><em>unmarked as autostarted</em></strong>
+      </pre>
+      <pre>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>        <strong>&lt;-- this is the important piece</strong>
+      </pre>
+    </section>
+    <section>
+      <h2>See also</h2>
+      <ul>
+        <li><a href="net-dumpxml.html">net-dumpxml</a> -
+            
+        Outputs the XML configuration for a virtual network, to stdout
+      </li>
+        <li><a href="net-list.html">net-list</a> -
+            
+        Lists the virtual networks libvirt is aware of
+      </li>
+      </ul>
+    </section>
+  </body>
+</html>
