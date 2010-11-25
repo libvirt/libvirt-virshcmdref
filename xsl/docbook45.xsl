@@ -91,28 +91,32 @@
               </row>
             </thead>
             <tbody>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>
-                      <xsl:value-of select="/command/options/parameter/keyword" />
-                    </parameter>
-                    <replaceable>
-                      <xsl:value-of select="/command/options/parameter/value" />
-                    </replaceable>
-                  </para>
-                </entry>
-                <entry>
-                  <para>
-                    <xsl:value-of select="/command/options/parameter/@requirement" />
-                  </para>
-                </entry>
-                <entry>
-                  <para>
-                    <xsl:value-of select="/command/options/parameter/description" />
-                  </para>
-                </entry>
-              </row>
+              <xsl:for-each select="/command/options/parameter">
+                <row>
+                  <entry>
+                    <para>
+                      <parameter>
+                        <xsl:value-of select="keyword" />
+                      </parameter>
+                      <replaceable>
+                        <xsl:value-of select="value" />
+                      </replaceable>
+                    </para>
+                  </entry>
+                  <entry>
+                    <para>
+                      <xsl:value-of select="@requirement" />
+                    </para>
+                  </entry>
+                  <entry>
+                    <xsl:for-each select="description">
+                      <para>
+                        <xsl:apply-templates />
+                      </para>
+                    </xsl:for-each>
+                  </entry>
+                </row>
+              </xsl:for-each>
             </tbody>
           </tgroup>
         <xsl:text disable-output-escaping="yes">&lt;/table&gt;</xsl:text>
