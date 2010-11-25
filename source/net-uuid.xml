@@ -3,27 +3,14 @@
 <command>
   <name>net-uuid</name>
 
-  <description>
-    When given a network name, returns its corresponding UUID 
-  </description>
-
-<!-- The usage structure could probably be assembled automatically from
-     the contents of the options tags -->
-  <usage>
-    <parameter>--network</parameter>
-    <value>network-name</value>
-  </usage>
+  <description>When given a network name, returns its corresponding UUID</description>
 
   <options>
     <parameter requirement="required">
       <keyword requirement="optional">--network</keyword>
       <value type="string" requirement="required">network-name</value>
-      <description>
-        The name of the virtual network you want the UUID for.
-      </description>
-      <description>
-        The word "<bold>--network</bold>" itself is optional.
-      </description>
+      <description>The name of the virtual network you want the UUID for.</description>
+      <description>The word "<bold>--network</bold>" itself is optional.</description>
     </parameter>
   </options>
 

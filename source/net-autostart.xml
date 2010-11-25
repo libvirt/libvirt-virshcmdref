@@ -8,12 +8,6 @@
     <bold>persistent</bold> virtual network, by the libvirt daemon.
   </description>
 
-  <usage>
-    <parameter>--network</parameter>
-    <value>network-identifier</value>
-    <parameter>--disable</parameter>
-  </usage>
-
   <options>
     <parameter requirement="required">
       <keyword requirement="optional">--network</keyword>

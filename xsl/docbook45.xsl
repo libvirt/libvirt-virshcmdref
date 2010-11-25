@@ -34,8 +34,21 @@
       <!-- Begin the DocBook variable list dividing the page sections -->
       <variablelist>
 
+      <!-- Output the command usage -->
+      <varlistentry>
+        <term>Usage</term>
+        <listitem>
+          <para>
+            <command><xsl:value-of select="/command/name" /></command>
+            <xsl:for-each select="/command/options/parameter">
+              <parameter><xsl:value-of select="keyword" /></parameter>
+              <replaceable><xsl:value-of select="value" /></replaceable>
+            </xsl:for-each>
+          </para>
+        </listitem>
+      </varlistentry>
+
       <!-- Applies the templates -->
-      <xsl:call-template name="usage" match="/command/usage" />
       <xsl:call-template name="options" match="/command/options" />
       <xsl:call-template name="availability" match="/command/availability" />
       <xsl:call-template name="notes" match="/command/notes" />
@@ -50,27 +63,6 @@
     <xsl:text disable-output-escaping="yes">&lt;/section&gt;</xsl:text>
 
   <!-- End of the main template -->
-  </xsl:template>
-
-
-  <!-- Usage template -->
-  <xsl:template name="usage" >
-    <varlistentry>
-      <term>Usage</term>
-      <listitem>
-        <para>
-          <command>
-            <xsl:value-of select="/command/name" />
-          </command>
-          <parameter>
-            <xsl:value-of select="/command/usage/parameter" />
-          </parameter>
-          <replaceable>
-            <xsl:value-of select="/command/usage/value" />
-          </replaceable>
-        </para>
-      </listitem>
-    </varlistentry>
   </xsl:template>
 
   <!-- Options template -->
