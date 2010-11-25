@@ -232,7 +232,19 @@
         <xsl:text disable-output-escaping="yes">" /&gt;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        External link goes here
+        <xsl:text disable-output-escaping="yes">&lt;ulink url="</xsl:text>
+        <xsl:value-of select="@href" disable-output-escaping="yes" />
+        <xsl:text disable-output-escaping="yes">"&gt;</xsl:text>
+        <xsl:choose>
+          <xsl:when test=".">
+            <xsl:value-of select="." disable-output-escaping="yes" />
+            <xsl:text disable-output-escaping="yes">&lt;/ulink&gt;</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@href" disable-output-escaping="yes" />
+            <xsl:text disable-output-escaping="yes">&lt;/ulink&gt;</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
