@@ -90,7 +90,7 @@
     <item>
       <link type="internal" href="net-list" />
       <name>
-        net=list
+        net-list
       </name>
       <description>
         Lists the virtual networks libvirt is aware of
