@@ -27,12 +27,11 @@
       </span>
 
       <xsl:apply-templates select="/command/usage" />
-
+      <xsl:apply-templates select="/command/options" />
       <xsl:apply-templates select="/command/availability" />
 
-      <xsl:call-template name="notes" match="/command/notes" />
+      <xsl:apply-templates select="/command/notes" />
 <!-- 
-      <xsl:call-template name="options" match="/command/options" />
       <xsl:call-template name="usageexamples" match="/command/usageexamples" />
       <xsl:call-template name="fullcontextexample" match="/command/fullcontextexample" />
  -->
@@ -52,6 +51,37 @@
     </section>
   </xsl:template>
 
+  <!-- Options template -->
+  <xsl:template match="options">
+    <section>
+      <h2>Options</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Required?</th>
+          <th>Description</th>
+        </tr>
+        <xsl:for-each select="/command/options/parameter">
+          <tr>
+            <td>
+              <xsl:value-of select="keyword" />
+              <xsl:text>&amp;nbsp;</xsl:text>
+              <xsl:value-of select="value" />
+            </td>
+            <td>
+              <xsl:value-of select="@requirement" />
+            </td>
+            <td>
+              <xsl:for-each select="description">
+                <xsl:apply-templates />
+              </xsl:for-each>
+            </td>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </section>
+  </xsl:template>
+
   <!-- Availability template -->
   <xsl:template match="availability">
     <section>
@@ -61,7 +91,7 @@
   </xsl:template>
 
   <!-- Notes template -->
-  <xsl:template name="notes">
+  <xsl:template match="notes">
     <section>
       <xsl:choose>
         <xsl:when test="/command/notes = ''">
