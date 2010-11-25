@@ -11,5 +11,11 @@ XSL_DIR=xsl
 XSL_PROCESSOR=xsltproc
 XSL_TEMPLATE=docbook45.xsl
 
+# List of source files
+SOURCE_FILES="net-autostart.xml net-uuid.xml"
+
 # Do the generation
-$XSL_PROCESSOR $XSL_DIR/$XSL_TEMPLATE $XML_SOURCE_DIR/net-uuid.xml > $OUTPUT_DIR/net-uuid.xml
+for source in $SOURCE_FILES;
+do
+  $XSL_PROCESSOR $XSL_DIR/$XSL_TEMPLATE $XML_SOURCE_DIR/$source > $OUTPUT_DIR/$source
+done
