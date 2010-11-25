@@ -4,8 +4,7 @@ set -x
 # Generates DocBook 4.5 from the minimal Virsh Cmd Ref tag set
 
 # Define variables
-OUTPUT_DIR=output/en-US/
-#OUTPUT_DIR=publican/en-US/
+OUTPUT_DIR=publican/en-US/
 XML_SOURCE_DIR=source
 XSL_DIR=xsl
 XSL_PROCESSOR=xsltproc
