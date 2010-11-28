@@ -3,14 +3,20 @@
 <command>
   <name>net-uuid</name>
 
-  <description>When given a network name, returns its corresponding UUID</description>
+  <description>When given a network name, returns its corresponding UUID.</description>
 
   <options>
     <parameter requirement="required">
       <keyword requirement="optional">--network</keyword>
       <value type="string" requirement="required">network-name</value>
-      <description>The name of the virtual network you want the UUID for.</description>
-      <description>The word "<bold>--network</bold>" itself is optional.</description>
+      <description>
+        <text>
+          The name of the virtual network you want the UUID for.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
     </parameter>
   </options>
 
@@ -21,46 +27,49 @@
   <examples type="usage">
     <example>
       <terminal>
-        virsh # <bold>net-uuid</bold> <value>mynetwork</value>
-        <br />
-        <bold>fa3642ab-e113-7eaa-528f-14ed78bca20</bold>
-      </terminal>
-      Returns the UUID of the virtual network named "<bold>mynetwork</bold>".
+virsh # <bold>net-uuid</bold> <value>mynetwork</value>
+<bold>fa3642ab-e113-7eaa-528f-14ed78bca20</bold></terminal>
+      <text>
+        Returns the UUID of the virtual network named "<bold>mynetwork</bold>".
+      </text>
     </example>
     <example>
       <terminal>
-        virsh # <bold>net-uuid</bold> <parameter>--network</parameter>
-        <value>mynetwork</value>
-        <br />
-        fa3642ab-e113-7eaa-528f-14ed78bca20
-      </terminal>
-      Same as the previous example.
+virsh # <bold>net-uuid</bold> <parameter>--network</parameter> <value>mynetwork</value>
+fa3642ab-e113-7eaa-528f-14ed78bca20</terminal>
+      <text>
+        Same as the previous example.
+      </text>
     </example>
   </examples>
 
   <examples type="fullcontext">
     <example>
-      Given a virtual network name, we can get its UUID:
+      <text>
+        Given a virtual network name, we can get its UUID:
+      </text>
       <terminal>
-        virsh # <bold>net-uuid</bold> <value>examplenetwork</value>
-        <br />
-        <bold>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</bold>
-      </terminal>
-      We can confirm by using the <a href="net-dumpxml">net-dumpxml</a>
-      command on the returned network UUID:
+virsh # <bold>net-uuid</bold> <value>examplenetwork</value>
+<bold>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</bold></terminal>
+      <text>
+        We can confirm by using the <a href="net-dumpxml">net-dumpxml</a>
+        command on the returned network UUID:
+      </text>
       <terminal>
-        virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 <br />
-        &lt;network&gt; <br />
-          &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;<highlight>the name is here</highlight> <br />
-          &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>&lt;/uuid&gt;<highlight>the UUID is here</highlight><br />
-          &lt;forward mode='route'/&gt;<br />
-          &lt;bridge name='virbr100' stp='on' delay='1' /&gt;<br />
-          &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;<br />
-          &lt;/ip&gt;<br />
-        &lt;/network&gt;
-      </terminal>
-      Using <bold>net-uuid</bold> is more efficient than dumping the XML for
-      the virtual network and manually extracting the <bold>uuid</bold> value.
+virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 <br />
+&lt;network&gt; <br />
+  &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;<highlight>the name is here</highlight> <br />
+  &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>&lt;/uuid&gt;<highlight>the UUID is here</highlight><br />
+  &lt;forward mode='route'/&gt;<br />
+  &lt;bridge name='virbr100' stp='on' delay='1' /&gt;<br />
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;<br />
+  &lt;/ip&gt;<br />
+&lt;/network&gt;</terminal>
+      <text>
+        Using <bold>net-uuid</bold> is more efficient than dumping the XML
+        for the virtual network and manually extracting the <bold>uuid</bold>
+        value.
+      </text>
     </example>
   </examples>
 

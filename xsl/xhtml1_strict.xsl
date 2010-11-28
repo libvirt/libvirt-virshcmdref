@@ -9,11 +9,56 @@
 
   <!-- Main template -->
   <xsl:template match="/">
-
-    <!-- Display the command name as the browser window title -->
     <html>
     <head>
-    <title><xsl:value-of select="/command/name" /></title></head>
+
+    <!-- Display the command name as the browser window title -->
+      <title><xsl:value-of select="/command/name" /></title>
+
+      <!-- Hard code some example CSS attributes (for now) -->
+      <style type="text/css">
+        <xsl:comment>
+          body           { font-family: "Lucida Sans Unicode",
+                                        "Lucida Grande",
+                                         sans-serif; }
+          div.usage      { padding-bottom: 1.5em;
+                           border-bottom:1px dashed gray; }
+          h1             { text-shadow: #7485BC 5px 5px 10px; }
+          h2             { text-decoration: underline; }
+          table          { border-spacing: 10px 5px; }
+          td             { border-top:1px solid gray;
+                           padding: 0.5em;
+                           vertical-align: top; }
+          td.description { border-left:1px solid gray;
+                           width: 50%; }
+          td.required    { border-left:1px solid gray;
+                           text-align: center;
+                           width: 20%; }
+          th.description { width: 50%; }
+          th.name        { text-align: left;
+                           width: 30%; }
+          th.required    { text-align: center;
+                           width: 20%; }
+          .command       { font-weight: 700; }
+          .description   { color: black; }
+          .highlight     { color:blue; }
+          .parameter     { font-style: italic;
+                           font-weight: 700; }
+          .section       { margin-left: 10px;
+                           max-width: 90%; }
+          .terminal      { -moz-border-radius: 6px;
+                           background-color: Gainsboro; 
+                           border: white 1px;
+                           border-radius: 6px;
+                           font-family: "Courier New",
+                                         Courier,
+                                         monospace;
+                           padding: 10px; }
+          .text          { line-height: 1.5; }
+          .value         { font-style: italic; }
+        </xsl:comment>
+      </style>
+    </head>
 
     <!-- Output the name of the command -->
     <body>
@@ -25,14 +70,14 @@
       </span>
 
       <!-- Output the command usage -->
-      <section>
-        <h2>Usage</h2>
-        <strong><xsl:value-of select="/command/name" /></strong>
+      <h2>Usage</h2>
+      <section class="section">
+        <span class="command"><xsl:value-of select="/command/name" /></span>
         &#160;
         <xsl:for-each select="/command/options/parameter">
-          <strong><xsl:value-of select="keyword" /></strong>
+          <span class="parameter"><xsl:value-of select="keyword" /></span>
           &#160;
-          <em><xsl:value-of select="value" /></em>
+          <span class="value"><xsl:value-of select="value" /></span>
           &#160;
         </xsl:for-each>
       </section>
@@ -52,49 +97,49 @@
 
   <!-- Options template -->
   <xsl:template match="options">
-    <section>
-      <h2>Options</h2>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Required?</th>
-          <th>Description</th>
+    <h2>Options</h2>
+    <div class="section">
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
         </tr>
         <xsl:for-each select="parameter">
           <tr>
-            <td>
-              <strong><xsl:value-of select="keyword" /></strong>
+            <td class="name">
+              <span class="parameter"><xsl:value-of select="keyword" /></span>
               &#160;
-              <em><xsl:value-of select="value" /></em>
+              <span class="value"><xsl:value-of select="value" /></span>
             </td>
-            <td>
-              <xsl:value-of select="@requirement" />
+            <td class="required">
+              <span class="requirement"><xsl:value-of select="@requirement" /></span>
             </td>
-            <td>
+            <td class="description">
               <xsl:for-each select="description">
-                <div>
-                  <xsl:apply-templates />
-                </div>
+                <xsl:apply-templates />
               </xsl:for-each>
             </td>
           </tr>
         </xsl:for-each>
       </table>
-    </section>
+    </div>
   </xsl:template>
 
   <!-- Availability template -->
   <xsl:template match="availability">
-    <section>
-      <h2>Availability</h2>
-      Available from libvirt <xsl:value-of select="@version" /> onwards
-    </section>
+    <h2>Availability</h2>
+    <div class="section">
+      <div class="text">
+        Available from libvirt <xsl:value-of select="@version" /> onwards
+      </div>
+    </div>
   </xsl:template>
 
   <!-- Notes template -->
   <xsl:template match="notes">
-    <section>
-      <h2>Platform or Hypervisor specific notes</h2>
+    <h2>Platform or Hypervisor specific notes</h2>
+    <div class="section">
       <xsl:choose>
         <xsl:when test=". = ''">
           <em>None yet</em>
@@ -103,34 +148,38 @@
           <xsl:value-of select="." />
         </xsl:otherwise>
       </xsl:choose>
-    </section>
+    </div>
   </xsl:template>
 
   <!-- Usage examples template -->
   <xsl:template match="examples[@type='usage']">
-    <section>
-      <h2>Examples</h2>
+    <h2>Usage examples</h2>
+    <div class="section">
       <xsl:for-each select="example">
-        <xsl:apply-templates />
+        <div class="usage">
+          <xsl:apply-templates />
+        </div>
       </xsl:for-each>
-    </section>
+    </div>
   </xsl:template>
 
   <!-- Full context examples template -->
   <xsl:template match="examples[@type='fullcontext']">
-    <section>
-      <h2>Example in context</h2>
+    <h2>Example in context</h2>
+    <div class="section">
       <xsl:for-each select="example">
-        <xsl:apply-templates />
+        <div class="context">
+          <xsl:apply-templates />
+        </div>
       </xsl:for-each>
-    </section>
+    </div>
   </xsl:template>
 
 
   <!-- See also template -->
   <xsl:template match="reference[@type='seealso']">
-    <section>
-      <h2>See also</h2>
+    <h2>See also</h2>
+    <div class="section">
       <ul>
         <xsl:for-each select="item">
           <li>
@@ -139,12 +188,12 @@
           </li>
         </xsl:for-each>
       </ul>
-    </section>
+    </div>
   </xsl:template>
 
   <!-- Tag template for terminal/screen text -->
   <xsl:template match="terminal">
-<pre><xsl:apply-templates /></pre>
+<pre class="terminal"><xsl:apply-templates /></pre>
   </xsl:template>
 
   <!-- Tag template for bold text -->
@@ -158,7 +207,7 @@
   </xsl:template>
 
   <!-- Tag template for highlighted text -->
-  <xsl:template match="highlight">&#160;&#160;&#160;&#160;<strong>&lt;-- <xsl:value-of select="." /></strong>
+  <xsl:template match="highlight">&#160;&#160;&#160;&#160;<span class="highlight"><strong>&lt;-- <xsl:value-of select="." /></strong></span>
   </xsl:template>
 
   <!-- Tag template for italic text -->
@@ -182,16 +231,16 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- Tag template for para -->
-  <xsl:template match="para">
-    <div>
+  <!-- Tag template for text -->
+  <xsl:template match="text">
+    <div class="text">
       <xsl:apply-templates />
     </div>
   </xsl:template>
 
   <!-- Tag template for value -->
   <xsl:template match="value">
-    <em><xsl:value-of select="." /></em>
+    <span class="value"><xsl:value-of select="." /></span>
   </xsl:template>
 
 </xsl:stylesheet>

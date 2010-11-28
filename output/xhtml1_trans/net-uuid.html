@@ -4,85 +4,147 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>net-uuid</title>
+    <style type="text/css">
+<!--
+          body           { font-family: "Lucida Sans Unicode",
+                                        "Lucida Grande",
+                                         sans-serif; }
+          div.usage      { padding-bottom: 1.5em;
+                           border-bottom:1px dashed gray; }
+          h1             { text-shadow: #7485BC 5px 5px 10px; }
+          h2             { text-decoration: underline; }
+          table          { border-spacing: 10px 5px; }
+          td             { border-top:1px solid gray;
+                           padding: 0.5em;
+                           vertical-align: top; }
+          td.description { border-left:1px solid gray;
+                           width: 50%; }
+          td.required    { border-left:1px solid gray;
+                           text-align: center;
+                           width: 20%; }
+          th.description { width: 50%; }
+          th.name        { text-align: left;
+                           width: 30%; }
+          th.required    { text-align: center;
+                           width: 20%; }
+          .command       { font-weight: 700; }
+          .description   { color: black; }
+          .highlight     { color:blue; }
+          .parameter     { font-style: italic;
+                           font-weight: 700; }
+          .section       { margin-left: 10px;
+                           max-width: 90%; }
+          .terminal      { -moz-border-radius: 6px;
+                           background-color: Gainsboro; 
+                           border: white 1px;
+                           border-radius: 6px;
+                           font-family: "Courier New",
+                                         Courier,
+                                         monospace;
+                           padding: 10px; }
+          .text          { line-height: 1.5; }
+          .value         { font-style: italic; }
+        -->
+    </style>
   </head>
   <body>
     <h1>net-uuid</h1>
-    <span>When given a network name, returns its corresponding UUID</span>
-    <section><h2>Usage</h2><strong>net-uuid</strong>
+    <span>When given a network name, returns its corresponding UUID.</span>
+    <h2>Usage</h2>
+    <section class="section"><span class="command">net-uuid</span>
          
-        <strong>--network</strong>
+        <span class="parameter">--network</span>
            
-          <em>network-name</em>
+          <span class="value">network-name</span>
            
         </section>
-    <section>
-      <h2>Options</h2>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Required?</th>
-          <th>Description</th>
+    <h2>Options</h2>
+    <div class="section">
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
         </tr>
         <tr>
-          <td><strong>--network</strong>
+          <td class="name"><span class="parameter">--network</span>
                
-              <em>network-name</em></td>
-          <td>required</td>
-          <td>
-            <div>The name of the virtual network you want the UUID for.</div>
-            <div>The word "<strong>--network</strong>" itself is optional.</div>
+              <span class="value">network-name</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
           </td>
+          <td class="description">
+        <div class="text">
+          The name of the virtual network you want the UUID for.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
         </tr>
       </table>
-    </section>
-    <section><h2>Availability</h2>
-      Available from libvirt 0.2.0 onwards
-    </section>
-    <section>
-      <h2>Platform or Hypervisor specific notes</h2>
+    </div>
+    <h2>Availability</h2>
+    <div class="section">
+      <div class="text">
+        Available from libvirt 0.2.0 onwards
+      </div>
+    </div>
+    <h2>Platform or Hypervisor specific notes</h2>
+    <div class="section">
       <em>None yet</em>
-    </section>
-    <section><h2>Examples</h2>
-      <pre>
-        virsh # <strong>net-uuid</strong> <em>mynetwork</em>
-        
-        <strong>fa3642ab-e113-7eaa-528f-14ed78bca20</strong>
-      </pre>
-      Returns the UUID of the virtual network named "<strong>mynetwork</strong>".
-    
-      <pre>
-        virsh # <strong>net-uuid</strong> --network
-        <em>mynetwork</em>
-        
-        fa3642ab-e113-7eaa-528f-14ed78bca20
-      </pre>
-      Same as the previous example.
-    </section>
-    <section><h2>Example in context</h2>
-      Given a virtual network name, we can get its UUID:
-      <pre>
-        virsh # <strong>net-uuid</strong> <em>examplenetwork</em>
-        
-        <strong>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</strong>
-      </pre>
-      We can confirm by using the net-dumpxml
-      command on the returned network UUID:
-      <pre>
-        virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 
-        &lt;network&gt; 
-          &lt;name&gt;<strong>examplenetwork</strong>&lt;/name&gt;    <strong>&lt;-- the name is here</strong> 
-          &lt;uuid&gt;<strong>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</strong>&lt;/uuid&gt;    <strong>&lt;-- the UUID is here</strong>
-          &lt;forward mode='route'/&gt;
-          &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
-          &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
-          &lt;/ip&gt;
-        &lt;/network&gt;
-      </pre>
-      Using <strong>net-uuid</strong> is more efficient than dumping the XML for
-      the virtual network and manually extracting the <strong>uuid</strong> value.
-    </section>
-    <section>
-      <h2>See also</h2>
+    </div>
+    <h2>Usage examples</h2>
+    <div class="section">
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-uuid</strong> <span class="value">mynetwork</span>
+<strong>fa3642ab-e113-7eaa-528f-14ed78bca20</strong></pre>
+      <div class="text">
+        Returns the UUID of the virtual network named "<strong>mynetwork</strong>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-uuid</strong> --network <span class="value">mynetwork</span>
+fa3642ab-e113-7eaa-528f-14ed78bca20</pre>
+      <div class="text">
+        Same as the previous example.
+      </div>
+    </div>
+    </div>
+    <h2>Example in context</h2>
+    <div class="section">
+      <div class="context">
+      <div class="text">
+        Given a virtual network name, we can get its UUID:
+      </div>
+      <pre class="terminal">
+virsh # <strong>net-uuid</strong> <span class="value">examplenetwork</span>
+<strong>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</strong></pre>
+      <div class="text">
+        We can confirm by using the net-dumpxml
+        command on the returned network UUID:
+      </div>
+      <pre class="terminal">
+virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 
+&lt;network&gt; 
+  &lt;name&gt;<strong>examplenetwork</strong>&lt;/name&gt;    <span class="highlight"><strong>&lt;-- the name is here</strong></span> 
+  &lt;uuid&gt;<strong>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</strong>&lt;/uuid&gt;    <span class="highlight"><strong>&lt;-- the UUID is here</strong></span>
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+      <div class="text">
+        Using <strong>net-uuid</strong> is more efficient than dumping the XML
+        for the virtual network and manually extracting the <strong>uuid</strong>
+        value.
+      </div>
+    </div>
+    </div>
+    <h2>See also</h2>
+    <div class="section">
       <ul>
         <li><a href="net-dumpxml.html">net-dumpxml</a> -
             
@@ -93,6 +155,6 @@
         Lists the virtual networks libvirt is aware of
       </li>
       </ul>
-    </section>
+    </div>
   </body>
 </html>

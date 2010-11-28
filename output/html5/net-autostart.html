@@ -4,176 +4,245 @@
   <head>
     <meta charset="UTF-8"/>
     <title>net-autostart</title>
+    <style type="text/css">
+      <!--
+          body           { font-family: "Lucida Sans Unicode",
+                                        "Lucida Grande",
+                                         sans-serif; }
+          div.usage      { padding-bottom: 1.5em;
+                           border-bottom:1px dashed gray; }
+          h1             { text-shadow: #7485BC 5px 5px 10px; }
+          h2             { text-decoration: underline; }
+          table          { border-spacing: 10px 5px; }
+          td             { border-top:1px solid gray;
+                           padding: 0.5em;
+                           vertical-align: top; }
+          td.description { border-left:1px solid gray;
+                           width: 50%; }
+          td.required    { border-left:1px solid gray;
+                           text-align: center;
+                           width: 20%; }
+          th.description { width: 50%; }
+          th.name        { text-align: left;
+                           width: 30%; }
+          th.required    { text-align: center;
+                           width: 20%; }
+          .command       { font-weight: 700; }
+          .description   { color: black; }
+          .highlight     { color:blue; }
+          .parameter     { font-style: italic;
+                           font-weight: 700; }
+          .section       { margin-left: 10px;
+                           max-width: 90%; }
+          .terminal      { -moz-border-radius: 6px;
+                           background-color: Gainsboro; 
+                           border: white 1px;
+                           border-radius: 6px;
+                           font-family: "Courier New",
+                                         Courier,
+                                         monospace;
+                           padding: 10px; }
+          .text          { line-height: 1.5; }
+          .value         { font-style: italic; }
+        -->
+    </style>
   </head>
   <body>
     <h1>net-autostart</h1>
     <span>
-    Used to enable and disable the automatic starting of a given
-    <strong>persistent</strong> virtual network, by the libvirt daemon.
+    Enables or disables the automatic startup of a <strong>persistent</strong>
+    virtual network, by the libvirt daemon.
   </span>
-    <section><h2>Usage</h2><strong>net-autostart</strong>
+    <h2>Usage</h2>
+    <section class="section"><span class="command">net-autostart</span>
          
-        <strong>--network</strong>
+        <span class="parameter">--network</span>
            
-          <em>network-identifier</em>
+          <span class="value">network-identifier</span>
            
-        <strong>--disable</strong>
+        <span class="parameter">--disable</span>
            
-          <em/>
+          <span class="value"/>
            
         </section>
-    <section>
-      <h2>Options</h2>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Required?</th>
-          <th>Description</th>
+    <h2>Options</h2>
+    <div class="section">
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
         </tr>
         <tr>
-          <td><strong>--network</strong>
+          <td class="name"><span class="parameter">--network</span>
                
-              <em>network-identifier</em></td>
-          <td>required</td>
-          <td>
-            <div>
-        The name or UUID for the virtual network being configured.
-      </div>
-            <div>
-        The word "<strong>--network</strong>" itself is optional.
-      </div>
+              <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
           </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID for the virtual network being configured.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
         </tr>
         <tr>
-          <td><strong>--disable</strong>
+          <td class="name"><span class="parameter">--disable</span>
                
-              <em/></td>
-          <td>optional</td>
-          <td>
-            <div>
-        Disables the automatic starting of the virtual network.
-      </div>
+              <span class="value"/></td>
+          <td class="required">
+            <span class="requirement">optional</span>
           </td>
+          <td class="description">
+        <div class="text">
+          Disables the automatic starting of the virtual network.
+        </div>
+      </td>
         </tr>
       </table>
-    </section>
-    <section><h2>Availability</h2>
-      Available from libvirt 0.2.1 onwards
-    </section>
-    <section>
-      <h2>Platform or Hypervisor specific notes</h2>
+    </div>
+    <h2>Availability</h2>
+    <div class="section">
+      <div class="text">
+        Available from libvirt 0.2.1 onwards
+      </div>
+    </div>
+    <h2>Platform or Hypervisor specific notes</h2>
+    <div class="section">
       <em>None yet</em>
-    </section>
-    <section><h2>Examples</h2>
-      <pre>
-virsh # <strong>net-autostart</strong> <em>default</em> --disable
-      </pre>
-      Stops the virtual network named "<em>default</em>" from
-      automatically starting when the libvirt daemon starts.
-    
-      <pre>
-virsh # <strong>net-autostart</strong> --network <em>default</em> --disable
-      </pre>
-      Same as the above example.
-    
-      <pre>
-virsh # <strong>net-autostart</strong> <em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em> --disable
-      </pre>
-      Stops the virtual network with UUID
-      "<em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em>" from
-      automatically starting when the libvirt daemon starts.
-    
-      <pre>
-virsh # <strong>net-autostart</strong> --network <em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em> --disable
-      </pre>
-      Same as the above example.
-    
-      <pre>
-virsh # <strong>net-autostart</strong> <em>default</em>
-      </pre>
-      Enables the automatic starting of the virtual network named
-      "<em>default</em>", by the libvirt daemon when it starts.
-    
-      <pre>
-virsh # <strong>net-autostart</strong> --network <em>default</em>
-      </pre>
-      Same as the above example.
-    </section>
-    <section><h2>Example in context</h2>
-      Starting with an XML file we've already created, using the
-      <a href="http://libvirt.org/formatnetwork.html.html">required XML format</a>:
-      <pre>
+    </div>
+    <h2>Usage examples</h2>
+    <div class="section">
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> <span class="value">default</span> --disable</pre>
+      <div class="text">
+        Stops the virtual network named "<span class="value">default</span>" from
+        automatically starting when the libvirt daemon starts.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> --network <span class="value">default</span> --disable</pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span> --disable</pre>
+      <div class="text">
+        Stops the virtual network with UUID
+        "<span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span>" from
+        automatically starting when the libvirt daemon starts.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> --network <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span> --disable</pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> <span class="value">default</span></pre>
+      <div class="text">
+        Enables the automatic starting of the virtual network named
+        "<span class="value">default</span>", by the libvirt daemon when it starts.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> --network <span class="value">default</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+    </div>
+    <h2>Example in context</h2>
+    <div class="section">
+      <div class="context">
+      <div class="text">
+        Starting with an XML file we've already created, using the
+        <a href="http://libvirt.org/formatnetwork.html.html">required XML format</a>:
+      </div>
+      <pre class="terminal">
 &lt;network&gt;
   &lt;name&gt;examplenetwork&lt;/name&gt;
   &lt;bridge name="virbr100" /&gt;
   &lt;forward mode="route" /&gt;
   &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
-&lt;/network&gt;
-      </pre>
-      <pre>
+&lt;/network&gt;</pre>
+      <pre class="terminal">
 # ls -al /root/examplenetwork.xml
--rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
-      </pre>
-      We start virsh interactively, then define a <strong>persistent</strong>
-      virtual network:
-      <pre>
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml</pre>
+      <div class="text">
+        We start virsh interactively, then define a <strong>persistent</strong>
+        virtual network:
+      </div>
+      <pre class="terminal">
 # virsh
 Welcome to virsh, the virtualization interactive terminal.
 
 Type:  'help' for help with commands
-       'quit' to quit
-      </pre>
-      <pre>
+       'quit' to quit</pre>
+      <pre class="terminal">
 virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
-default              active     yes
-      </pre>
-      <pre>
+default              active     yes</pre>
+      <pre class="terminal">
 virsh # net-define /root/examplenetwork.xml
-<strong>Network</strong> <strong><em>examplenetwork</em></strong> <strong>defined from</strong> <strong><em>/root/examplenetwork.xml</em></strong>
-      </pre>
-      Newly defined virtual networks aren't set to automatically be started,
-      as can be seen here:
-      <pre>
+<strong>Network</strong> <strong><em>examplenetwork</em></strong> <strong>defined from</strong> <strong><em>/root/examplenetwork.xml</em></strong></pre>
+      <div class="text">
+        Newly defined virtual networks aren't set to automatically be started,
+        as can be seen here:
+      </div>
+      <pre class="terminal">
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>        <strong>&lt;-- this is the important piece</strong>
-      </pre>
-      We enable automatic starting for it:
-      <pre>
-virsh # <strong>net-autostart</strong> <em>examplenetwork</em>
-<strong>Network examplenetwork</strong> <strong>marked as autostarted</strong>
-      </pre>
-      Checking, to make sure:
-      <pre>
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>        <span class="highlight"><strong>&lt;-- this is the important piece</strong></span></pre>
+      <div class="text">
+        We enable automatic starting for it:
+      </div>
+      <pre class="terminal">
+virsh # <strong>net-autostart</strong> <span class="value">examplenetwork</span>
+<strong>Network examplenetwork</strong> <strong>marked as autostarted</strong></pre>
+      <div class="text">
+        Checking, to make sure:
+      </div>
+      <pre class="terminal">
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>yes</strong>        <strong>&lt;-- this is the important piece</strong>
-      </pre>
-      From now on, whenever the libvirt daemon is started, it will
-      automatically start this virtual network too (unless it's already
-      running).  If at some point we want to turn off automatic starting of
-      the virtual network, we use the --disable
-      option to the command:
-      <pre>
-# <strong>net-autostart</strong> --disable <em>examplenetwork</em>
-<strong>Network examplenetwork</strong> <strong><em>unmarked as autostarted</em></strong>
-      </pre>
-      <pre>
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>yes</strong>        <span class="highlight"><strong>&lt;-- this is the important piece</strong></span></pre>
+      <div class="text">
+        From now on, whenever the libvirt daemon is started, it will
+        automatically start this virtual network too (unless it's already
+        running).  If at some point we want to turn off automatic starting
+        of the virtual network, we use the --disable
+        option to the command:
+      </div>
+      <pre class="terminal">
+# <strong>net-autostart</strong> --disable <span class="value">examplenetwork</span>
+<strong>Network examplenetwork</strong> <strong><em>unmarked as autostarted</em></strong></pre>
+      <pre class="terminal">
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>        <strong>&lt;-- this is the important piece</strong>
-      </pre>
-    </section>
-    <section>
-      <h2>See also</h2>
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>        <span class="highlight"><strong>&lt;-- this is the important piece</strong></span></pre>
+    </div>
+    </div>
+    <h2>See also</h2>
+    <div class="section">
       <ul>
         <li><a href="net-dumpxml.html">net-dumpxml</a> -
             
@@ -184,6 +253,6 @@ default              active     yes
         Lists the virtual networks libvirt is aware of
       </li>
       </ul>
-    </section>
+    </div>
   </body>
 </html>
