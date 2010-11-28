@@ -18,7 +18,7 @@
  
   <notes />
  
-  <usageexamples>
+  <examples type="usage">
     <example>
       <terminal>
         virsh # <bold>net-uuid</bold> <value>mynetwork</value>
@@ -36,9 +36,9 @@
       </terminal>
       Same as the previous example.
     </example>
-  </usageexamples>
+  </examples>
 
-  <fullcontextexample>
+  <examples type="fullcontext">
     <example>
       Given a virtual network name, we can get its UUID:
       <terminal>
@@ -62,9 +62,9 @@
       Using <bold>net-uuid</bold> is more efficient than dumping the XML for
       the virtual network and manually extracting the <bold>uuid</bold> value.
     </example>
-  </fullcontextexample>
+  </examples>
 
-  <seealso>
+  <reference type="seealso">
     <item>
       <link type="internal" href="net-dumpxml" />
       <name>
@@ -83,6 +83,6 @@
         Lists the virtual networks libvirt is aware of
       </description>
     </item>
-  </seealso>
+  </reference>
 
 </command>

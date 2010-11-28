@@ -41,9 +41,9 @@
       <xsl:apply-templates select="/command/options" />
       <xsl:apply-templates select="/command/availability" />
       <xsl:apply-templates select="/command/notes" />
-      <xsl:apply-templates select="/command/usageexamples" />
-      <xsl:apply-templates select="/command/fullcontextexample" />
-      <xsl:apply-templates select="/command/seealso" />
+      <xsl:apply-templates select="/command/examples[@type='usage']" />
+      <xsl:apply-templates select="/command/examples[@type='fullcontext']" />
+      <xsl:apply-templates select="/command/reference[@type='seealso']" />
 
     <!-- End of Main template -->
     </body>
@@ -60,7 +60,7 @@
           <th>Required?</th>
           <th>Description</th>
         </tr>
-        <xsl:for-each select="/command/options/parameter">
+        <xsl:for-each select="parameter">
           <tr>
             <td>
               <strong><xsl:value-of select="keyword" /></strong>
@@ -87,40 +87,40 @@
   <xsl:template match="availability">
     <section>
       <h2>Availability</h2>
-      Available from libvirt <xsl:value-of select="/command/availability/@version" /> onwards
+      Available from libvirt <xsl:value-of select="@version" /> onwards
     </section>
   </xsl:template>
 
   <!-- Notes template -->
   <xsl:template match="notes">
     <section>
+      <h2>Platform or Hypervisor specific notes</h2>
       <xsl:choose>
-        <xsl:when test="/command/notes = ''">
-          <h2>Platform or Hypervisor specific notes</h2>
+        <xsl:when test=". = ''">
           <em>None yet</em>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="/command/notes" />
+          <xsl:value-of select="." />
         </xsl:otherwise>
       </xsl:choose>
     </section>
   </xsl:template>
 
   <!-- Usage examples template -->
-  <xsl:template match="usageexamples">
+  <xsl:template match="examples[@type='usage']">
     <section>
       <h2>Examples</h2>
-      <xsl:for-each select="/command/usageexamples/example">
+      <xsl:for-each select="example">
         <xsl:apply-templates />
       </xsl:for-each>
     </section>
   </xsl:template>
 
   <!-- Full context examples template -->
-  <xsl:template match="fullcontextexample">
+  <xsl:template match="examples[@type='fullcontext']">
     <section>
       <h2>Example in context</h2>
-      <xsl:for-each select="/command/fullcontextexample/example">
+      <xsl:for-each select="example">
         <xsl:apply-templates />
       </xsl:for-each>
     </section>
@@ -128,11 +128,11 @@
 
 
   <!-- See also template -->
-  <xsl:template match="seealso">
+  <xsl:template match="reference[@type='seealso']">
     <section>
       <h2>See also</h2>
       <ul>
-        <xsl:for-each select="/command/seealso/item">
+        <xsl:for-each select="item">
           <li>
             <xsl:apply-templates select="link" /> -
             <xsl:apply-templates select="description" />

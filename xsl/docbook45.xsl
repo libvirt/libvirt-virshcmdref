@@ -52,9 +52,9 @@
       <xsl:apply-templates select="/command/options" />
       <xsl:apply-templates select="/command/availability" />
       <xsl:apply-templates select="/command/notes" />
-      <xsl:apply-templates select="/command/usageexamples" />
-      <xsl:apply-templates select="/command/fullcontextexample" />
-      <xsl:apply-templates select="/command/seealso" />
+      <xsl:apply-templates select="/command/examples[@type='usage']" />
+      <xsl:apply-templates select="/command/examples[@type='fullcontext']" />
+      <xsl:apply-templates select="/command/reference[@type='seealso']" />
 
       <!-- End the DocBook variable list, used to divide the page sections -->
       </variablelist>
@@ -83,7 +83,7 @@
               </row>
             </thead>
             <tbody>
-              <xsl:for-each select="/command/options/parameter">
+              <xsl:for-each select="parameter">
                 <row>
                   <entry>
                     <para>
@@ -122,36 +122,36 @@
     <varlistentry>
       <term>Availability</term>
       <listitem>
-        <para>Available from libvirt <xsl:value-of select="/command/availability/@version" /> onwards</para>
+        <para>Available from libvirt <xsl:value-of select="@version" /> onwards</para>
       </listitem>
     </varlistentry>
   </xsl:template>
 
   <!-- Notes template -->
   <xsl:template match="notes">
-    <xsl:choose>
-      <xsl:when test="/command/notes = ''">
     <varlistentry>
       <term>Platform or Hypervisor specific notes</term>
       <listitem>
-        <para>
-          <emphasis>None yet</emphasis>
-        </para>
+        <xsl:choose>
+          <xsl:when test=". = ''">
+            <para>
+              <emphasis>None yet</emphasis>
+            </para>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="." />
+          </xsl:otherwise>
+        </xsl:choose>
       </listitem>
     </varlistentry>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="/command/notes" />
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
   <!-- Usage examples template -->
-  <xsl:template match="usageexamples">
+  <xsl:template match="examples[@type='usage']">
     <varlistentry>
       <term>Examples</term>
       <listitem>
-        <xsl:for-each select="/command/usageexamples/example">
+        <xsl:for-each select="example">
           <para>
             <xsl:apply-templates />
           </para>
@@ -161,11 +161,11 @@
   </xsl:template>
 
   <!-- Full context examples template -->
-  <xsl:template match="fullcontextexample">
+  <xsl:template match="examples[@type='fullcontext']">
     <varlistentry>
       <term>Example in context</term>
       <listitem>
-        <xsl:for-each select="/command/fullcontextexample/example">
+        <xsl:for-each select="example">
           <para>
             <xsl:apply-templates />
           </para>
@@ -175,12 +175,12 @@
   </xsl:template>
 
   <!-- See also template -->
-  <xsl:template match="seealso">
+  <xsl:template match="reference[@type='seealso']">
     <varlistentry>
       <term>See also</term>
       <listitem>
         <itemizedlist>
-          <xsl:for-each select="/command/seealso/item">
+          <xsl:for-each select="item">
           <listitem>
             <para>
               <xsl:apply-templates select="link" /> -
