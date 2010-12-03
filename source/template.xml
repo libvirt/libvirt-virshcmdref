@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<command>
+  <name>__NAME__</name>
+
+  <description />
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-name</value>
+      <description>
+        <text>
+          TEXT
+        </text>
+        <text>
+          TEXT
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability version="0.0.0" />
+ 
+  <notes />
+ 
+  <examples type="usage" />
+  </examples>
+
+  <examples type="fullcontext" />
+  </examples>
+
+  <reference type="seealso" />
+  </reference>
+
+</command>
