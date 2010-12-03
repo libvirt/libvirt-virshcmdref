@@ -10,12 +10,12 @@ XSL_DIR=xsl
 XSL_PROCESSOR=xsltproc
 XSL_TEMPLATE=docbook45.xsl
 
-# List of source files
-SOURCE_FILES="net-autostart net-uuid"
+# Get the list of XML files to process
+source common.sh
 
 # Do the generation
 mkdir -p $OUTPUT_DIR
-for source in $SOURCE_FILES;
+for source in $ALL_COMMANDS;
 do
   $XSL_PROCESSOR $XSL_DIR/$XSL_TEMPLATE $XML_SOURCE_DIR/${source}.xml > $OUTPUT_DIR/${source}.xml
 done
