@@ -46,6 +46,7 @@
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
+          .italic        { font-style: italic; }
           .parameter     { font-style: italic;
                            font-weight: 700; }
           .section       { margin-left: 10px;
@@ -69,21 +70,32 @@
       <h1><xsl:value-of select="/command/name" /></h1>
 
       <!-- Output the command description -->
-      <span>
-        <xsl:apply-templates select="/command/description" />
-      </span>
+      <xsl:choose>
+        <xsl:when test="/command/description != ''">
+          <span>
+            <xsl:apply-templates select="/command/description" />
+          </span>
+        </xsl:when>
+      </xsl:choose>
 
       <!-- Output the command usage -->
       <h2>Usage</h2>
       <section class="section">
-        <span class="command"><xsl:value-of select="/command/name" /></span>
-        &#160;
-        <xsl:for-each select="/command/options/parameter">
-          <span class="parameter"><xsl:value-of select="keyword" /></span>
-          &#160;
-          <span class="value"><xsl:value-of select="value" /></span>
-          &#160;
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test="/command/options = ''">
+            <span class="italic">Needs to be written</span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="command"><xsl:value-of select="/command/name" /></span>
+            &#160;
+            <xsl:for-each select="/command/options/parameter">
+              <span class="parameter"><xsl:value-of select="keyword" /></span>
+              &#160;
+              <span class="value"><xsl:value-of select="value" /></span>
+              &#160;
+            </xsl:for-each>
+          </xsl:otherwise>
+        </xsl:choose>
       </section>
 
       <!-- Main content -->
@@ -103,30 +115,37 @@
   <xsl:template match="options">
     <h2>Options</h2>
     <div class="section">
-      <table width="100%">
-        <tr class="heading">
-          <th class="name">Name</th>
-          <th class="required">Required?</th>
-          <th class="description">Description</th>
-        </tr>
-        <xsl:for-each select="parameter">
-          <tr>
-            <td class="name">
-              <span class="parameter"><xsl:value-of select="keyword" /></span>
-              &#160;
-              <span class="value"><xsl:value-of select="value" /></span>
-            </td>
-            <td class="required">
-              <span class="requirement"><xsl:value-of select="@requirement" /></span>
-            </td>
-            <td class="description">
-              <xsl:for-each select="description">
-                <xsl:apply-templates />
-              </xsl:for-each>
-            </td>
-          </tr>
-        </xsl:for-each>
-      </table>
+      <xsl:choose>
+        <xsl:when test=". = ''">
+          <span class="italic">Needs to be written</span>
+        </xsl:when>
+        <xsl:otherwise>
+          <table width="100%">
+            <tr class="heading">
+              <th class="name">Name</th>
+              <th class="required">Required?</th>
+              <th class="description">Description</th>
+            </tr>
+            <xsl:for-each select="parameter">
+              <tr>
+                <td class="name">
+                  <span class="parameter"><xsl:value-of select="keyword" /></span>
+                  &#160;
+                  <span class="value"><xsl:value-of select="value" /></span>
+                </td>
+                <td class="required">
+                  <span class="requirement"><xsl:value-of select="@requirement" /></span>
+                </td>
+                <td class="description">
+                  <xsl:for-each select="description">
+                    <xsl:apply-templates />
+                  </xsl:for-each>
+                </td>
+              </tr>
+            </xsl:for-each>
+          </table>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
 
@@ -134,9 +153,16 @@
   <xsl:template match="availability">
     <h2>Availability</h2>
     <div class="section">
-      <div class="text">
-        Available from libvirt <xsl:value-of select="@version" /> onwards
-      </div>
+      <xsl:choose>
+        <xsl:when test="@version = '0.0.0'">
+          <span class="italic">Needs to be written</span>
+        </xsl:when>
+        <xsl:otherwise>
+          <div class="text">
+            Available from libvirt <xsl:value-of select="@version" /> onwards
+          </div>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
 
@@ -146,7 +172,7 @@
     <div class="section">
       <xsl:choose>
         <xsl:when test=". = ''">
-          <em>None yet</em>
+          <span class="italic">None yet</span>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="." />
@@ -159,11 +185,18 @@
   <xsl:template match="examples[@type='usage']">
     <h2>Usage examples</h2>
     <div class="section">
-      <xsl:for-each select="example">
-        <div class="usage">
-          <xsl:apply-templates />
-        </div>
-      </xsl:for-each>
+      <xsl:choose>
+        <xsl:when test=". = ''">
+          <span class="italic">Needs to be written</span>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:for-each select="example">
+            <div class="usage">
+              <xsl:apply-templates />
+            </div>
+          </xsl:for-each>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
 
@@ -171,11 +204,18 @@
   <xsl:template match="examples[@type='fullcontext']">
     <h2>Example in context</h2>
     <div class="section">
-      <xsl:for-each select="example">
-        <div class="context">
-          <xsl:apply-templates />
-        </div>
-      </xsl:for-each>
+      <xsl:choose>
+        <xsl:when test=". = ''">
+          <span class="italic">Needs to be written</span>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:for-each select="example">
+            <div class="context">
+              <xsl:apply-templates />
+            </div>
+          </xsl:for-each>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
 
@@ -184,14 +224,21 @@
   <xsl:template match="reference[@type='seealso']">
     <h2>See also</h2>
     <div class="section">
-      <ul>
-        <xsl:for-each select="item">
-          <li>
-            <xsl:apply-templates select="link" /> -
-            <xsl:apply-templates select="description" />
-          </li>
-        </xsl:for-each>
-      </ul>
+      <xsl:choose>
+        <xsl:when test=". = ''">
+          <em>Needs to be written</em>
+        </xsl:when>
+        <xsl:otherwise>
+          <ul>
+            <xsl:for-each select="item">
+              <li>
+                <xsl:apply-templates select="link" /> -
+                <xsl:apply-templates select="description" />
+              </li>
+            </xsl:for-each>
+          </ul>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
 
