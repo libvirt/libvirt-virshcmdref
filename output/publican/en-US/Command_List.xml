@@ -3,13 +3,1015 @@
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<chapter id="chap-Virsh_Command_Reference-Command_Listing">
+<chapter id="chap-virsh_command_reference-command_listing">
   <title>Command List</title>
   <para>
     These are the commands presently available in <command>virsh</command>.
   </para>
 
-  <table id="table-Storage_Pools">
+  <table id="table-domain">
+    <title>Domain commands</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-attach-device" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-attach-disk" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-attach-interface" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-autostart" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-console" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-cpu-baseline" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-cpu-compare" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-create" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-define" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-destroy" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-detach-device" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-detach-disk" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-detach-interface" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domid" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domjobabort" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domjobinfo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domname" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domuuid" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domxml-from-native" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domxml-to-native" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-dump" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-echo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-edit" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-freecell" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-hostname" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-managedsave" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-managedsave-remove" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-maxvcpus" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-memtune" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-migrate" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-migrate-setmaxdowntime" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-reboot" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-restore" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-resume" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-save" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-schedinfo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-setmaxmem" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-setmem" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-setvcpus" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-shutdown" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-start" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-suspend" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-ttyconsole" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-undefine" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-update-device" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-vcpucount" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-vcpuinfo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-vcpupincontrol" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-version" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-vncdisplay" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-monitor">
+    <title>Monitoring commands</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-domblkinfo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domblkstat" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domifstat" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-dominfodomain" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-dommemstat" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-domstate" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-list" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-host">
+    <title>Host commands</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-capabilities" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-connect" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-freecell" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-hostname" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-qemu-monitor-command" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-uri" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-network_filter">
+    <title>Network filter commands</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-nwfilter-define" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nwfilter-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nwfilter-edit" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nwfilter-list" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nwfilter-undefine" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-network_interface">
+    <title>Network Interface</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-iface-define" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-destroy" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-edit" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-list" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-mac" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-name" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-start" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-iface-undefine" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-node">
+    <title>Node device commands</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-create" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-destroy" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-dettach" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-list" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-reattach" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodedev-reset" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-nodeinfo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-secret">
+    <title>Commands for managing secrets</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-secret-define" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-secret-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-secret-get-value" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-secret-list" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-secret-set-value" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-secret-undefine" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-snapshot">
+    <title>Snapshot</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-snapshot-create" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-snapshot-current" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-snapshot-delete" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-snapshot-dumpxml" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-snapshot-list" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-snapshot-revert" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-storage_pools">
     <title>Storage Pools</title>
     <tgroup cols="3">
       <thead>
@@ -210,7 +1212,7 @@
     </tgroup>
   </table>
 
-  <table id="table-Storage_Volumes">
+  <table id="table-storage_volumes">
     <title>Storage Volumes</title>
     <tgroup cols="3">
       <thead>
@@ -352,7 +1354,76 @@
     </tgroup>
   </table>
 
-  <table id="table-Virtual_Networking">
+  <table id="table-virsh">
+    <title>Virsh commands</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Command</entry>
+          <entry>Available from</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><para><xref linkend="sect-cd" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-echo" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-exit" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-help" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-pwd" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry><para><xref linkend="sect-quit" /></para></entry>
+          <entry><para>libvirt 0.0.0</para></entry>
+          <entry>
+            <para>
+              To be done
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+
+  <table id="table-virtual_networking">
     <title>Virtual Networking</title>
     <tgroup cols="3">
       <thead>

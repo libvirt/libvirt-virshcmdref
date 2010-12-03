@@ -5,6 +5,96 @@
 ]>
 <chapter id="chap-Virsh_Command_Reference-Commands">
   <title>Commands</title>
+
+  <!-- Domain commands -->
+  <xi:include href="attach-device.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="attach-disk.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="attach-interface.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="autostart.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="console.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="cpu-baseline.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="cpu-compare.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="create.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="destroy.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="detach-device.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="detach-disk.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="detach-interface.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domid.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domjobabort.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domjobinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domname.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domuuid.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domxml-from-native.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domxml-to-native.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="dump.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="echo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="edit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="freecell.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="hostname.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="managedsave.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="managedsave-remove.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="maxvcpus.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="memtune.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="migrate.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="migrate-setmaxdowntime.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="reboot.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="restore.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="resume.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="save.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="schedinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="setmaxmem.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="setmem.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="setvcpus.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="shutdown.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="start.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="suspend.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="ttyconsole.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="update-device.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vcpucount.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vcpuinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vcpupincontrol.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="version.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vncdisplay.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Monitoring commands -->
+  <xi:include href="domblkinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domblkstat.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domifstat.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="dominfodomain.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="dommemstat.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="domstate.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Host commands -->
+  <xi:include href="capabilities.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="connect.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="freecell.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="hostname.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="qemu-monitor-command.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="uri.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Network interface commands -->
+  <xi:include href="iface-define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-destroy.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-edit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-mac.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-name.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-start.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="iface-undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Network filter commands -->
+  <xi:include href="nwfilter-define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nwfilter-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nwfilter-edit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nwfilter-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nwfilter-undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Virtual networking commands -->
   <xi:include href="net-autostart.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-create.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
@@ -17,4 +107,75 @@
   <xi:include href="net-start.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="net-uuid.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Node device commands -->
+  <xi:include href="nodedev-create.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodedev-destroy.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodedev-dettach.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodedev-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodedev-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodedev-reattach.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodedev-reset.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="nodeinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Secret commands -->
+  <xi:include href="secret-define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="secret-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="secret-get-value.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="secret-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="secret-set-value.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="secret-undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Snapshot commands -->
+  <xi:include href="snapshot-create.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="snapshot-current.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="snapshot-delete.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="snapshot-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="snapshot-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="snapshot-revert.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Storage pool commands -->
+  <xi:include href="find-storage-pool-sources-as.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="find-storage-pool-sources.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-autostart.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-build.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-create-as.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-create.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-define-as.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-define.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-delete.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-destroy.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-edit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-info.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-name.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-refresh.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-start.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-undefine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pool-uuid.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Storage volume commands -->
+  <xi:include href="vol-clone.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-create-as.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-create.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-create-from.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-delete.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-dumpxml.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-info.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-key.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-list.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-name.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-path.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-pool.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vol-wipe.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <!-- Virsh commands -->
+  <xi:include href="cd.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="echo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="exit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="help.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="pwd.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="quit.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
 </chapter>
