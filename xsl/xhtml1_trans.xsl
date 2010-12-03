@@ -76,13 +76,21 @@
       <!-- Output the command usage -->
       <h2>Usage</h2>
       <section class="section">
-        <span class="command"><xsl:value-of select="/command/name" /></span>
-        &#160;
-        <xsl:for-each select="/command/options/parameter">
-          <span class="parameter"><xsl:value-of select="keyword" /></span>
-          &#160;
-          <span class="value"><xsl:value-of select="value" /></span>
-&#160;</xsl:for-each>    </section>
+        <xsl:choose>
+          <xsl:when test="/command/options = ''">
+            <em>Needs to be written</em>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="command"><xsl:value-of select="/command/name" /></span>
+            &#160;
+            <xsl:for-each select="/command/options/parameter">
+              <span class="parameter"><xsl:value-of select="keyword" /></span>
+              &#160;
+              <span class="value"><xsl:value-of select="value" /></span>
+&#160;</xsl:for-each>
+          </xsl:otherwise>
+        </xsl:choose>
+      </section>
 
       <!-- Main content -->
       <xsl:apply-templates select="/command/options" />
