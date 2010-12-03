@@ -146,18 +146,18 @@
   <!-- Availability template -->
   <xsl:template match="availability">
     <h2>Availability</h2>
+    <div class="section">
       <xsl:choose>
         <xsl:when test="@version = '0.0.0'">
           <em>Needs to be written</em>
         </xsl:when>
         <xsl:otherwise>
-        <div class="section">
           <div class="text">
             Available from libvirt <xsl:value-of select="@version" /> onwards
           </div>
-        </div>
         </xsl:otherwise>
       </xsl:choose>
+    </div>
   </xsl:template>
 
   <!-- Notes template -->
@@ -212,7 +212,6 @@
       </xsl:choose>
     </div>
   </xsl:template>
-
 
   <!-- See also template -->
   <xsl:template match="reference[@type='seealso']">
