@@ -69,51 +69,64 @@
   <xsl:template match="options">
     <varlistentry>
       <term>Options</term>
-      <listitem>
-        <xsl:text disable-output-escaping="yes">&lt;table id="table-</xsl:text>
-          <xsl:value-of select="/command/name" />
-          <xsl:text disable-output-escaping="yes">-options"&gt;</xsl:text>
-          <title>Options</title>
-          <tgroup cols="3">
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required?</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <xsl:for-each select="parameter">
-                <row>
-                  <entry>
-                    <para>
-                      <parameter>
-                        <xsl:value-of select="keyword" />
-                      </parameter>
-                      <xsl:text>&amp;nbsp;</xsl:text>
-                      <replaceable>
-                        <xsl:value-of select="value" />
-                      </replaceable>
-                    </para>
-                  </entry>
-                  <entry>
-                    <para>
-                      <xsl:value-of select="@requirement" />
-                    </para>
-                  </entry>
-                  <entry>
-                    <xsl:for-each select="description">
+      <xsl:choose>
+        <xsl:when test=". = ''">
+          <listitem>
+            <para>Needs to be written</para>
+          </listitem>
+        </xsl:when>
+        <xsl:otherwise>
+          <listitem>
+            <xsl:text disable-output-escaping="yes">&lt;table id="table-</xsl:text>
+              <xsl:value-of select="/command/name" />
+              <xsl:text disable-output-escaping="yes">-options"&gt;</xsl:text>
+              <title>Options</title>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Required?</entry>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <xsl:for-each select="parameter">
+                    <row>
+                      <entry>
+                        <para>
+                          <parameter>
+                            <xsl:value-of select="keyword" />
+                          </parameter>
+                          <xsl:text>&amp;nbsp;</xsl:text>
+                          <replaceable>
+                            <xsl:value-of select="value" />
+                          </replaceable>
+                        </para>
+                      </entry>
+                      <entry>
+                        <para>
+                          <xsl:value-of select="@requirement" />
+                        </para>
+                      </entry>
+                      <entry>
+                        <xsl:for-each select="description">
+<!-- 
                       <para>
-                        <xsl:apply-templates />
+ -->
+                          <xsl:apply-templates />
+<!-- 
                       </para>
-                    </xsl:for-each>
-                  </entry>
-                </row>
-              </xsl:for-each>
-            </tbody>
-          </tgroup>
-        <xsl:text disable-output-escaping="yes">&lt;/table&gt;</xsl:text>
-      </listitem>
+ -->
+                        </xsl:for-each>
+                      </entry>
+                    </row>
+                  </xsl:for-each>
+                </tbody>
+              </tgroup>
+            <xsl:text disable-output-escaping="yes">&lt;/table&gt;</xsl:text>
+          </listitem>
+        </xsl:otherwise>
+      </xsl:choose>
     </varlistentry>
   </xsl:template>
 
@@ -151,11 +164,16 @@
     <varlistentry>
       <term>Examples</term>
       <listitem>
-        <xsl:for-each select="example">
-          <para>
-            <xsl:apply-templates />
-          </para>
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test=". = ''">
+            <para>Needs to be written</para>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:for-each select="example">
+              <xsl:apply-templates />
+            </xsl:for-each>
+          </xsl:otherwise>
+        </xsl:choose>
       </listitem>
     </varlistentry>
   </xsl:template>
@@ -165,11 +183,16 @@
     <varlistentry>
       <term>Example in context</term>
       <listitem>
-        <xsl:for-each select="example">
-          <para>
-            <xsl:apply-templates />
-          </para>
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test=". = ''">
+            <para>Needs to be written</para>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:for-each select="example">
+              <xsl:apply-templates />
+            </xsl:for-each>
+          </xsl:otherwise>
+        </xsl:choose>
       </listitem>
     </varlistentry>
   </xsl:template>
@@ -179,16 +202,23 @@
     <varlistentry>
       <term>See also</term>
       <listitem>
-        <itemizedlist>
-          <xsl:for-each select="item">
-          <listitem>
-            <para>
-              <xsl:apply-templates select="link" /> -
-              <xsl:apply-templates select="description" />
-            </para>
-          </listitem>
-          </xsl:for-each>
-        </itemizedlist>
+        <xsl:choose>
+          <xsl:when test=". = ''">
+            <para>Needs to be written</para>
+          </xsl:when>
+          <xsl:otherwise>
+            <itemizedlist>
+              <xsl:for-each select="item">
+              <listitem>
+                <para>
+                  <xsl:apply-templates select="link" /> -
+                  <xsl:apply-templates select="description" />
+                </para>
+              </listitem>
+              </xsl:for-each>
+            </itemizedlist>
+          </xsl:otherwise>
+        </xsl:choose>
       </listitem>
     </varlistentry>
   </xsl:template>
@@ -253,7 +283,7 @@
   </xsl:template>
 
   <!-- Tag template for para -->
-  <xsl:template match="para">
+  <xsl:template match="text">
     <para>
       <xsl:apply-templates />
     </para>
