@@ -20,7 +20,7 @@
     </parameter>
   </options>
 
-  <availability version="0.2.0" />
+  <availability from="0.2.0" />
  
   <notes />
  
@@ -52,8 +52,9 @@ fa3642ab-e113-7eaa-528f-14ed78bca20</terminal>
 virsh # <bold>net-uuid</bold> <value>examplenetwork</value>
 <bold>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</bold></terminal>
       <text>
-        We can confirm by using the <a href="net-dumpxml">net-dumpxml</a>
-        command on the returned network UUID:
+        We can confirm by using the
+        <link type="internal" href="net-dumpxml" /> command on the returned
+        network UUID:
       </text>
       <terminal>
 virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 <br />
