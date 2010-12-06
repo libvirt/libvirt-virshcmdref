@@ -226,7 +226,7 @@
     <div class="section">
       <xsl:choose>
         <xsl:when test=". = ''">
-          <em>Needs to be written</em>
+          <span class="italic">Needs to be written</span>
         </xsl:when>
         <xsl:otherwise>
           <ul>
@@ -263,7 +263,7 @@
 
   <!-- Tag template for italic text -->
   <xsl:template match="italic">
-<em><xsl:apply-templates /></em>
+<span class="italic"><xsl:apply-templates /></span>
   </xsl:template>
 
   <!-- Tag template for links -->
