@@ -3,18 +3,196 @@
 <command>
   <name>net-start</name>
 
-  <description />
+  <description>
+    Starts an inactive, previously defined, virtual network.
+  </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-identifier</value>
+      <description>
+        <text>
+          The name or UUID of the virtual network to start.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
- 
-  <examples type="usage" />
 
-  <examples type="fullcontext" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-start</bold> <value>examplenetwork</value></terminal>
+      <text>
+        Starts the virtual network named "<value>examplenetwork</value>".
+      </text>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <terminal>
+virsh # <bold>net-start</bold> <italic>--network</italic> <value>examplenetwork</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+
+    <example>
+      <terminal>
+virsh # <bold>net-start</bold> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+      <text>
+        Starts the virtual network that has a UUID of
+        "<value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value>".
+      </text>
+    </example>
+
+    <example>
+      <terminal>
+virsh # <bold>net-start</bold> <italic>--network</italic> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Starting with an XML file we've already created, using the
+        <link type="external" href="http://libvirt.org/formatnetwork.html">required XML format</link>:
+      </text>
+<terminal>
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;</terminal>
+
+<terminal>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml</terminal>
+
+      <text>
+        We start virsh interactively, then define a <bold>persistent</bold>
+        virtual network using the XML file:
+      </text>
+
+<terminal>
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit</terminal>
+
+<terminal>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes</terminal>
+
+<terminal>
+virsh # net-define /root/examplenetwork.xml
+Network examplenetwork defined from /root/examplenetwork.xml</terminal>
+
+      <text>
+        Defined.  Now we confirm:
+      </text>
+
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <bold>inactive</bold>   no    <highlight>new persistent networks start out inactive</highlight></terminal>
+
+      <text>
+        Newly defined virtual networks aren't automatically started, so we
+        manually start it now:
+      </text>
+
+<terminal>
+virsh # <bold>net-start</bold> <value>examplenetwork</value>      <highlight>this is <bold>net-start</bold> in action</highlight>
+<bold>Network examplenetwork started</bold></terminal>
+
+<terminal>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <bolditalic>active</bolditalic>     no       <highlight>the persistent network is now running (active)</highlight></terminal>
+
+      <text>
+        We check the details of the started network from virsh, using
+        <link type="internal" href="net-dumpxml" />.  This shows us the
+        name of the bridge network interface.
+      </text>
+
+<terminal>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='<bold>virbr100</bold>' stp='on' delay='0' /&gt;      <highlight>the "virbr100" here</highlight>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</terminal>
+
+      <text>
+        If the virtualisation server is running Linux, we can check how
+        the bridge interface appears to the host OS:
+      </text>
+
+<terminal>
+# <bold>ifconfig</bold> <value>virbr100</value>
+<bold>virbr100</bold>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <bold>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</bold>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)</terminal>
+
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-define" />
+      <name>
+        net-define
+      </name>
+      <description>
+        Adds a new <bold>persistent</bold> virtual network to libvirt,
+        without starting it, using settings from an XML file.
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="net-dumpxml" />
+      <name>
+        net-dumpxml
+      </name>
+      <description>
+        Outputs the XML configuration for a virtual network, to stdout
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net-list
+      </name>
+      <description>
+        Displays a list of the virtual networks libvirt is aware of.
+      </description>
+    </item>
+  </reference>
 
 </command>
