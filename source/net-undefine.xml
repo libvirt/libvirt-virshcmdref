@@ -35,7 +35,7 @@ virsh # <bold>net-undefine</bold> <value>examplenetwork</value></terminal>
 
     <example>
       <terminal>
-virsh # <bold>net-undefine</bold> <parameter>--network</parameter> <value>examplenetwork</value></terminal>
+virsh # <bold>net-undefine</bold> <italic>--network</italic> <value>examplenetwork</value></terminal>
       <text>
         Same as the above example.
       </text>
@@ -52,7 +52,7 @@ virsh # <bold>net-undefine</bold> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</v
 
     <example>
       <terminal>
-virsh # <bold>net-undefine</bold> <parameter>--network</parameter> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+virsh # <bold>net-undefine</bold> <italic>--network</italic> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
       <text>
         Same as the above example.
       </text>

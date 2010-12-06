@@ -35,7 +35,7 @@ virsh # <bold>net-uuid</bold> <value>mynetwork</value>
     </example>
     <example>
       <terminal>
-virsh # <bold>net-uuid</bold> <parameter>--network</parameter> <value>mynetwork</value>
+virsh # <bold>net-uuid</bold> <italic>--network</italic> <value>mynetwork</value>
 fa3642ab-e113-7eaa-528f-14ed78bca20</terminal>
       <text>
         Same as the previous example.
