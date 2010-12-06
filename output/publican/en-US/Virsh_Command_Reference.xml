@@ -7,7 +7,7 @@
   <xi:include href="Book_Info.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="Preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="Command_List.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="Commands.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="Index.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="Revision_History.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <index />
 </book>
