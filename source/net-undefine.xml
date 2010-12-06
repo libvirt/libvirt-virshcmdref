@@ -3,18 +3,140 @@
 <command>
   <name>net-undefine</name>
 
-  <description />
+  <description>Removes an inactive virtual network from the libvirt configuration.</description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-identifier</value>
+      <description>
+        <text>
+          The name or UUID of the virtual network to remove.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-undefine</bold> <value>examplenetwork</value></terminal>
+      <text>
+        Undefines the virtual network named "<value>examplenetwork</value>".
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-undefine</bold> <parameter>--network</parameter> <value>examplenetwork</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <terminal>
+virsh # <bold>net-undefine</bold> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+      <text>
+        Undefines the virtual network having a UUID of
+        "<value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value>".
+      </text>
+    </example>
 
+    <example>
+      <terminal>
+virsh # <bold>net-undefine</bold> <parameter>--network</parameter> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Starting with a virtual network named <value>examplenetwork</value>,
+        already running on a virtualisation host server:
+      </text>
+<terminal>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <bold>active</bold>     yes</terminal>
+
+      <text>
+        The virtual network is running (active), so we need to shut it down
+        before removing it.  We use the
+        <link type="internal" href="net-destroy" /> command to shut it down:
+      </text>
+
+<terminal>
+# net-destroy examplenetwork
+<bold>Network examplenetwork destroyed</bold></terminal>
+
+      <text>
+        Then remove it using <bold>net-undefine</bold>:
+      </text>
+
+<terminal>
+virsh # <command>net-undefine</command> <value>examplenetwork</value>       <highlight>this is <bold>net-undefine</bold> in action</highlight>
+<bold>Network examplenetwork has been undefined</bold></terminal>
+
+      <text>
+        Done.  The <link type="internal" href="net-list" /> command no longer
+        shows it listed:
+      </text>
+
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes</terminal>
+
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-define" />
+      <name>
+        net-define
+      </name>
+      <description>
+        Adds a new <bold>persistent</bold> virtual network to libvirt,
+        without starting it, using settings from an XML file.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-destroy" />
+      <name>
+        net-destroy
+      </name>
+      <description>
+        Shuts down a running virtual network, as started with
+        <link type="internal" href="net-create" /> or
+        <link type="internal" href="net-start" />.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net-list
+      </name>
+      <description>
+        Displays a list of the virtual networks libvirt is aware of.
+      </description>
+    </item>
+
+  </reference>
 </command>
