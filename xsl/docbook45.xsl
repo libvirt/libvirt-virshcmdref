@@ -72,7 +72,7 @@
       <xsl:choose>
         <xsl:when test=". = ''">
           <listitem>
-            <para>Needs to be written</para>
+            <para><emphasis>Needs to be written</emphasis></para>
           </listitem>
         </xsl:when>
         <xsl:otherwise>
@@ -110,13 +110,7 @@
                       </entry>
                       <entry>
                         <xsl:for-each select="description">
-<!-- 
-                      <para>
- -->
                           <xsl:apply-templates />
-<!-- 
-                      </para>
- -->
                         </xsl:for-each>
                       </entry>
                     </row>
@@ -135,7 +129,23 @@
     <varlistentry>
       <term>Availability</term>
       <listitem>
-        <para>Available from libvirt <xsl:value-of select="@version" /> onwards</para>
+        <xsl:choose>
+          <xsl:when test="@from = '0.0.0'">
+            <para><emphasis>Needs to be written</emphasis></para>
+          </xsl:when>
+          <xsl:otherwise>
+            <para>Available from libvirt <xsl:value-of select="@from" />
+              <xsl:choose>
+                <xsl:when test="@to">
+                  to <xsl:value-of select="@to" />
+                </xsl:when>
+                <xsl:otherwise>
+                  onwards
+                </xsl:otherwise>
+              </xsl:choose>
+             </para>
+           </xsl:otherwise>
+         </xsl:choose>
       </listitem>
     </varlistentry>
   </xsl:template>
@@ -166,7 +176,7 @@
       <listitem>
         <xsl:choose>
           <xsl:when test=". = ''">
-            <para>Needs to be written</para>
+            <para><emphasis>Needs to be written</emphasis></para>
           </xsl:when>
           <xsl:otherwise>
             <xsl:for-each select="example">
@@ -185,7 +195,7 @@
       <listitem>
         <xsl:choose>
           <xsl:when test=". = ''">
-            <para>Needs to be written</para>
+            <para><emphasis>Needs to be written</emphasis></para>
           </xsl:when>
           <xsl:otherwise>
             <xsl:for-each select="example">
@@ -204,7 +214,7 @@
       <listitem>
         <xsl:choose>
           <xsl:when test=". = ''">
-            <para>Needs to be written</para>
+            <para><emphasis>Needs to be written</emphasis></para>
           </xsl:when>
           <xsl:otherwise>
             <itemizedlist>
