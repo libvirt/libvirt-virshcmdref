@@ -8,7 +8,7 @@ DOMAIN_COMMANDS="attach-device attach-disk attach-interface autostart
   setmem setvcpus shutdown start suspend ttyconsole undefine update-device
   vcpucount vcpuinfo vcpupin version vncdisplay"
 
-MONITOR_COMMANDS="domblkinfo domblkstat domifstat dominfodomain dommemstat
+MONITOR_COMMANDS="domblkinfo domblkstat domifstat dominfo dommemstat
   domstate list"
 
 HOST_COMMANDS="capabilities connect freecell hostname qemu-monitor-command

@@ -25,7 +25,7 @@
   <xi:include href="domblkstat.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="domid.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="domifstat.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="dominfodomain.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="dominfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="domjobabort.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="domjobinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="dommemstat.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
