@@ -4,7 +4,9 @@
   <name>net-info</name>
 
   <description>
-    Displays basic information for a virtual network.
+    <text>
+      Displays basic information for a virtual network.
+    </text>
   </description>
 
   <options>

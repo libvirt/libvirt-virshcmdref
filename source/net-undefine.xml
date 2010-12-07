@@ -3,7 +3,11 @@
 <command>
   <name>net-undefine</name>
 
-  <description>Removes an inactive virtual network from the libvirt configuration.</description>
+  <description>
+    <text>
+      Removes an inactive virtual network from the libvirt configuration.
+    </text>
+  </description>
 
   <options>
     <parameter requirement="required">

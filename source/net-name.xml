@@ -4,8 +4,10 @@
   <name>net-name</name>
 
   <description>
-    When given a virtual network UUID, returns its corresponding virtual
-    network name.
+    <text>
+      When given a virtual network UUID, returns its corresponding virtual
+      network name.
+    </text>
   </description>
 
   <options>

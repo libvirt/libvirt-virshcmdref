@@ -4,7 +4,9 @@
   <name>net-start</name>
 
   <description>
-    Starts an inactive, previously defined, virtual network.
+    <text>
+      Starts an inactive, previously defined, virtual network.
+    </text>
   </description>
 
   <options>

@@ -3,11 +3,15 @@
 <command>
   <name>snapshot-delete</name>
 
-  <description />
+  <description>
+    <text>
+      Removes a snapshot, and all of it's children, from a domain.
+    </text>
+  </description>
 
   <options />
 
-  <availability version="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

@@ -4,10 +4,14 @@
   <name>net-list</name>
 
   <description>
-    Lists the virtual networks libvirt is aware of, along with basic status
-    and autostart information.  Used without parameters,
-    <bold>net-list</bold> displays information for only
-    <italic>active</italic> virtual networks.
+    <text>
+      Lists the virtual networks libvirt is aware of, along with basic
+      status and autostart information.
+    </text>
+    <text>
+      Used without parameters, <bold>net-list</bold> displays information
+      for only <italic>active</italic> virtual networks.
+    </text>
   </description>
 
   <options>

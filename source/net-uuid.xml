@@ -3,7 +3,11 @@
 <command>
   <name>net-uuid</name>
 
-  <description>When given a network name, returns its corresponding UUID.</description>
+  <description>
+    <text>
+      When given a network name, returns its corresponding UUID.
+    </text>
+  </description>
 
   <options>
     <parameter requirement="required">

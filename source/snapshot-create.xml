@@ -3,11 +3,15 @@
 <command>
   <name>snapshot-create</name>
 
-  <description />
+  <description>
+    <text>
+      Creates a snapshot of a domain.
+    </text>
+  </description>
 
   <options />
 
-  <availability version="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

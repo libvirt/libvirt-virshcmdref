@@ -3,11 +3,15 @@
 <command>
   <name>snapshot-revert</name>
 
-  <description />
+  <description>
+    <text>
+      Reverts a domain to a given snapshot.
+    </text>
+  </description>
 
   <options />
 
-  <availability version="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

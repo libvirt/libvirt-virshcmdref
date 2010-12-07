@@ -3,11 +3,15 @@
 <command>
   <name>snapshot-dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Displays the XML fragment for a domain snapshot.
+    </text>
+  </description>
 
   <options />
 
-  <availability version="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

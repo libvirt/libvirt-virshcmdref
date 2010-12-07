@@ -3,11 +3,15 @@
 <command>
   <name>snapshot-current</name>
 
-  <description />
+  <description>
+    <text>
+      Gets the current snapshot for a domain.
+    </text>
+  </description>
 
   <options />
 
-  <availability version="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

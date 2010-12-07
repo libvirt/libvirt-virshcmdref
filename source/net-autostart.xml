@@ -4,8 +4,10 @@
   <name>net-autostart</name>
 
   <description>
-    Enables or disables the automatic startup of a <bold>persistent</bold>
-    virtual network, by the libvirt daemon.
+    <text>
+      Enables or disables the automatic startup of a <bold>persistent</bold>
+      virtual network, by the libvirt daemon.
+    </text>
   </description>
 
   <options>
