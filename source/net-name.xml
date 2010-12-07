@@ -3,18 +3,97 @@
 <command>
   <name>net-name</name>
 
-  <description />
+  <description>
+    When given a virtual network UUID, returns its corresponding virtual
+    network name.
+  </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-UUID</value>
+      <description>
+        <text>
+          The UUID of the virtual network you want the name for.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-name</bold> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+      <text>
+        Returns the name of the virtual network having a UUID of
+        "<value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value>".
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-name</bold> <italic>--network</italic> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Given a virtual network UUID, we can determine which virtual
+        network it belongs to:
+      </text>
+
+<terminal>
+virsh # <bold>net-name</bold> <value>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</value>
+<bold>examplenetwork</bold></terminal>
+
+      <text>
+        We can confirm by using the
+        <link type="internal" href="net-dumpxml" /> command on the returned
+        network name:
+      </text>
+
+<terminal>
+virsh # <bold>net-dumpxml</bold> <value>examplenetwork</value>
+&lt;network&gt;
+  &lt;name&gt;<bold>examplenetwork</bold>&lt;/name&gt;                        <highlight>the name is here</highlight>
+  &lt;uuid&gt;<bold>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</bold>&lt;/uuid&gt;  <highlight>the UUID is here</highlight>
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</terminal>
+
+      <text>
+        Using <bold>net-name</bold> is more efficient than dumping the XML
+        for the virtual network and manually extracting the
+        <bold>name</bold> value.
+      </text>
+
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-dumpxml" />
+      <name>
+        net-dumpxml
+      </name>
+      <description>
+        Outputs the XML configuration for a virtual network, to stdout
+      </description>
+    </item>
+
+  </reference>
 
 </command>
