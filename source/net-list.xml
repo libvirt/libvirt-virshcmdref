@@ -3,18 +3,112 @@
 <command>
   <name>net-list</name>
 
-  <description />
+  <description>
+    Lists the virtual networks libvirt is aware of, along with basic status
+    and autostart information.  Used without parameters,
+    <bold>net-list</bold> displays information for only
+    <italic>active</italic> virtual networks.
+  </description>
 
-  <options />
+  <options>
+    <parameter requirement="optional">
+      <keyword requirement="required">--all</keyword>
+      <description>
+        <text>
+          Instructs <bold>net-list</bold> to display both
+          <italic>active</italic> and <italic>inactive</italic> virtual
+          networks.
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--inactive</keyword>
+      <description>
+        <text>
+          Instructs <bold>net-list</bold> to only display
+          <italic>inactive</italic> virtual networks.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
- 
-  <examples type="usage" />
 
-  <examples type="fullcontext" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-list</bold></terminal>
+      <text>
+        Displays the <italic>active</italic> libvirt virtual networks.
+      </text>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <terminal>
+virsh # <bold>net-list</bold> <italic>--all</italic></terminal>
+      <text>
+        Displays all virtual networks libvirt knows of, both
+        <italic>active</italic> and <italic>inactive</italic>.
+      </text>
+    </example>
 
-</command>
+    <example>
+      <terminal>
+virsh # <bold>net-list</bold> <italic>--inactive</italic></terminal>
+      <text>
+        Displays only the <italic>inactive</italic> libvirt virtual
+        networks.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Displaying all of the libvirt virtual networks on a host:
+      </text>
+
+<terminal>
+virsh # <bold>net-list</bold> <italic>--all</italic>
+Name                 State      Autostart
+-----------------------------------------
+<bold>default</bold>              <bold>active</bold>     <bold>yes</bold>      <highlight>this is a virtual network</highlight>
+<bold>examplenetwork</bold>       <bold>inactive</bold>   <bold>no</bold>       <highlight>this is a virtual network</highlight></terminal>
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-autostart" />
+      <name>
+        net-autostart
+      </name>
+      <description>
+        Used to enable and disable the automatic starting of a virtual
+        network.
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="net-destroy" />
+      <name>
+        net-destroy
+      </name>
+      <description>
+        Shuts down a running virtual network, as started with
+        <link type="internal" href="net-create" /> or
+        <link type="internal" href="net-start" />.
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="net-start" />
+      <name>
+        net-start
+      </name>
+      <description>
+        Manually starts a virtual network that isn't running.
+      </description>
+    </item>
+  </reference>
+ </command>

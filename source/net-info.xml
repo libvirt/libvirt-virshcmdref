@@ -3,18 +3,133 @@
 <command>
   <name>net-info</name>
 
-  <description />
+  <description>
+    Displays basic information for a virtual network.
+  </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-identifier</value>
+      <description>
+        <text>
+          The name or UUID of the virtual network to display information
+          for.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.8.6" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-info</bold> <value>default</value>
+Name            default
+UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+<bold>Bridge:         virbr0</bold></terminal>
+      <text>
+        Displays basic information for the virtual network named
+        "<value>default</value>".
+      </text>
+      <text>
+        If the host server is running Linux, then the <bold>Bridge</bold>
+        field gives the name of the Linux network bridge being for the
+        virtual network.
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-info</bold> <italic>--network</italic> <value>default</value>
+Name            default
+UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+<bold>Bridge:</bold>         <bold>virbr0</bold></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        We begin with an existing virtual network, running on the host:
+      </text>
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes</terminal>
 
+      <text>
+        The virtual network "<value>default</value>" is active and enabled
+        for automatic starting.
+      </text>
+      <text>
+        We use the <bold>net-info</bold> command to display further
+        details:
+      </text>
+<terminal>
+# <bold>net-info</bold> <value>default</value>
+Name            default
+UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+Bridge:         virbr0</terminal>
+      <text>
+        Some of the same information can also be retrieved using the
+        <link type="internal" href="net-dumpxml" /> command, then looking
+        through the output:
+      </text>
+<terminal>
+virsh # net-dumpxml default
+&lt;network&gt;
+  &lt;name&gt;default&lt;/name&gt;
+  &lt;uuid&gt;1c42888c-82c9-4dda-bc9c-4387962a0c0e&lt;/uuid&gt;
+  &lt;forward mode='nat'/&gt;
+  &lt;bridge name='virbr0' stp='on' delay='0' /&gt;
+  &lt;ip address='192.168.122.1' netmask='255.255.255.0'&gt;
+    &lt;dhcp&gt;
+      &lt;range start='192.168.122.2' end='192.168.122.254' /&gt;
+    &lt;/dhcp&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</terminal>
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-dumpxml" />
+      <name>
+        net-dumpxml
+      </name>
+      <description>
+        Outputs the XML configuration for a virtual network, to stdout
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net-list
+      </name>
+      <description>
+        Lists the virtual networks libvirt is aware of
+      </description>
+    </item>
+  </reference>
 </command>
