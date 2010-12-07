@@ -3,18 +3,185 @@
 <command>
   <name>net-destroy</name>
 
-  <description />
+  <description>
+    <text>
+      Shuts down a virtual network, releasing any resources in use by it.
+    </text>
+  </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-identifier</value>
+      <description>
+        <text>
+          The name or UUID of the network to be shut down.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.2.0" />
  
-  <notes />
+  <notes>
+    <title>Linux</title>
+    <text>
+      If the virtualisation host is running Linux, the name the
+      operating system uses for the network interface can be found
+      using the <link type="internal" href="net-dumpxml" /> virsh command.
+    </text>
+    <text>
+      Look for the name value of the <bold>bridge</bold> line.
+      <bold>virbr100</bold> in this instance:
+    </text>
+
+<terminal>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  <bold>&lt;bridge name='</bold><bolditalic>virbr100</bolditalic><bold>' stp='on' delay='0' /></bold>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</terminal>
+
+    <text>
+      Using <bold>ifconfig</bold>, or a similar tool such as
+      <bold>ip</bold>, the <bold>virbr100</bold> interface
+      will be seen on the host when the virtual network is running:
+    </text>
+        
+<terminal>
+# ifconfig virbr100
+<bold>virbr100</bold>  Link encap:Ethernet  HWaddr D2:43:D9:47:FA:AA  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <bold>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</bold>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:1553 (1.5 KiB)</terminal>
+
+    <text>
+      After shutting down a virtual network with the
+      <bold>net-destroy</bold> command, the Linux OS will no
+      longer show this interface:
+    </text>
+
+<terminal>
+# ifconfig virbr100
+<bold>virbr100: error fetching interface information: Device not found</bold></terminal>
+  </notes>
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-destroy</bold> <value>mynetwork</value></terminal>
+      <text>
+        Shuts down the virtual network named "<italic>mynetwork</italic>".
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-destroy</bold> <italic>--network</italic> <value>mynetwork</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <terminal>
+virsh # <bold>net-destroy</bold> <value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value></terminal>
+      <text>
+        Shuts down the virtual network that has a UUID of
+        "<italic>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</italic>".
+      </text>
+    </example>
+
+    <example>
+      <terminal>
+virsh # <bold>net-destroy</bold> <italic>--network</italic> <value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Starting with a virtual network named <value>examplenetwork</value>,
+        already running on a virtualisation host server:
+      </text>
+
+<terminal>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<bold>examplenetwork</bold>       <bolditalic>active</bolditalic>     <bold>yes</bold></terminal>
+
+      <text>
+        The network is shut down by simply using the
+        <bold>net-destroy</bold> command on it:
+      </text>
+
+<terminal>
+# <bold>net-destroy</bold> <value>examplenetwork</value>
+<bold>Network examplenetwork destroyed</bold></terminal>
+
+      <text>
+        The <xref linkend="sect-net-list" /> command now shows it as
+        inactive:
+      </text>
+
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<bold>examplenetwork</bold>       <bolditalic>inactive</bolditalic>   <bold>yes</bold></terminal>
+
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-create" />
+      <name>
+        net-create
+      </name>
+      <description>
+        Creates a running, <bold>transient</bold> virtual network, using
+        settings from an XML file.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net-list
+      </name>
+      <description>
+        Displays a list of the virtual networks libvirt is aware of.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-start" />
+      <name>
+        net-start
+      </name>
+      <description>
+        Manually starts a virtual network that isn't running.
+      </description>
+    </item>
+
+
+  </reference>
 
 </command>

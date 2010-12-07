@@ -3,18 +3,114 @@
 <command>
   <name>net-dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Outputs the XML configuration for a virtual network, to stdout.
+    </text>
+  </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-identifier</value>
+      <description>
+        <text>
+          The name or UUID of the network whose XML configuration is to be
+          displayed.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
 
-  <availability version="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-dumpxml</bold> <value>mynetwork</value></terminal>
+      <text>
+        Outputs the XML configuration for the virtual network named
+        "<italic>mynetwork</italic>". 
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-dumpxml</bold> <italic>--network</italic> <value>mynetwork</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <terminal>
+virsh # <bold>net-dumpxml</bold> <value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value></terminal>
+      <text>
+        Outputs the XML configuration for the virtual network that has a
+        UUID of "<italic>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</italic>".
+      </text>
+    </example>
+
+    <example>
+      <terminal>
+virsh # <bold>net-dumpxml</bold> <italic>--network</italic> <value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Starting with a few virtual networks already defined:
+      </text>
+
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       active     no</terminal>
+
+      <text>
+        We use <bold>net-dumpxml</bold> to look at the XML configuration for
+        "<value>examplenetwork</value>":
+      </text>
+
+<terminal>
+virsh # <bold>net-dumpxml</bold> <value>examplenetwork</value>
+<bold>&lt;network&gt;</bold>
+  <bold>&lt;name&gt;examplenetwork&lt;/name&gt;</bold>
+  <bold>&lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;</bold>
+  <bold>&lt;forward mode='route'/&gt;</bold>
+  <bold>&lt;bridge name='virbr100' stp='on' delay='0' /&gt;</bold>
+  <bold>&lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;</bold>
+  <bold>&lt;/ip&gt;</bold>
+<bold>&lt;/network&gt;</bold></terminal>
+
+      <text>
+        Done.
+      </text>
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net-list
+      </name>
+      <description>
+        Displays a list of the virtual networks libvirt is aware of.
+      </description>
+    </item>
+
+  </reference>
 
 </command>

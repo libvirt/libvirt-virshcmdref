@@ -3,18 +3,186 @@
 <command>
   <name>net-edit</name>
 
-  <description />
+  <description>
+    <text>
+      Allows the user to edit the XML configuration of a virtual network,
+      using their preferred editor.
+    </text>
 
-  <options />
+    <text>
+      <bold>net-edit</bold> launches the command (or script) is defined in
+      the users <italic>$EDITOR</italic> environment variable, passing it a
+      temporary copy of the XML configuration for the virtual network.
+    </text>
 
-  <availability version="0.0.0" />
+    <text>
+    When the user exits the editor, <bold>net-edit</bold> checks if the
+    temporary file was changed.
+    </text>
+
+    <text>
+      If it was, then <bold>net-edit</bold> validates it to ensure it's
+      error free. If no errors are found, <bold>net-edit</bold> then
+      overwrites the existing saved virtual network configuration using it. 
+    </text>
+  </description>
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--network</keyword>
+      <value type="string" requirement="required">network-identifier</value>
+      <description>
+        <text>
+          The name or UUID of the virtual network whose XML configuration is
+          to be edited.
+        </text>
+        <text>
+          The word "<bold>--network</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability from="0.4.6" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-edit</bold> <value>mynetwork</value></terminal>
+      <text>
+        Edits the XML configuration for the virtual network named
+        "<value>mynetwork</value>". 
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-edit</bold> <italic>--network</italic> <value>mynetwork</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <terminal>
+virsh # <bold>net-edit</bold> <value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value></terminal>
+      <text>
+        Edits the XML configuration for the virtual network having UUID
+        "<value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value>". 
+      </text>
+    </example>
 
+    <example>
+      <terminal>
+virsh # <bold>net-edit</bold> <italic>--network</italic> <value>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Starting with a few virtual networks already defined:
+      </text>
+
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       active     no</terminal>
+
+      <text>
+        We use <link type="internal" href="net-dumpxml" /> to view the XML
+        configuration for "<value>examplenetwork</value>":
+      </text>
+
+<terminal>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='0' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</terminal>
+
+      <text>
+        We want to change one of the values, for example, the Spanning Tree
+        Protocol delay of 0.  Let's say want it to be 30 (seconds) instead.
+      </text>
+
+      <text>
+        Using <bold>net-edit</bold>, we launch an editor on the XML
+        fragment. (<bold>vi</bold> is the editor shown):
+      </text>
+
+<terminal>
+virsh # <bold>net-edit</bold> <value>examplenetwork</value></terminal>
+
+      <text>
+        The editor window appears, and we make the change directly:
+      </text>
+
+<terminal>
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='<italic>30</italic>' /&gt;      <highlight>changed to 30 here</highlight>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+~
+~
+~
+~
+~
+~
+"/tmp/virsht2UZ6L" 8L, 238C</terminal>
+
+      <text>
+        Then save the (temporary) file and exit the editor.
+        <bold>net-edit</bold> automatically copies the temporary XML to the
+        saved configuration, if no errors in it were detected.
+      </text>
+
+<terminal>
+<bolditalic>Network examplenetwork XML configuration edited.</bolditalic></terminal>
+
+      <text>
+        The next time the "<value>examplenetwork</value>" virtual network
+        is started, it will use the new value.
+      </text>
+
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-dumpxml" />
+      <name>
+        net-dumpxml
+      </name>
+      <description>
+        Outputs the XML configuration for a virtual network, to stdout.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-list" />
+      <name>
+        net-list
+      </name>
+      <description>
+        Displays a list of the virtual networks libvirt is aware of.
+      </description>
+    </item>
+
+  </reference>
 </command>

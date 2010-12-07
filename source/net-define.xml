@@ -3,18 +3,223 @@
 <command>
   <name>net-define</name>
 
-  <description />
+  <description>
+    <text>
+      Adds a new <bold>persistent</bold> virtual network to libvirt, without
+      starting it, using settings from an XML file.
+    </text>
 
-  <options />
+    <text>
+      You will need to manually start this virtual network when needed using
+      <link type="internal" href="net-start" />, unless you enable automatic
+      starting for it.  If you enable automatic starting, the virtual
+      network will be started when the libvirt daemon starts.
+    </text>
 
-  <availability version="0.0.0" />
+    <text>
+      To enable automatic starting of this virtual network, use the 
+      <link type="internal" href="net-autostart" /> command.
+    </text>
+  </description>
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--file</keyword>
+      <value type="string" requirement="required">file-name</value>
+      <description>
+        <text>
+          The full path (and file name) to an XML file containing
+          the <link type="external" href="http://libvirt.org/formatnetwork.html">network settings required</link>.
+        </text>
+        <text>
+          The word "<bold>--file</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability from="0.2.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>net-define</bold> <value>/root/examplenetwork.xml</value></terminal>
+      <text>
+        Creates a new, persistent, virtual network using the settings from
+        the XML file <value>/root/examplenetwork.xml</value>.
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <terminal>
+virsh # <bold>net-define</bold> <italic>--file</italic> <value>/root/examplenetwork.xml</value></terminal>
+      <text>
+        Same as the above example.
+      </text>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        Starting with an XML file we've already created, using the
+          <link type="external" href="http://libvirt.org/formatnetwork.html">required XML format</link>:
+      </text>
+
+<terminal>
+&lt;network>
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;</terminal>
+
+<terminal>
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml</terminal>
+
+      <text>
+        We start virsh interactively, then create the
+        <bold>transient</bold> virtual network:
+      </text>
+
+<terminal>
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit</terminal>
+
+<terminal>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes       </terminal>
+
+<terminal>
+virsh # <bold>net-define</bold> /root/examplenetwork.xml
+<bold>Network examplenetwork defined from /root/examplenetwork.xml</bold></terminal>
+
+      <text>
+        Defined.  Now we confirm:
+      </text>
+
+<terminal>
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<bold>examplenetwork</bold>       <bold>inactive</bold>   <bold>no</bold></terminal>
+
+      <text>
+        Newly defined virtual networks aren't automatically started, so we
+        manually start it now:
+      </text>
+
+<terminal>
+virsh # net-start examplenetwork
+<bold>Network examplenetwork started</bold></terminal>
+
+<terminal>
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<bold>examplenetwork</bold>       <bold>active</bold>     <bold>no</bold></terminal>
+
+      <text>
+        We check the details of the started network from virsh.  This shows
+        us the generated UUID, and anything else that may be in effect
+        (ie Spanning Tree Protocol).
+      </text>
+
+<terminal>
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;97ce3914-231e-4026-0a78-822e1e2e7226&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  <bold>&lt;bridge name='</bold><bolditalic>virbr100</bolditalic><bold>' stp='on' delay='0' /&gt;</bold>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</terminal>
+
+      <text>
+        If the virtualisation server is running Linux, we can check how
+        it appears to the host OS:
+      </text>
+
+<terminal>
+# <bold>ifconfig</bold> <value>virbr100</value>
+<bold>virbr100</bold>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <bold>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</bold>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)</terminal>
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="net-autostart" />
+      <name>
+        net-autostart
+      </name>
+      <description>
+        Used to enable and disable the automatic starting of a virtual
+        network.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-create" />
+      <name>
+        net-create
+      </name>
+      <description>
+        An alternative to <bold>net-define</bold>. Use this when you want a
+        <bold>transient</bold> virtual network that will disappear when the
+        host is rebooted or shutdown, rather than a <bold>persistent</bold>
+        one created using <link type="internal" href="net-define" />.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-destroy" />
+      <name>
+        net-destroy
+      </name>
+      <description>
+        Shuts down a running virtual network, as started with
+        <link type="internal" href="net-create" /> or
+        <link type="internal" href="net-start" />.
+      </description>
+    </item>
+
+    <item>
+      <link type="internal" href="net-start" />
+      <name>
+        net-start
+      </name>
+      <description>
+        Manually starts a virtual network that isn't running.
+      </description>
+    </item>
+
+    <item>
+      <link type="external" href="http://libvirt.org/formatnetwork.html" />
+      <name>
+        XML Network Format Reference page
+      </name>
+      <description>
+        Gives the details of the XML needed by
+        <link type="internal" href="net-define" />.
+      </description>
+    </item>
+  </reference>
 
 </command>
