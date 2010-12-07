@@ -160,7 +160,9 @@
             </para>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="." />
+            <para>
+              <xsl:value-of select="." />
+            </para>
           </xsl:otherwise>
         </xsl:choose>
       </listitem>
