@@ -160,9 +160,16 @@
             </para>
           </xsl:when>
           <xsl:otherwise>
-            <para>
-              <xsl:value-of select="." />
-            </para>
+            <variablelist>
+              <xsl:for-each select="note">
+                <varlistentry>
+                  <term><xsl:value-of select="@os" /></term>
+                  <listitem>
+                    <xsl:apply-templates />
+                  </listitem>
+                </varlistentry>
+              </xsl:for-each>
+            </variablelist>
           </xsl:otherwise>
         </xsl:choose>
       </listitem>
