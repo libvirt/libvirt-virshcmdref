@@ -31,7 +31,7 @@
     </parameter>
   </options>
 
-  <availability version="0.2.1" />
+  <availability from="0.2.1" />
  
   <notes />
  
@@ -174,7 +174,7 @@ default              active     yes
         net-dumpxml
       </name>
       <description>
-        Outputs the XML configuration for a virtual network, to stdout
+        Outputs the XML configuration for a virtual network, to stdout.
       </description>
     </item>
     <item>
@@ -183,7 +183,7 @@ default              active     yes
         net-list
       </name>
       <description>
-        Lists the virtual networks libvirt is aware of
+        Lists the virtual networks libvirt is aware of.
       </description>
     </item>
   </reference>
