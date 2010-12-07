@@ -27,9 +27,7 @@
       <title><xsl:value-of select="/command/name" /></title>
 
       <!-- Output the command description -->
-      <para>
-        <xsl:apply-templates select="/command/description" />
-      </para>
+      <xsl:apply-templates select="/command/description" />
 
       <!-- Begin the DocBook variable list dividing the page sections -->
       <variablelist>
