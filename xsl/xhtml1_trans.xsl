@@ -169,7 +169,10 @@
           <em>None yet</em>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="." />
+          <xsl:for-each select="note">
+            <h3><xsl:value-of select="@os" /></h3>
+            <xsl:apply-templates />
+          </xsl:for-each>
         </xsl:otherwise>
       </xsl:choose>
     </div>

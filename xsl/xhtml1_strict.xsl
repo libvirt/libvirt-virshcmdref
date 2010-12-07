@@ -87,7 +87,7 @@
               <span class="parameter"><xsl:value-of select="keyword" /></span>
               &#160;
               <span class="value"><xsl:value-of select="value" /></span>
-&#160;</xsl:for-each>
+              &#160;</xsl:for-each>
           </xsl:otherwise>
         </xsl:choose>
       </section>
@@ -169,7 +169,10 @@
           <em>None yet</em>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="." />
+          <xsl:for-each select="note">
+            <h3><xsl:value-of select="@os" /></h3>
+            <xsl:apply-templates />
+          </xsl:for-each>
         </xsl:otherwise>
       </xsl:choose>
     </div>
