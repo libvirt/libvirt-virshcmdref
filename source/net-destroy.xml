@@ -27,18 +27,18 @@
   <availability from="0.2.0" />
  
   <notes>
-    <title>Linux</title>
-    <text>
-      If the virtualisation host is running Linux, the name the
-      operating system uses for the network interface can be found
-      using the <link type="internal" href="net-dumpxml" /> virsh command.
-    </text>
-    <text>
-      Look for the name value of the <bold>bridge</bold> line.
-      <bold>virbr100</bold> in this instance:
-    </text>
+    <note os="Linux">
+      <text>
+        If the virtualisation host is running Linux, the name the
+        operating system uses for the network interface can be found
+        using the <link type="internal" href="net-dumpxml" /> virsh command.
+      </text>
+      <text>
+        Look for the name value of the <bold>bridge</bold> line.
+        <bold>virbr100</bold> in this instance:
+      </text>
 
-<terminal>
+      <terminal>
 virsh # net-dumpxml examplenetwork
 &lt;network&gt;
   &lt;name&gt;examplenetwork&lt;/name&gt;
@@ -49,31 +49,32 @@ virsh # net-dumpxml examplenetwork
   &lt;/ip&gt;
 &lt;/network&gt;</terminal>
 
-    <text>
-      Using <bold>ifconfig</bold>, or a similar tool such as
-      <bold>ip</bold>, the <bold>virbr100</bold> interface
-      will be seen on the host when the virtual network is running:
-    </text>
-        
-<terminal>
+      <text>
+        Using <bold>ifconfig</bold>, or a similar tool such as
+        <bold>ip</bold>, the <bold>virbr100</bold> interface
+        will be seen on the host when the virtual network is running:
+      </text>
+
+      <terminal>
 # ifconfig virbr100
 <bold>virbr100</bold>  Link encap:Ethernet  HWaddr D2:43:D9:47:FA:AA  
-          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
-          <bold>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</bold>
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
-          RX bytes:0 (0.0 b)  TX bytes:1553 (1.5 KiB)</terminal>
+inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+<bold>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</bold>
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:0 
+RX bytes:0 (0.0 b)  TX bytes:1553 (1.5 KiB)</terminal>
 
-    <text>
-      After shutting down a virtual network with the
-      <bold>net-destroy</bold> command, the Linux OS will no
-      longer show this interface:
-    </text>
+      <text>
+        After shutting down a virtual network with the
+        <bold>net-destroy</bold> command, the Linux OS will no
+        longer show this interface:
+      </text>
 
-<terminal>
+      <terminal>
 # ifconfig virbr100
 <bold>virbr100: error fetching interface information: Device not found</bold></terminal>
+    </note>
   </notes>
  
   <examples type="usage">
