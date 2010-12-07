@@ -6,7 +6,7 @@ DOMAIN_COMMANDS="attach-device attach-disk attach-interface autostart
   hostname managedsave managedsave-remove maxvcpus memtune migrate
   migrate-setmaxdowntime reboot restore resume save schedinfo setmaxmem
   setmem setvcpus shutdown start suspend ttyconsole undefine update-device
-  vcpucount vcpuinfo vcpupincontrol version vncdisplay"
+  vcpucount vcpuinfo vcpupin version vncdisplay"
 
 MONITOR_COMMANDS="domblkinfo domblkstat domifstat dominfodomain dommemstat
   domstate list"

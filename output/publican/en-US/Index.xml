@@ -134,7 +134,7 @@
   <xi:include href="uri.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="vcpucount.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="vcpuinfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="vcpupincontrol.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="vcpupin.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="version.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="vncdisplay.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="vol-clone.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
