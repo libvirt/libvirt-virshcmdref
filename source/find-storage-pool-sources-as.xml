@@ -7,7 +7,7 @@
 
   <options />
 
-  <availability version="0.0.0" />
+  <availability from="0.4.6" />
  
   <notes />
  
