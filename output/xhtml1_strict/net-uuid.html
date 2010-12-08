@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,14 +50,18 @@
   </head>
   <body>
     <h1>net-uuid</h1>
-    <span>When given a network name, returns its corresponding UUID.</span>
+    <span>
+    <div class="text">
+      When given a network name, returns its corresponding UUID.
+    </div>
+  </span>
     <h2>Usage</h2>
     <section class="section"><span class="command">net-uuid</span>
              
             <span class="parameter">--network</span>
                
               <span class="value">network-name</span>
- </section>
+               </section>
     <h2>Options</h2>
     <div class="section">
       <table width="100%">
@@ -86,8 +91,9 @@
     <h2>Availability</h2>
     <div class="section">
       <div class="text">
-            Available from libvirt 0.2.0 onwards
-          </div>
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -105,7 +111,7 @@ virsh # <strong>net-uuid</strong> <span class="value">mynetwork</span>
     </div>
       <div class="usage">
       <pre class="terminal">
-virsh # <strong>net-uuid</strong> --network <span class="value">mynetwork</span>
+virsh # <strong>net-uuid</strong> <em>--network</em> <span class="value">mynetwork</span>
 fa3642ab-e113-7eaa-528f-14ed78bca20</pre>
       <div class="text">
         Same as the previous example.
@@ -122,8 +128,9 @@ fa3642ab-e113-7eaa-528f-14ed78bca20</pre>
 virsh # <strong>net-uuid</strong> <span class="value">examplenetwork</span>
 <strong>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</strong></pre>
       <div class="text">
-        We can confirm by using the net-dumpxml
-        command on the returned network UUID:
+        We can confirm by using the
+        <a href="net-dumpxml.html">net-dumpxml</a> command on the returned
+        network UUID:
       </div>
       <pre class="terminal">
 virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 

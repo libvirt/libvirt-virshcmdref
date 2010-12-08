@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -51,8 +52,10 @@
   <body>
     <h1>net-autostart</h1>
     <span>
-    Enables or disables the automatic startup of a <strong>persistent</strong>
-    virtual network, by the libvirt daemon.
+    <div class="text">
+      Enables or disables the automatic startup of a <strong>persistent</strong>
+      virtual network, by the libvirt daemon.
+    </div>
   </span>
     <h2>Usage</h2>
     <section class="section"><span class="command">net-autostart</span>
@@ -108,8 +111,9 @@
     <h2>Availability</h2>
     <div class="section">
       <div class="text">
-            Available from libvirt 0.2.1 onwards
-          </div>
+            Available from libvirt 0.2.1
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -247,11 +251,11 @@ default              active     yes
       <ul>
         <li><a href="net-dumpxml.html">net-dumpxml</a> -
                 
-        Outputs the XML configuration for a virtual network, to stdout
+        Outputs the XML configuration for a virtual network, to stdout.
       </li>
         <li><a href="net-list.html">net-list</a> -
                 
-        Lists the virtual networks libvirt is aware of
+        Lists the virtual networks libvirt is aware of.
       </li>
       </ul>
     </div>

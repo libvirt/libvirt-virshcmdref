@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,17 +50,51 @@
   </head>
   <body>
     <h1>net-info</h1>
+    <span>
+    <div class="text">
+      Displays basic information for a virtual network.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-info</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-identifier</span>
+ </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID of the virtual network to display information
+          for.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.8.6
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -67,15 +102,99 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-info</strong> <span class="value">default</span>
+Name            default
+UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+<strong>Bridge:         virbr0</strong></pre>
+      <div class="text">
+        Displays basic information for the virtual network named
+        "<span class="value">default</span>".
+      </div>
+      <div class="text">
+        If the host server is running Linux, then the <strong>Bridge</strong>
+        field gives the name of the Linux network bridge being for the
+        virtual network.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-info</strong> <em>--network</em> <span class="value">default</span>
+Name            default
+UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+<strong>Bridge:</strong>         <strong>virbr0</strong></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        We begin with an existing virtual network, running on the host:
+      </div>
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes</pre>
+
+      <div class="text">
+        The virtual network "<span class="value">default</span>" is active and enabled
+        for automatic starting.
+      </div>
+      <div class="text">
+        We use the <strong>net-info</strong> command to display further
+        details:
+      </div>
+<pre class="terminal">
+# <strong>net-info</strong> <span class="value">default</span>
+Name            default
+UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+Bridge:         virbr0</pre>
+      <div class="text">
+        Some of the same information can also be retrieved using the
+        <a href="net-dumpxml.html">net-dumpxml</a> command, then looking
+        through the output:
+      </div>
+<pre class="terminal">
+virsh # net-dumpxml default
+&lt;network&gt;
+  &lt;name&gt;default&lt;/name&gt;
+  &lt;uuid&gt;1c42888c-82c9-4dda-bc9c-4387962a0c0e&lt;/uuid&gt;
+  &lt;forward mode='nat'/&gt;
+  &lt;bridge name='virbr0' stp='on' delay='0' /&gt;
+  &lt;ip address='192.168.122.1' netmask='255.255.255.0'&gt;
+    &lt;dhcp&gt;
+      &lt;range start='192.168.122.2' end='192.168.122.254' /&gt;
+    &lt;/dhcp&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-dumpxml.html">net-dumpxml</a> -
+                
+        Outputs the XML configuration for a virtual network, to stdout
+      </li>
+        <li><a href="net-list.html">net-list</a> -
+                
+        Lists the virtual networks libvirt is aware of
+      </li>
+      </ul>
     </div>
   </body>
 </html>

@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,33 +50,187 @@
   </head>
   <body>
     <h1>net-destroy</h1>
+    <span>
+    <div class="text">
+      Shuts down a virtual network, releasing any resources in use by it.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-destroy</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-identifier</span>
+               </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID of the network to be shut down.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
-    <div class="section">
-      <em>None yet</em>
+    <div class="section"><h3>Linux</h3>
+      <div class="text">
+        If the virtualisation host is running Linux, the name the
+        operating system uses for the network interface can be found
+        using the <a href="net-dumpxml.html">net-dumpxml</a> virsh command.
+      </div>
+      <div class="text">
+        Look for the name value of the <strong>bridge</strong> line.
+        <strong>virbr100</strong> in this instance:
+      </div>
+
+      <pre class="terminal">
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  <strong>&lt;bridge name='</strong><strong><em>virbr100</em></strong><strong>' stp='on' delay='0' /&gt;</strong>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+
+      <div class="text">
+        Using <strong>ifconfig</strong>, or a similar tool such as
+        <strong>ip</strong>, the <strong>virbr100</strong> interface
+        will be seen on the host when the virtual network is running:
+      </div>
+
+      <pre class="terminal">
+# ifconfig virbr100
+<strong>virbr100</strong>  Link encap:Ethernet  HWaddr D2:43:D9:47:FA:AA  
+inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+<strong>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</strong>
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+collisions:0 txqueuelen:0 
+RX bytes:0 (0.0 b)  TX bytes:1553 (1.5 KiB)</pre>
+
+      <div class="text">
+        After shutting down a virtual network with the
+        <strong>net-destroy</strong> command, the Linux OS will no
+        longer show this interface:
+      </div>
+
+      <pre class="terminal">
+# ifconfig virbr100
+<strong>virbr100: error fetching interface information: Device not found</strong></pre>
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-destroy</strong> <span class="value">mynetwork</span></pre>
+      <div class="text">
+        Shuts down the virtual network named "<em>mynetwork</em>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-destroy</strong> <em>--network</em> <span class="value">mynetwork</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-destroy</strong> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span></pre>
+      <div class="text">
+        Shuts down the virtual network that has a UUID of
+        "<em>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</em>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-destroy</strong> <em>--network</em> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        Starting with a virtual network named <span class="value">examplenetwork</span>,
+        already running on a virtualisation host server:
+      </div>
+
+<pre class="terminal">
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong><em>active</em></strong>     <strong>yes</strong></pre>
+
+      <div class="text">
+        The network is shut down by simply using the
+        <strong>net-destroy</strong> command on it:
+      </div>
+
+<pre class="terminal">
+# <strong>net-destroy</strong> <span class="value">examplenetwork</span>
+<strong>Network examplenetwork destroyed</strong></pre>
+
+      <div class="text">
+        The  command now shows it as
+        inactive:
+      </div>
+
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong><em>inactive</em></strong>   <strong>yes</strong></pre>
+
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-create.html">net-create</a> -
+                
+        Creates a running, <strong>transient</strong> virtual network, using
+        settings from an XML file.
+      </li>
+        <li><a href="net-list.html">net-list</a> -
+                
+        Displays a list of the virtual networks libvirt is aware of.
+      </li>
+        <li><a href="net-start.html">net-start</a> -
+                
+        Manually starts a virtual network that isn't running.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -50,17 +51,52 @@
   </head>
   <body>
     <h1>net-dumpxml</h1>
+    <span>
+    <div class="text">
+      Outputs the XML configuration for a virtual network, to stdout.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <span class="italic">Needs to be written</span>
-    </section>
+    <section class="section"><span class="command">net-dumpxml</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-identifier</span>
+               
+            </section>
     <h2>Options</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID of the network whose XML configuration is to be
+          displayed.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -68,15 +104,80 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-dumpxml</strong> <span class="value">mynetwork</span></pre>
+      <div class="text">
+        Outputs the XML configuration for the virtual network named
+        "<span class="italic">mynetwork</span>". 
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-dumpxml</strong> <span class="italic">--network</span> <span class="value">mynetwork</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-dumpxml</strong> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span></pre>
+      <div class="text">
+        Outputs the XML configuration for the virtual network that has a
+        UUID of "<span class="italic">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-dumpxml</strong> <span class="italic">--network</span> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="context">
+      <div class="text">
+        Starting with a few virtual networks already defined:
+      </div>
+
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       active     no</pre>
+
+      <div class="text">
+        We use <strong>net-dumpxml</strong> to look at the XML configuration for
+        "<span class="value">examplenetwork</span>":
+      </div>
+
+<pre class="terminal">
+virsh # <strong>net-dumpxml</strong> <span class="value">examplenetwork</span>
+<strong>&lt;network&gt;</strong>
+  <strong>&lt;name&gt;examplenetwork&lt;/name&gt;</strong>
+  <strong>&lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;</strong>
+  <strong>&lt;forward mode='route'/&gt;</strong>
+  <strong>&lt;bridge name='virbr100' stp='on' delay='0' /&gt;</strong>
+  <strong>&lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;</strong>
+  <strong>&lt;/ip&gt;</strong>
+<strong>&lt;/network&gt;</strong></pre>
+
+      <div class="text">
+        Done.
+      </div>
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-list.html">net-list</a> -
+                
+        Displays a list of the virtual networks libvirt is aware of.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,17 +50,50 @@
   </head>
   <body>
     <h1>net-undefine</h1>
+    <span>
+    <div class="text">
+      Removes an inactive virtual network from the libvirt configuration.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-undefine</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-identifier</span>
+ </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID of the virtual network to remove.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -67,15 +101,100 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-undefine</strong> <span class="value">examplenetwork</span></pre>
+      <div class="text">
+        Undefines the virtual network named "<span class="value">examplenetwork</span>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-undefine</strong> <em>--network</em> <span class="value">examplenetwork</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-undefine</strong> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span></pre>
+      <div class="text">
+        Undefines the virtual network having a UUID of
+        "<span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-undefine</strong> <em>--network</em> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        Starting with a virtual network named <span class="value">examplenetwork</span>,
+        already running on a virtualisation host server:
+      </div>
+<pre class="terminal">
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <strong>active</strong>     yes</pre>
+
+      <div class="text">
+        The virtual network is running (active), so we need to shut it down
+        before removing it.  We use the
+        <a href="net-destroy.html">net-destroy</a> command to shut it down:
+      </div>
+
+<pre class="terminal">
+# net-destroy examplenetwork
+<strong>Network examplenetwork destroyed</strong></pre>
+
+      <div class="text">
+        Then remove it using <strong>net-undefine</strong>:
+      </div>
+
+<pre class="terminal">
+virsh # net-undefine <span class="value">examplenetwork</span>           <span class="highlight"><strong>&lt;-- this is net-undefine in action</strong></span>
+<strong>Network examplenetwork has been undefined</strong></pre>
+
+      <div class="text">
+        Done.  The <a href="net-list.html">net-list</a> command no longer
+        shows it listed:
+      </div>
+
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes</pre>
+
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-define.html">net-define</a> -
+                
+        Adds a new <strong>persistent</strong> virtual network to libvirt,
+        without starting it, using settings from an XML file.
+      </li>
+        <li><a href="net-destroy.html">net-destroy</a> -
+                
+        Shuts down a running virtual network, as started with
+        <a href="net-create.html">net-create</a> or
+        <a href="net-start.html">net-start</a>.
+      </li>
+        <li><a href="net-list.html">net-list</a> -
+                
+        Displays a list of the virtual networks libvirt is aware of.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

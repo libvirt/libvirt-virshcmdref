@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,17 +50,51 @@
   </head>
   <body>
     <h1>net-name</h1>
+    <span>
+    <div class="text">
+      When given a virtual network UUID, returns its corresponding virtual
+      network name.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-name</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-UUID</span>
+               </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-UUID</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The UUID of the virtual network you want the name for.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -67,15 +102,67 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-name</strong> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span></pre>
+      <div class="text">
+        Returns the name of the virtual network having a UUID of
+        "<span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-name</strong> <em>--network</em> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        Given a virtual network UUID, we can determine which virtual
+        network it belongs to:
+      </div>
+
+<pre class="terminal">
+virsh # <strong>net-name</strong> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span>
+<strong>examplenetwork</strong></pre>
+
+      <div class="text">
+        We can confirm by using the
+        <a href="net-dumpxml.html">net-dumpxml</a> command on the returned
+        network name:
+      </div>
+
+<pre class="terminal">
+virsh # <strong>net-dumpxml</strong> <span class="value">examplenetwork</span>
+&lt;network&gt;
+  &lt;name&gt;<strong>examplenetwork</strong>&lt;/name&gt;                            <span class="highlight"><strong>&lt;-- the name is here</strong></span>
+  &lt;uuid&gt;<strong>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</strong>&lt;/uuid&gt;      <span class="highlight"><strong>&lt;-- the UUID is here</strong></span>
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+
+      <div class="text">
+        Using <strong>net-name</strong> is more efficient than dumping the XML
+        for the virtual network and manually extracting the
+        <strong>name</strong> value.
+      </div>
+
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-dumpxml.html">net-dumpxml</a> -
+                
+        Outputs the XML configuration for a virtual network, to stdout
+      </li>
+      </ul>
     </div>
   </body>
 </html>

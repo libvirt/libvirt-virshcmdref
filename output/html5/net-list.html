@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -50,17 +51,73 @@
   </head>
   <body>
     <h1>net-list</h1>
+    <span>
+    <div class="text">
+      Lists the virtual networks libvirt is aware of, along with basic
+      status and autostart information.
+    </div>
+    <div class="text">
+      Used without parameters, <strong>net-list</strong> displays information
+      for only <span class="italic">active</span> virtual networks.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <span class="italic">Needs to be written</span>
-    </section>
+    <section class="section"><span class="command">net-list</span>
+             
+            <span class="parameter">--all</span>
+               
+              <span class="value"/>
+               
+            <span class="parameter">--inactive</span>
+               
+              <span class="value"/>
+               
+            </section>
     <h2>Options</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--all</span>
+                   
+                  <span class="value"/></td>
+          <td class="required">
+            <span class="requirement">optional</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          Instructs <strong>net-list</strong> to display both
+          <span class="italic">active</span> and <span class="italic">inactive</span> virtual
+          networks.
+        </div>
+      </td>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--inactive</span>
+                   
+                  <span class="value"/></td>
+          <td class="required">
+            <span class="requirement">optional</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          Instructs <strong>net-list</strong> to only display
+          <span class="italic">inactive</span> virtual networks.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -68,15 +125,64 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-list</strong></pre>
+      <div class="text">
+        Displays the <span class="italic">active</span> libvirt virtual networks.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-list</strong> <span class="italic">--all</span></pre>
+      <div class="text">
+        Displays all virtual networks libvirt knows of, both
+        <span class="italic">active</span> and <span class="italic">inactive</span>.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-list</strong> <span class="italic">--inactive</span></pre>
+      <div class="text">
+        Displays only the <span class="italic">inactive</span> libvirt virtual
+        networks.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="context">
+      <div class="text">
+        Displaying all of the libvirt virtual networks on a host:
+      </div>
+
+<pre class="terminal">
+virsh # <strong>net-list</strong> <span class="italic">--all</span>
+Name                 State      Autostart
+-----------------------------------------
+<strong>default</strong>              <strong>active</strong>     <strong>yes</strong>          <span class="highlight"><strong>&lt;-- this is a virtual network</strong></span>
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong>           <span class="highlight"><strong>&lt;-- this is a virtual network</strong></span></pre>
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-autostart.html">net-autostart</a> -
+                
+        Used to enable and disable the automatic starting of a virtual
+        network.
+      </li>
+        <li><a href="net-destroy.html">net-destroy</a> -
+                
+        Shuts down a running virtual network, as started with
+        <a href="net-create.html">net-create</a> or
+        <a href="net-start.html">net-start</a>.
+      </li>
+        <li><a href="net-start.html">net-start</a> -
+                
+        Manually starts a virtual network that isn't running.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

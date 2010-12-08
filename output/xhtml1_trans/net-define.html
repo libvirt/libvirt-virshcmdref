@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,17 +50,64 @@
   </head>
   <body>
     <h1>net-define</h1>
+    <span>
+    <div class="text">
+      Adds a new <strong>persistent</strong> virtual network to libvirt, without
+      starting it, using settings from an XML file.
+    </div>
+
+    <div class="text">
+      You will need to manually start this virtual network when needed using
+      <a href="net-start.html">net-start</a>, unless you enable automatic
+      starting for it.  If you enable automatic starting, the virtual
+      network will be started when the libvirt daemon starts.
+    </div>
+
+    <div class="text">
+      To enable automatic starting of this virtual network, use the 
+      <a href="net-autostart.html">net-autostart</a> command.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-define</span>
+             
+            <span class="parameter">--file</span>
+               
+              <span class="value">file-name</span>
+ </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--file</span>
+                   
+                  <span class="value">file-name</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The full path (and file name) to an XML file containing
+          the <a href="http://libvirt.org/formatnetwork.html.html">network settings required</a>.
+        </div>
+        <div class="text">
+          The word "<strong>--file</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -67,15 +115,155 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-define</strong> <span class="value">/root/examplenetwork.xml</span></pre>
+      <div class="text">
+        Creates a new, persistent, virtual network using the settings from
+        the XML file <span class="value">/root/examplenetwork.xml</span>.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-define</strong> <em>--file</em> <span class="value">/root/examplenetwork.xml</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        Starting with an XML file we've already created, using the
+          <a href="http://libvirt.org/formatnetwork.html.html">required XML format</a>:
+      </div>
+
+<pre class="terminal">
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;</pre>
+
+<pre class="terminal">
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml</pre>
+
+      <div class="text">
+        We start virsh interactively, then create the
+        <strong>transient</strong> virtual network:
+      </div>
+
+<pre class="terminal">
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit</pre>
+
+<pre class="terminal">
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes       </pre>
+
+<pre class="terminal">
+virsh # <strong>net-define</strong> /root/examplenetwork.xml
+<strong>Network examplenetwork defined from /root/examplenetwork.xml</strong></pre>
+
+      <div class="text">
+        Defined.  Now we confirm:
+      </div>
+
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong>inactive</strong>   <strong>no</strong></pre>
+
+      <div class="text">
+        Newly defined virtual networks aren't automatically started, so we
+        manually start it now:
+      </div>
+
+<pre class="terminal">
+virsh # net-start examplenetwork
+<strong>Network examplenetwork started</strong></pre>
+
+<pre class="terminal">
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+<strong>examplenetwork</strong>       <strong>active</strong>     <strong>no</strong></pre>
+
+      <div class="text">
+        We check the details of the started network from virsh.  This shows
+        us the generated UUID, and anything else that may be in effect
+        (ie Spanning Tree Protocol).
+      </div>
+
+<pre class="terminal">
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;97ce3914-231e-4026-0a78-822e1e2e7226&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  <strong>&lt;bridge name='</strong><strong><em>virbr100</em></strong><strong>' stp='on' delay='0' /&gt;</strong>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+
+      <div class="text">
+        If the virtualisation server is running Linux, we can check how
+        it appears to the host OS:
+      </div>
+
+<pre class="terminal">
+# <strong>ifconfig</strong> <span class="value">virbr100</span>
+<strong>virbr100</strong>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <strong>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</strong>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)</pre>
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-autostart.html">net-autostart</a> -
+                
+        Used to enable and disable the automatic starting of a virtual
+        network.
+      </li>
+        <li><a href="net-create.html">net-create</a> -
+                
+        An alternative to <strong>net-define</strong>. Use this when you want a
+        <strong>transient</strong> virtual network that will disappear when the
+        host is rebooted or shutdown, rather than a <strong>persistent</strong>
+        one created using <a href="net-define.html">net-define</a>.
+      </li>
+        <li><a href="net-destroy.html">net-destroy</a> -
+                
+        Shuts down a running virtual network, as started with
+        <a href="net-create.html">net-create</a> or
+        <a href="net-start.html">net-start</a>.
+      </li>
+        <li><a href="net-start.html">net-start</a> -
+                
+        Manually starts a virtual network that isn't running.
+      </li>
+        <li><a href="http://libvirt.org/formatnetwork.html.html">http://libvirt.org/formatnetwork.html</a> -
+                
+        Gives the details of the XML needed by
+        <a href="net-define.html">net-define</a>.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

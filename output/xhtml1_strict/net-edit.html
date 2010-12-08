@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,17 +50,69 @@
   </head>
   <body>
     <h1>net-edit</h1>
+    <span>
+    <div class="text">
+      Allows the user to edit the XML configuration of a virtual network,
+      using their preferred editor.
+    </div>
+
+    <div class="text">
+      <strong>net-edit</strong> launches the command (or script) is defined in
+      the users <em>$EDITOR</em> environment variable, passing it a
+      temporary copy of the XML configuration for the virtual network.
+    </div>
+
+    <div class="text">
+    When the user exits the editor, <strong>net-edit</strong> checks if the
+    temporary file was changed.
+    </div>
+
+    <div class="text">
+      If it was, then <strong>net-edit</strong> validates it to ensure it's
+      error free. If no errors are found, <strong>net-edit</strong> then
+      overwrites the existing saved virtual network configuration using it. 
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-edit</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-identifier</span>
+               </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID of the virtual network whose XML configuration is
+          to be edited.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.4.6
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -67,15 +120,129 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-edit</strong> <span class="value">mynetwork</span></pre>
+      <div class="text">
+        Edits the XML configuration for the virtual network named
+        "<span class="value">mynetwork</span>". 
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-edit</strong> <em>--network</em> <span class="value">mynetwork</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-edit</strong> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span></pre>
+      <div class="text">
+        Edits the XML configuration for the virtual network having UUID
+        "<span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span>". 
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-edit</strong> <em>--network</em> <span class="value">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        Starting with a few virtual networks already defined:
+      </div>
+
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       active     no</pre>
+
+      <div class="text">
+        We use <a href="net-dumpxml.html">net-dumpxml</a> to view the XML
+        configuration for "<span class="value">examplenetwork</span>":
+      </div>
+
+<pre class="terminal">
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='0' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+
+      <div class="text">
+        We want to change one of the values, for example, the Spanning Tree
+        Protocol delay of 0.  Let's say want it to be 30 (seconds) instead.
+      </div>
+
+      <div class="text">
+        Using <strong>net-edit</strong>, we launch an editor on the XML
+        fragment. (<strong>vi</strong> is the editor shown):
+      </div>
+
+<pre class="terminal">
+virsh # <strong>net-edit</strong> <span class="value">examplenetwork</span></pre>
+
+      <div class="text">
+        The editor window appears, and we make the change directly:
+      </div>
+
+<pre class="terminal">
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='<em>30</em>' /&gt;          <span class="highlight"><strong>&lt;-- changed to 30 here</strong></span>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;
+~
+~
+~
+~
+~
+~
+"/tmp/virsht2UZ6L" 8L, 238C</pre>
+
+      <div class="text">
+        Then save the (temporary) file and exit the editor.
+        <strong>net-edit</strong> automatically copies the temporary XML to the
+        saved configuration, if no errors in it were detected.
+      </div>
+
+<pre class="terminal">
+<strong><em>Network examplenetwork XML configuration edited.</em></strong></pre>
+
+      <div class="text">
+        The next time the "<span class="value">examplenetwork</span>" virtual network
+        is started, it will use the new value.
+      </div>
+
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-dumpxml.html">net-dumpxml</a> -
+                
+        Outputs the XML configuration for a virtual network, to stdout.
+      </li>
+        <li><a href="net-list.html">net-list</a> -
+                
+        Displays a list of the virtual networks libvirt is aware of.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

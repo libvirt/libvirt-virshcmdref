@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,17 +50,50 @@
   </head>
   <body>
     <h1>net-start</h1>
+    <span>
+    <div class="text">
+      Starts an inactive, previously defined, virtual network.
+    </div>
+  </span>
     <h2>Usage</h2>
-    <section class="section">
-      <em>Needs to be written</em>
-    </section>
+    <section class="section"><span class="command">net-start</span>
+             
+            <span class="parameter">--network</span>
+               
+              <span class="value">network-identifier</span>
+ </section>
     <h2>Options</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <table width="100%">
+        <tr class="heading">
+          <th class="name">Name</th>
+          <th class="required">Required?</th>
+          <th class="description">Description</th>
+        </tr>
+        <tr>
+          <td class="name"><span class="parameter">--network</span>
+                   
+                  <span class="value">network-identifier</span></td>
+          <td class="required">
+            <span class="requirement">required</span>
+          </td>
+          <td class="description">
+        <div class="text">
+          The name or UUID of the virtual network to start.
+        </div>
+        <div class="text">
+          The word "<strong>--network</strong>" itself is optional.
+        </div>
+      </td>
+        </tr>
+      </table>
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.2.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -67,15 +101,155 @@
     </div>
     <h2>Usage examples</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-start</strong> <span class="value">examplenetwork</span></pre>
+      <div class="text">
+        Starts the virtual network named "<span class="value">examplenetwork</span>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-start</strong> <em>--network</em> <span class="value">examplenetwork</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-start</strong> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span></pre>
+      <div class="text">
+        Starts the virtual network that has a UUID of
+        "<span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span>".
+      </div>
+    </div>
+      <div class="usage">
+      <pre class="terminal">
+virsh # <strong>net-start</strong> <em>--network</em> <span class="value">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</span></pre>
+      <div class="text">
+        Same as the above example.
+      </div>
+    </div>
     </div>
     <h2>Example in context</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="context">
+      <div class="text">
+        Starting with an XML file we've already created, using the
+        <a href="http://libvirt.org/formatnetwork.html.html">required XML format</a>:
+      </div>
+<pre class="terminal">
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;bridge name="virbr100" /&gt;
+  &lt;forward mode="route" /&gt;
+  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+&lt;/network&gt;</pre>
+
+<pre class="terminal">
+# ls -al /root/examplenetwork.xml
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml</pre>
+
+      <div class="text">
+        We start virsh interactively, then define a <strong>persistent</strong>
+        virtual network using the XML file:
+      </div>
+
+<pre class="terminal">
+# virsh
+Welcome to virsh, the virtualization interactive terminal.
+
+Type:  'help' for help with commands
+       'quit' to quit</pre>
+
+<pre class="terminal">
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes</pre>
+
+<pre class="terminal">
+virsh # net-define /root/examplenetwork.xml
+Network examplenetwork defined from /root/examplenetwork.xml</pre>
+
+      <div class="text">
+        Defined.  Now we confirm:
+      </div>
+
+<pre class="terminal">
+virsh # net-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <strong>inactive</strong>   no        <span class="highlight"><strong>&lt;-- new persistent networks start out inactive</strong></span></pre>
+
+      <div class="text">
+        Newly defined virtual networks aren't automatically started, so we
+        manually start it now:
+      </div>
+
+<pre class="terminal">
+virsh # <strong>net-start</strong> <span class="value">examplenetwork</span>          <span class="highlight"><strong>&lt;-- this is net-start in action</strong></span>
+<strong>Network examplenetwork started</strong></pre>
+
+<pre class="terminal">
+virsh # net-list
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+examplenetwork       <strong><em>active</em></strong>     no           <span class="highlight"><strong>&lt;-- the persistent network is now running (active)</strong></span></pre>
+
+      <div class="text">
+        We check the details of the started network from virsh, using
+        <a href="net-dumpxml.html">net-dumpxml</a>.  This shows us the
+        name of the bridge network interface.
+      </div>
+
+<pre class="terminal">
+virsh # net-dumpxml examplenetwork
+&lt;network&gt;
+  &lt;name&gt;examplenetwork&lt;/name&gt;
+  &lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='<strong>virbr100</strong>' stp='on' delay='0' /&gt;          <span class="highlight"><strong>&lt;-- the "virbr100" here</strong></span>
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</pre>
+
+      <div class="text">
+        If the virtualisation server is running Linux, we can check how
+        the bridge interface appears to the host OS:
+      </div>
+
+<pre class="terminal">
+# <strong>ifconfig</strong> <span class="value">virbr100</span>
+<strong>virbr100</strong>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
+          inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
+          <strong>UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</strong>
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)</pre>
+
+    </div>
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <ul>
+        <li><a href="net-define.html">net-define</a> -
+                
+        Adds a new <strong>persistent</strong> virtual network to libvirt,
+        without starting it, using settings from an XML file.
+      </li>
+        <li><a href="net-dumpxml.html">net-dumpxml</a> -
+                
+        Outputs the XML configuration for a virtual network, to stdout
+      </li>
+        <li><a href="net-list.html">net-list</a> -
+                
+        Displays a list of the virtual networks libvirt is aware of.
+      </li>
+      </ul>
     </div>
   </body>
 </html>

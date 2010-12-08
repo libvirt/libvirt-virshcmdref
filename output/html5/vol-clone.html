@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -50,6 +51,12 @@
   </head>
   <body>
     <h1>vol-clone</h1>
+    <span>
+    <div class="text">
+      Copies an existing storage volume, including data, to a new storage
+      volume
+    </div>
+  </span>
     <h2>Usage</h2>
     <section class="section">
       <span class="italic">Needs to be written</span>
@@ -60,7 +67,10 @@
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <span class="italic">Needs to be written</span>
+      <div class="text">
+            Available from libvirt 0.6.4
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
@@ -76,7 +86,7 @@
     </div>
     <h2>See also</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <span class="italic">Needs to be written</span>
     </div>
   </body>
 </html>

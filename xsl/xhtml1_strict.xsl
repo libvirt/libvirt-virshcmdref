@@ -39,6 +39,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -153,8 +154,23 @@
         </xsl:when>
         <xsl:otherwise>
           <div class="text">
-            Available from libvirt <xsl:value-of select="@version" /> onwards
+            Available from libvirt <xsl:value-of select="@from" />
+            <xsl:choose>
+              <xsl:when test="@to">
+                to <xsl:value-of select="@to" />
+              </xsl:when>
+              <xsl:otherwise>
+                onwards
+              </xsl:otherwise>
+            </xsl:choose>
           </div>
+          <xsl:if test="@previous-name">
+            <div>
+              Prior to version <xsl:value-of select="@from" />, this
+              command was known as <span class="bold">
+              <xsl:value-of select="@previous-name" /></span>
+            </div>
+          </xsl:if>
         </xsl:otherwise>
       </xsl:choose>
     </div>

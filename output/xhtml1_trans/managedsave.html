@@ -27,6 +27,7 @@
                            width: 30%; }
           th.required    { text-align: center;
                            width: 20%; }
+          .bold          { font-weight: 700; }
           .command       { font-weight: 700; }
           .description   { color: black; }
           .highlight     { color:blue; }
@@ -49,6 +50,14 @@
   </head>
   <body>
     <h1>managedsave</h1>
+    <span>
+    <div class="text">
+      Save and destroy a running guest domain, so it can be restarted from
+      the same state at a later time.  When the virsh
+      <a href="start.html">start</a> command is next run for the
+      guest domain, it will automatically be started from this saved state
+    </div>
+  </span>
     <h2>Usage</h2>
     <section class="section">
       <em>Needs to be written</em>
@@ -59,7 +68,10 @@
     </div>
     <h2>Availability</h2>
     <div class="section">
-      <em>Needs to be written</em>
+      <div class="text">
+            Available from libvirt 0.8.0
+                onwards
+              </div>
     </div>
     <h2>Platform or Hypervisor specific notes</h2>
     <div class="section">
