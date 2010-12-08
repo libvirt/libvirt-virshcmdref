@@ -142,6 +142,13 @@
                 </xsl:otherwise>
               </xsl:choose>
              </para>
+             <xsl:if test="@previous-name">
+               <para>
+                 Prior to version <xsl:value-of select="@from" />, this
+                 command was known as <emphasis role="strong">
+                 <xsl:value-of select="@previous-name" /></emphasis>
+               </para>
+             </xsl:if>
            </xsl:otherwise>
          </xsl:choose>
       </listitem>
