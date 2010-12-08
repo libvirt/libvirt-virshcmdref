@@ -1,212 +1,151 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<?xml version="1.0"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<section id="sect-net-undefine" xreflabel="net-undefine">
-
-  <title>net-undefine</title>
-  <para>
-    Removes an inactive virtual network from the libvirt configuration
-  </para>
-
+<section id="sect-net-undefine" xreflabel="net-undefine"><title>net-undefine</title>
+    <para>
+      Removes an inactive virtual network from the libvirt configuration.
+    </para>
   <variablelist>
-    <varlistentry>
-      <term>Usage</term>
-      <listitem>
+  <varlistentry>
+    <term>Usage</term>
+    <listitem>
+      <para>
+        <command>net-undefine</command>
+        <parameter>--network</parameter>
+        <replaceable>network-identifier</replaceable>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Options</term>
+    <listitem><table id="table-net-undefine-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--network</parameter>&amp;nbsp;<replaceable>network-identifier</replaceable></para></entry><entry><para>required</para></entry><entry>
         <para>
-          <command>net-undefine</command>
-          <parameter>--network</parameter>
-          <replaceable>network-identifier</replaceable>
+          The name or UUID of the virtual network to remove.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Options</term>
-      <listitem>
-        <table id="table-net-undefine-options">
-          <title>Options</title>
-          <tgroup cols="3">
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required?</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>--network</parameter>
-                    <replaceable>network-identifier</replaceable>
-                  </para>
-                </entry>
-                <entry><para>Required</para></entry>
-                <entry>
-                  <para>
-                    The name or UUID of the virtual network to remove.
-                  </para>
-                  <para>
-                    The word "<parameter>--network</parameter>" itself is
-                    optional.
-                  </para>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>Availability</term>
-      <listitem>
         <para>
-          Available from libvirt 0.2.0 onwards
+          The word "<emphasis role="strong">--network</emphasis>" itself is optional.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Platform or Hypervisor specific notes</term>
-      <listitem>
-        <para>
-          <emphasis>None yet</emphasis>
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Examples</term>
-      <listitem>
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-undefine</command> <replaceable>examplenetwork</replaceable>
-</screen>
-          <para>
-            Undefines the virtual network named
-            "<replaceable>examplenetwork</replaceable>".
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-undefine</command> <parameter>--network</parameter> <replaceable>examplenetwork</replaceable>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-undefine</command> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>
-</screen>
-          <para>
-            Undefines the virtual network having a UUID of
-            "<replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>".
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-undefine</command> <parameter>--network</parameter> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Example in context</term>
-      <listitem>
-        <para>
-          Starting with a virtual network named
-          <replaceable>examplenetwork</replaceable>, already running on a
-          virtualisation host server:
-        </para>
-
+      </entry></row></tbody></tgroup></table></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Availability</term>
+    <listitem>
+      <para>Available from libvirt 0.2.0
+                  onwards
+                </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Platform or Hypervisor specific notes</term>
+    <listitem>
+      <para>
+        <emphasis>None yet</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Examples</term>
+    <listitem>
+      <screen>
+virsh # <emphasis role="strong">net-undefine</emphasis> <emphasis>examplenetwork</emphasis></screen>
+      <para>
+        Undefines the virtual network named "<emphasis>examplenetwork</emphasis>".
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-undefine</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>examplenetwork</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-undefine</emphasis> <emphasis>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis></screen>
+      <para>
+        Undefines the virtual network having a UUID of
+        "<emphasis>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis>".
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-undefine</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Example in context</term>
+    <listitem>
+      <para>
+        Starting with a virtual network named <emphasis>examplenetwork</emphasis>,
+        already running on a virtualisation host server:
+      </para>
 <screen>
 virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-examplenetwork       <emphasis role="strong">active</emphasis>     yes
-</screen>
+examplenetwork       <emphasis role="strong">active</emphasis>     yes</screen>
 
-        <para>
-          The virtual network is running (active), so we need to shut it
-          down before removing it.  We use the
-          <xref linkend="sect-net-destroy" /> command to shut it down:
-        </para>
+      <para>
+        The virtual network is running (active), so we need to shut it down
+        before removing it.  We use the
+        <xref linkend="sect-net-destroy" /> command to shut it down:
+      </para>
 
 <screen>
 # net-destroy examplenetwork
-<computeroutput>Network examplenetwork destroyed</computeroutput>
-</screen>
+<emphasis role="strong">Network examplenetwork destroyed</emphasis></screen>
 
-        <para>
-          Then remove it using <emphasis role="strong">net-undefine</emphasis>:
-        </para>
+      <para>
+        Then remove it using <emphasis role="strong">net-undefine</emphasis>:
+      </para>
 
 <screen>
-virsh # <command>net-undefine</command> <replaceable>examplenetwork</replaceable>       <emphasis role="strong">&lt;-- this is</emphasis> <emphasis><emphasis role="strong">net-undefine</emphasis></emphasis> <emphasis role="strong">in action</emphasis>
-<computeroutput>Network examplenetwork has been undefined</computeroutput>
-</screen>
+virsh # net-undefine <emphasis>examplenetwork</emphasis>       <emphasis role="strong">&lt;-- this is net-undefine in action</emphasis>
+<emphasis role="strong">Network examplenetwork has been undefined</emphasis></screen>
 
-        <para>
-          Done.  The <xref linkend="sect-net-list" /> command no longer
-          shows it listed:
-        </para>
+      <para>
+        Done.  The <xref linkend="sect-net-list" /> command no longer
+        shows it listed:
+      </para>
 
 <screen>
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
-default              active     yes
-</screen>
+default              active     yes</screen>
 
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>See also</term>
-      <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-define" /> - Adds a new
-              <emphasis role="strong">persistent</emphasis> virtual network
-              to libvirt, without starting it, using settings from an XML
-              file.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-destroy" /> - Shuts down a running
-              virtual network, as started with
-              <xref linkend="sect-net-create" /> or
-              <xref linkend="sect-net-start" />.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-list" /> - Displays a list of the
-              virtual networks libvirt is aware of.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
-
-  </variablelist>
-</section>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>See also</term>
+    <listitem>
+      <itemizedlist>
+        <listitem>
+          <para><xref linkend="sect-net-define" /> -
+                  
+        Adds a new <emphasis role="strong">persistent</emphasis> virtual network to libvirt,
+        without starting it, using settings from an XML file.
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-destroy" /> -
+                  
+        Shuts down a running virtual network, as started with
+        <xref linkend="sect-net-create" /> or
+        <xref linkend="sect-net-start" />.
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-list" /> -
+                  
+        Displays a list of the virtual networks libvirt is aware of.
+      </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </varlistentry>
+</variablelist></section>

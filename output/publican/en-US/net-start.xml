@@ -1,213 +1,153 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<?xml version="1.0"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<section id="sect-net-start" xreflabel="net-start">
-
-  <title>net-start</title>
-  <para>
-    Starts an inactive, previously defined, virtual network.
-  </para>
-
+<section id="sect-net-start" xreflabel="net-start"><title>net-start</title>
+    <para>
+      Starts an inactive, previously defined, virtual network.
+    </para>
   <variablelist>
-    <varlistentry>
-      <term>Usage</term>
-      <listitem>
+  <varlistentry>
+    <term>Usage</term>
+    <listitem>
+      <para>
+        <command>net-start</command>
+        <parameter>--network</parameter>
+        <replaceable>network-identifier</replaceable>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Options</term>
+    <listitem><table id="table-net-start-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--network</parameter>&amp;nbsp;<replaceable>network-identifier</replaceable></para></entry><entry><para>required</para></entry><entry>
         <para>
-          <command>net-start</command>
-          <parameter>--network</parameter>
-          <replaceable>network-identifier</replaceable>
+          The name or UUID of the virtual network to start.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Options</term>
-      <listitem>
-        <table id="table-net-start-options">
-          <title>Options</title>
-          <tgroup cols="3">
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required?</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>--network</parameter>
-                    <replaceable>network-identifier</replaceable>
-                  </para>
-                </entry>
-                <entry><para>Required</para></entry>
-                <entry>
-                  <para>
-                    The name or UUID of the virtual network to start.
-                  </para>
-                  <para>
-                    The word "<parameter>--network</parameter>" itself is
-                    optional.
-                  </para>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>Availability</term>
-      <listitem>
         <para>
-          Available from libvirt 0.2.0 onwards
+          The word "<emphasis role="strong">--network</emphasis>" itself is optional.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Platform or Hypervisor specific notes</term>
-      <listitem>
-        <para>
-          <emphasis>None yet</emphasis>
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Examples</term>
-      <listitem>
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-start</command> <replaceable>examplenetwork</replaceable>
-</screen>
-          <para>
-            Starts the virtual network named
-            "<replaceable>examplenetwork</replaceable>".
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-start</command> <parameter>--network</parameter> <replaceable>examplenetwork</replaceable>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-start</command> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>
-</screen>
-          <para>
-            Starts the virtual network that has a UUID of
-            "<replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>".
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-start</command> <parameter>--network</parameter> <replaceable>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</replaceable>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Example in context</term>
-      <listitem>
-        <para>
-          Starting with an XML file we've already created, using the
-          <ulink url="http://libvirt.org/formatnetwork.html">required XML
-          format</ulink>:
-        </para>
+      </entry></row></tbody></tgroup></table></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Availability</term>
+    <listitem>
+      <para>Available from libvirt 0.2.0
+                  onwards
+                </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Platform or Hypervisor specific notes</term>
+    <listitem>
+      <para>
+        <emphasis>None yet</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Examples</term>
+    <listitem>
+      <screen>
+virsh # <emphasis role="strong">net-start</emphasis> <emphasis>examplenetwork</emphasis></screen>
+      <para>
+        Starts the virtual network named "<emphasis>examplenetwork</emphasis>".
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-start</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>examplenetwork</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-start</emphasis> <emphasis>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis></screen>
+      <para>
+        Starts the virtual network that has a UUID of
+        "<emphasis>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis>".
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-start</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Example in context</term>
+    <listitem>
+      <para>
+        Starting with an XML file we've already created, using the
+        <ulink url="http://libvirt.org/formatnetwork.html">required XML format</ulink>:
+      </para>
 <screen>
 &lt;network&gt;
   &lt;name&gt;examplenetwork&lt;/name&gt;
   &lt;bridge name="virbr100" /&gt;
   &lt;forward mode="route" /&gt;
   &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
-&lt;/network&gt;
-</screen>
+&lt;/network&gt;</screen>
 
 <screen>
 # ls -al /root/examplenetwork.xml
--rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml
-</screen>
+-rw-r--r--. 1 root root 162 Nov  7 16:43 /root/examplenetwork.xml</screen>
 
-        <para>
-          We start virsh interactively, then define a
-          <emphasis>persistent</emphasis> virtual network using the XML
-          file:
-        </para>
+      <para>
+        We start virsh interactively, then define a <emphasis role="strong">persistent</emphasis>
+        virtual network using the XML file:
+      </para>
 
 <screen>
 # virsh
 Welcome to virsh, the virtualization interactive terminal.
 
 Type:  'help' for help with commands
-       'quit' to quit
-</screen>
+       'quit' to quit</screen>
 
 <screen>
 virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
-default              active     yes       
-</screen>
+default              active     yes</screen>
 
 <screen>
 virsh # net-define /root/examplenetwork.xml
-Network examplenetwork defined from /root/examplenetwork.xml
-</screen>
+Network examplenetwork defined from /root/examplenetwork.xml</screen>
 
-        <para>
-          Defined.  Now we confirm:
-        </para>
+      <para>
+        Defined.  Now we confirm:
+      </para>
 
 <screen>
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-examplenetwork       <emphasis role="strong">inactive</emphasis>   no    <emphasis role="strong">&lt;-- new persistent networks start out inactive</emphasis>
-</screen>
+examplenetwork       <emphasis role="strong">inactive</emphasis>   no    <emphasis role="strong">&lt;-- new persistent networks start out inactive</emphasis></screen>
 
-        <para>
-          Newly defined virtual networks aren't automatically started, so
-          we manually start it now:
-        </para>
+      <para>
+        Newly defined virtual networks aren't automatically started, so we
+        manually start it now:
+      </para>
 
 <screen>
-virsh # <command>net-start</command> <replaceable>examplenetwork</replaceable>      <emphasis role="strong">&lt;-- this is</emphasis> <emphasis><emphasis role="strong">net-start</emphasis></emphasis> <emphasis role="strong">in action</emphasis>
-<computeroutput>Network examplenetwork started</computeroutput>
-</screen>
+virsh # <emphasis role="strong">net-start</emphasis> <emphasis>examplenetwork</emphasis>      <emphasis role="strong">&lt;-- this is net-start in action</emphasis>
+<emphasis role="strong">Network examplenetwork started</emphasis></screen>
 
 <screen>
 virsh # net-list
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-examplenetwork       <emphasis><emphasis role="strong">active</emphasis></emphasis>     no       <emphasis role="strong">&lt;-- the persistent network is now running (active)</emphasis>
-</screen>
+examplenetwork       <emphasis role="strong"><emphasis>active</emphasis></emphasis>     no       <emphasis role="strong">&lt;-- the persistent network is now running (active)</emphasis></screen>
 
-        <para>
-          We check the details of the started network from virsh, using
-          <xref linkend="sect-net-dumpxml" />.  This shows us the name of
-          the bridge network interface.
-        </para>
+      <para>
+        We check the details of the started network from virsh, using
+        <xref linkend="sect-net-dumpxml" />.  This shows us the
+        name of the bridge network interface.
+      </para>
 
 <screen>
 virsh # net-dumpxml examplenetwork
@@ -218,55 +158,49 @@ virsh # net-dumpxml examplenetwork
   &lt;bridge name='<emphasis role="strong">virbr100</emphasis>' stp='on' delay='0' /&gt;      <emphasis role="strong">&lt;-- the "virbr100" here</emphasis>
   &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
   &lt;/ip&gt;
-&lt;/network&gt;
-</screen>
+&lt;/network&gt;</screen>
 
-        <para>
-          If the virtualisation server is running Linux, we can check how
-          the bridge interface appears to the host OS:
-        </para>
+      <para>
+        If the virtualisation server is running Linux, we can check how
+        the bridge interface appears to the host OS:
+      </para>
 
 <screen>
-# <command>ifconfig</command> <replaceable>virbr100</replaceable>
+# <emphasis role="strong">ifconfig</emphasis> <emphasis>virbr100</emphasis>
 <emphasis role="strong">virbr100</emphasis>  Link encap:Ethernet  HWaddr A6:45:97:AE:8E:08  
           inet addr:10.10.120.1  Bcast:10.10.120.255  Mask:255.255.255.0
           <emphasis role="strong">UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</emphasis>
           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
           TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0 
-          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)
-</screen>
+          RX bytes:0 (0.0 b)  TX bytes:2653 (2.5 KiB)</screen>
 
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>See also</term>
-      <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-define" /> - Adds a new
-              <emphasis role="strong">persistent</emphasis> virtual network
-              to libvirt, without starting it, using settings from an XML
-              file.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-dumpxml" /> - Outputs the XML
-              configuration for a virtual network, to stdout.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-list" /> - Displays a list of the
-              virtual networks libvirt is aware of.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
-
-  </variablelist>
-</section>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>See also</term>
+    <listitem>
+      <itemizedlist>
+        <listitem>
+          <para><xref linkend="sect-net-define" /> -
+                  
+        Adds a new <emphasis role="strong">persistent</emphasis> virtual network to libvirt,
+        without starting it, using settings from an XML file.
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-dumpxml" /> -
+                  
+        Outputs the XML configuration for a virtual network, to stdout
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-list" /> -
+                  
+        Displays a list of the virtual networks libvirt is aware of.
+      </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </varlistentry>
+</variablelist></section>

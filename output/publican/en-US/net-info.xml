@@ -1,162 +1,119 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<?xml version="1.0"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<section id="sect-net-info" xreflabel="net-info">
-
-  <title>net-info</title>
-  <para>
-    Displays basic information for a virtual network
-  </para>
-
+<section id="sect-net-info" xreflabel="net-info"><title>net-info</title>
+    <para>
+      Displays basic information for a virtual network.
+    </para>
   <variablelist>
-    <varlistentry>
-      <term>Usage</term>
-      <listitem>
+  <varlistentry>
+    <term>Usage</term>
+    <listitem>
+      <para>
+        <command>net-info</command>
+        <parameter>--network</parameter>
+        <replaceable>network-identifier</replaceable>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Options</term>
+    <listitem><table id="table-net-info-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--network</parameter>&amp;nbsp;<replaceable>network-identifier</replaceable></para></entry><entry><para>required</para></entry><entry>
         <para>
-          <command>net-info</command>
-          <parameter>--network</parameter>
-          <replaceable>network-identifier</replaceable>
+          The name or UUID of the virtual network to display information
+          for.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Options</term>
-      <listitem>
-        <table id="table-net-info-options">
-          <title>Options</title>
-          <tgroup cols="3">
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required?</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>--network</parameter>
-                    <replaceable>network-identifier</replaceable>
-                  </para>
-                </entry>
-                <entry><para>Required</para></entry>
-                <entry>
-                  <para>
-                    The name or UUID of the virtual network to display
-                    information for.
-                  </para>
-                  <para>
-                    The word "<parameter>--network</parameter>" itself is
-                    optional.
-                  </para>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>Availability</term>
-      <listitem>
         <para>
-          Available from libvirt 0.8.6 onwards
+          The word "<emphasis role="strong">--network</emphasis>" itself is optional.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Platform or Hypervisor specific notes</term>
-      <listitem>
-        <para>
-          <emphasis>None yet</emphasis>
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Examples</term>
-      <listitem>
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-info</command> <replaceable>default</replaceable>
+      </entry></row></tbody></tgroup></table></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Availability</term>
+    <listitem>
+      <para>Available from libvirt 0.8.6
+                  onwards
+                </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Platform or Hypervisor specific notes</term>
+    <listitem>
+      <para>
+        <emphasis>None yet</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Examples</term>
+    <listitem>
+      <screen>
+virsh # <emphasis role="strong">net-info</emphasis> <emphasis>default</emphasis>
 Name            default
 UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
 Active:         yes
 Persistent:     yes
 Autostart:      yes
-<emphasis role="strong">Bridge:         virbr0</emphasis>
-</screen>
-          <para>
-            Displays basic information for the virtual network named
-            "<replaceable>default</replaceable>".
-          </para>
-          <para>
-            If the host server is running Linux, then the
-            <emphasis role="strong">Bridge</emphasis> field gives the name
-            of the Linux network bridge being for the virtual network.
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-info</command> <parameter>--network</parameter> <replaceable>default</replaceable>
+<emphasis role="strong">Bridge:         virbr0</emphasis></screen>
+      <para>
+        Displays basic information for the virtual network named
+        "<emphasis>default</emphasis>".
+      </para>
+      <para>
+        If the host server is running Linux, then the <emphasis role="strong">Bridge</emphasis>
+        field gives the name of the Linux network bridge being for the
+        virtual network.
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-info</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>default</emphasis>
 Name            default
 UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
 Active:         yes
 Persistent:     yes
 Autostart:      yes
-<emphasis role="strong">Bridge:</emphasis>         <emphasis role="strong">virbr0</emphasis>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Example in context</term>
-      <listitem>
-        <para>
-          We begin with an existing virtual network, running on the host:
-        </para>
+<emphasis role="strong">Bridge:</emphasis>         <emphasis role="strong">virbr0</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Example in context</term>
+    <listitem>
+      <para>
+        We begin with an existing virtual network, running on the host:
+      </para>
 <screen>
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
-default              active     yes
-</screen>
+default              active     yes</screen>
 
-        <para>
-          The virtual network "<replaceable>default</replaceable>" is active
-          and enabled for automatic starting.
-        </para>
-        <para>
-          We use the <emphasis role="strong">net-info</emphasis> command to
-          display further details:
-        </para>
+      <para>
+        The virtual network "<emphasis>default</emphasis>" is active and enabled
+        for automatic starting.
+      </para>
+      <para>
+        We use the <emphasis role="strong">net-info</emphasis> command to display further
+        details:
+      </para>
 <screen>
-# <command>net-info</command> <replaceable>default</replaceable>
+# <emphasis role="strong">net-info</emphasis> <emphasis>default</emphasis>
 Name            default
 UUID            1c42888c-82c9-4dda-bc9c-4387962a0c0e
 Active:         yes
 Persistent:     yes
 Autostart:      yes
-Bridge:         virbr0
-</screen>
-        <para>
-          Some of the same information can also be retrieved using the
-          <xref linkend="sect-net-dumpxml" /> command, then looking through
-          the output:
-        </para>
+Bridge:         virbr0</screen>
+      <para>
+        Some of the same information can also be retrieved using the
+        <xref linkend="sect-net-dumpxml" /> command, then looking
+        through the output:
+      </para>
 <screen>
 virsh # net-dumpxml default
 &lt;network&gt;
@@ -169,30 +126,26 @@ virsh # net-dumpxml default
       &lt;range start='192.168.122.2' end='192.168.122.254' /&gt;
     &lt;/dhcp&gt;
   &lt;/ip&gt;
-&lt;/network&gt;
-</screen>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>See also</term>
-      <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-dumpxml" /> - Outputs the XML
-              configuration for a virtual network, to stdout.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-list" /> - Lists the virtual networks
-              livirt is aware of
-            </para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
-
-  </variablelist>
-</section>
+&lt;/network&gt;</screen>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>See also</term>
+    <listitem>
+      <itemizedlist>
+        <listitem>
+          <para><xref linkend="sect-net-dumpxml" /> -
+                  
+        Outputs the XML configuration for a virtual network, to stdout
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-list" /> -
+                  
+        Lists the virtual networks libvirt is aware of
+      </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </varlistentry>
+</variablelist></section>

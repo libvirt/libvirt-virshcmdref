@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
+%BOOK_ENTITIES;
+]>
+<section id="sect-snapshot-revert" xreflabel="snapshot-revert"><title>snapshot-revert</title>
+    <para>
+      Reverts a domain to a given snapshot
+    </para>
+  <variablelist>
+  <varlistentry>
+    <term>Usage</term>
+    <listitem>
+      <para>
+        <command>snapshot-revert</command>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Options</term>
+    <listitem>
+      <para>
+        <emphasis>Needs to be written</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Availability</term>
+    <listitem>
+      <para>Available from libvirt 0.8.0
+                  onwards
+                </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Platform or Hypervisor specific notes</term>
+    <listitem>
+      <para>
+        <emphasis>None yet</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Examples</term>
+    <listitem>
+      <para>
+        <emphasis>Needs to be written</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Example in context</term>
+    <listitem>
+      <para>
+        <emphasis>Needs to be written</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>See also</term>
+    <listitem>
+      <para>
+        <emphasis>Needs to be written</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+</variablelist></section>

@@ -4,7 +4,11 @@
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<section id="sect-net-uuid" xreflabel="net-uuid"><title>net-uuid</title><para>When given a network name, returns its corresponding UUID</para><variablelist>
+<section id="sect-net-uuid" xreflabel="net-uuid"><title>net-uuid</title>
+    <para>
+      When given a network name, returns its corresponding UUID.
+    </para>
+  <variablelist>
   <varlistentry>
     <term>Usage</term>
     <listitem>
@@ -17,12 +21,21 @@
   </varlistentry>
   <varlistentry>
     <term>Options</term>
-    <listitem><table id="table-net-uuid-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--network</parameter>&amp;nbsp;<replaceable>network-name</replaceable></para></entry><entry><para>required</para></entry><entry><para>The name of the virtual network you want the UUID for.</para><para>The word "<emphasis role="strong">--network</emphasis>" itself is optional.</para></entry></row></tbody></tgroup></table></listitem>
+    <listitem><table id="table-net-uuid-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--network</parameter>&amp;nbsp;<replaceable>network-name</replaceable></para></entry><entry><para>required</para></entry><entry>
+        <para>
+          The name of the virtual network you want the UUID for.
+        </para>
+        <para>
+          The word "<emphasis role="strong">--network</emphasis>" itself is optional.
+        </para>
+      </entry></row></tbody></tgroup></table></listitem>
   </varlistentry>
   <varlistentry>
     <term>Availability</term>
     <listitem>
-      <para>Available from libvirt 0.2.0 onwards</para>
+      <para>Available from libvirt 0.2.0
+                  onwards
+                </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -36,51 +49,50 @@
   <varlistentry>
     <term>Examples</term>
     <listitem>
-      <para>
       <screen>
-        virsh # <emphasis role="strong">net-uuid</emphasis> <emphasis>mynetwork</emphasis>
-        
-        <emphasis role="strong">fa3642ab-e113-7eaa-528f-14ed78bca20</emphasis>
-      </screen>
-      Returns the UUID of the virtual network named "<emphasis role="strong">mynetwork</emphasis>".
-    </para>
+virsh # <emphasis role="strong">net-uuid</emphasis> <emphasis>mynetwork</emphasis>
+<emphasis role="strong">fa3642ab-e113-7eaa-528f-14ed78bca20</emphasis></screen>
       <para>
+        Returns the UUID of the virtual network named "<emphasis role="strong">mynetwork</emphasis>".
+      </para>
+    
       <screen>
-        virsh # <emphasis role="strong">net-uuid</emphasis> --network
-        <emphasis>mynetwork</emphasis>
-        
-        fa3642ab-e113-7eaa-528f-14ed78bca20
-      </screen>
-      Same as the previous example.
-    </para>
+virsh # <emphasis role="strong">net-uuid</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>mynetwork</emphasis>
+fa3642ab-e113-7eaa-528f-14ed78bca20</screen>
+      <para>
+        Same as the previous example.
+      </para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>Example in context</term>
     <listitem>
       <para>
-      Given a virtual network name, we can get its UUID:
+        Given a virtual network name, we can get its UUID:
+      </para>
       <screen>
-        virsh # <emphasis role="strong">net-uuid</emphasis> <emphasis>examplenetwork</emphasis>
-        
-        <emphasis role="strong">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</emphasis>
-      </screen>
-      We can confirm by using the net-dumpxml
-      command on the returned network UUID:
+virsh # <emphasis role="strong">net-uuid</emphasis> <emphasis>examplenetwork</emphasis>
+<emphasis role="strong">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</emphasis></screen>
+      <para>
+        We can confirm by using the
+        <xref linkend="sect-net-dumpxml" /> command on the returned
+        network UUID:
+      </para>
       <screen>
-        virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 
-        &lt;network&gt; 
-          &lt;name&gt;<emphasis role="strong">examplenetwork</emphasis>&lt;/name&gt;<emphasis role="strong">&lt;-- the name is here</emphasis> 
-          &lt;uuid&gt;<emphasis role="strong">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis>&lt;/uuid&gt;<emphasis role="strong">&lt;-- the UUID is here</emphasis>
-          &lt;forward mode='route'/&gt;
-          &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
-          &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
-          &lt;/ip&gt;
-        &lt;/network&gt;
-      </screen>
-      Using <emphasis role="strong">net-uuid</emphasis> is more efficient than dumping the XML for
-      the virtual network and manually extracting the <emphasis role="strong">uuid</emphasis> value.
-    </para>
+virsh # net-dumpxml bfbc4c69-7d6a-cc9a-904c-09910ce179c0 
+&lt;network&gt; 
+  &lt;name&gt;<emphasis role="strong">examplenetwork</emphasis>&lt;/name&gt;<emphasis role="strong">&lt;-- the name is here</emphasis> 
+  &lt;uuid&gt;<emphasis role="strong">b7005dec-be1a-fe9a-338a-0cb1301dfcfd</emphasis>&lt;/uuid&gt;<emphasis role="strong">&lt;-- the UUID is here</emphasis>
+  &lt;forward mode='route'/&gt;
+  &lt;bridge name='virbr100' stp='on' delay='1' /&gt;
+  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  &lt;/ip&gt;
+&lt;/network&gt;</screen>
+      <para>
+        Using <emphasis role="strong">net-uuid</emphasis> is more efficient than dumping the XML
+        for the virtual network and manually extracting the <emphasis role="strong">uuid</emphasis>
+        value.
+      </para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -89,13 +101,13 @@
       <itemizedlist>
         <listitem>
           <para><xref linkend="sect-net-dumpxml" /> -
-              
+                  
         Outputs the XML configuration for a virtual network, to stdout
       </para>
         </listitem>
         <listitem>
           <para><xref linkend="sect-net-list" /> -
-              
+                  
         Lists the virtual networks libvirt is aware of
       </para>
         </listitem>

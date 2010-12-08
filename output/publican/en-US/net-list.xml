@@ -1,182 +1,127 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<?xml version="1.0"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<section id="sect-net-list" xreflabel="net-list">
-
-  <title>net-list</title>
-  <para>
-    Lists the virtual networks libvirt is aware of, along with basic status
-    and autostart information
-  </para>
-
-  <para>
-    Used without parameters, <command>net-list</command> displays
-    information for only <emphasis>active</emphasis> virtual networks.
-  </para>
-
+<section id="sect-net-list" xreflabel="net-list"><title>net-list</title>
+    <para>
+      Lists the virtual networks libvirt is aware of, along with basic
+      status and autostart information.
+    </para>
+    <para>
+      Used without parameters, <emphasis role="strong">net-list</emphasis> displays information
+      for only <emphasis role="italic">active</emphasis> virtual networks.
+    </para>
   <variablelist>
-    <varlistentry>
-      <term>Usage</term>
-      <listitem>
+  <varlistentry>
+    <term>Usage</term>
+    <listitem>
+      <para>
+        <command>net-list</command>
+        <parameter>--all</parameter>
+        <replaceable/>
+        <parameter>--inactive</parameter>
+        <replaceable/>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Options</term>
+    <listitem><table id="table-net-list-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--all</parameter>&amp;nbsp;<replaceable/></para></entry><entry><para>optional</para></entry><entry>
         <para>
-          <command>net-list</command>
-          <parameter>--all</parameter>
-          <parameter>--inactive</parameter>
+          Instructs <emphasis role="strong">net-list</emphasis> to display both
+          <emphasis role="italic">active</emphasis> and <emphasis role="italic">inactive</emphasis> virtual
+          networks.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Options</term>
-      <listitem>
-        <table id="table-net-list-options">
-          <title>Options</title>
-          <tgroup cols="3">
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required?</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>--all</parameter>
-                  </para>
-                </entry>
-                <entry><para>Optional</para></entry>
-                <entry>
-                  <para>
-                    Instructs <command>net-list</command> to display both
-                    <emphasis>active</emphasis> and
-                    <emphasis>inactive</emphasis> virtual networks
-                  </para>
-                </entry>
-              </row>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>--inactive</parameter>
-                  </para>
-                </entry>
-                <entry><para>Optional</para></entry>
-                <entry>
-                  <para>
-                    Instructs <command>net-list</command> to only display
-                    <emphasis>inactive</emphasis> virtual networks.
-                  </para>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>Availability</term>
-      <listitem>
+      </entry></row><row><entry><para><parameter>--inactive</parameter>&amp;nbsp;<replaceable/></para></entry><entry><para>optional</para></entry><entry>
         <para>
-          Available from libvirt 0.2.0 onwards
+          Instructs <emphasis role="strong">net-list</emphasis> to only display
+          <emphasis role="italic">inactive</emphasis> virtual networks.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Platform or Hypervisor specific notes</term>
-      <listitem>
-        <para>
-          <emphasis>None yet</emphasis>
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Examples</term>
-      <listitem>
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-list</command>
-</screen>
-          <para>
-            Displays the <emphasis>active</emphasis> libvirt virtual networks.
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-list</command> <parameter>--all</parameter>
-</screen>
-          <para>
-            Displays all virtual networks libvirt knows of, both
-            <emphasis>active</emphasis> and <emphasis>inactive</emphasis>.
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-list</command> <parameter>--inactive</parameter>
-</screen>
-          <para>
-            Displays only the <emphasis>inactive</emphasis> libvirt virtual
-            networks.
-          </para>
-        </example>
-
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Example in context</term>
-      <listitem>
-        <para>
-          Displaying all of the libvirt virtual networks on a host:
-        </para>
+      </entry></row></tbody></tgroup></table></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Availability</term>
+    <listitem>
+      <para>Available from libvirt 0.2.0
+                  onwards
+                </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Platform or Hypervisor specific notes</term>
+    <listitem>
+      <para>
+        <emphasis>None yet</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Examples</term>
+    <listitem>
+      <screen>
+virsh # <emphasis role="strong">net-list</emphasis></screen>
+      <para>
+        Displays the <emphasis role="italic">active</emphasis> libvirt virtual networks.
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-list</emphasis> <emphasis role="italic">--all</emphasis></screen>
+      <para>
+        Displays all virtual networks libvirt knows of, both
+        <emphasis role="italic">active</emphasis> and <emphasis role="italic">inactive</emphasis>.
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-list</emphasis> <emphasis role="italic">--inactive</emphasis></screen>
+      <para>
+        Displays only the <emphasis role="italic">inactive</emphasis> libvirt virtual
+        networks.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Example in context</term>
+    <listitem>
+      <para>
+        Displaying all of the libvirt virtual networks on a host:
+      </para>
 
 <screen>
-virsh # <command>net-list</command> <parameter>--all</parameter>
+virsh # <emphasis role="strong">net-list</emphasis> <emphasis role="italic">--all</emphasis>
 Name                 State      Autostart
 -----------------------------------------
-<emphasis role="strong">default</emphasis>              <emphasis role="strong">active</emphasis>     <emphasis role="strong">yes</emphasis>      <emphasis><emphasis role="strong">&lt;-- this is a virtual network</emphasis></emphasis>
-<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis role="strong">no</emphasis>       <emphasis><emphasis role="strong">&lt;-- this is a virtual network</emphasis></emphasis>
-</screen>
-
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>See also</term>
-      <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-autostart" /> - Used to enable and
-              disable the automatic starting of a virtual network.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-destroy" /> - Shuts down a running
-              virtual network, as started with
-              <xref linkend="sect-net-create" /> or
-              <xref linkend="sect-net-start" />.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-start" /> - Manually starts a virtual
-              network that isn't running.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
-
-  </variablelist>
-</section>
+<emphasis role="strong">default</emphasis>              <emphasis role="strong">active</emphasis>     <emphasis role="strong">yes</emphasis>      <emphasis role="strong">&lt;-- this is a virtual network</emphasis>
+<emphasis role="strong">examplenetwork</emphasis>       <emphasis role="strong">inactive</emphasis>   <emphasis role="strong">no</emphasis>       <emphasis role="strong">&lt;-- this is a virtual network</emphasis></screen>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>See also</term>
+    <listitem>
+      <itemizedlist>
+        <listitem>
+          <para><xref linkend="sect-net-autostart" /> -
+                  
+        Used to enable and disable the automatic starting of a virtual
+        network.
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-destroy" /> -
+                  
+        Shuts down a running virtual network, as started with
+        <xref linkend="sect-net-create" /> or
+        <xref linkend="sect-net-start" />.
+      </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="sect-net-start" /> -
+                  
+        Manually starts a virtual network that isn't running.
+      </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </varlistentry>
+</variablelist></section>

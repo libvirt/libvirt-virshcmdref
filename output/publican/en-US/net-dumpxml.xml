@@ -1,184 +1,128 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<?xml version="1.0"?>
+
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 <!ENTITY % BOOK_ENTITIES SYSTEM "Virsh_Command_Reference.ent">
 %BOOK_ENTITIES;
 ]>
-<section id="sect-net-dumpxml" xreflabel="net-dumpxml">
-
-  <title>net-dumpxml</title>
-  <para>
-    Outputs the XML configuration for a virtual network, to stdout.
-  </para>
-
+<section id="sect-net-dumpxml" xreflabel="net-dumpxml"><title>net-dumpxml</title>
+    <para>
+      Outputs the XML configuration for a virtual network, to stdout.
+    </para>
   <variablelist>
-    <varlistentry>
-      <term>Usage</term>
-      <listitem>
+  <varlistentry>
+    <term>Usage</term>
+    <listitem>
+      <para>
+        <command>net-dumpxml</command>
+        <parameter>--network</parameter>
+        <replaceable>network-identifier</replaceable>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Options</term>
+    <listitem><table id="table-net-dumpxml-options"><title>Options</title><tgroup cols="3"><thead><row><entry>Name</entry><entry>Required?</entry><entry>Description</entry></row></thead><tbody><row><entry><para><parameter>--network</parameter>&amp;nbsp;<replaceable>network-identifier</replaceable></para></entry><entry><para>required</para></entry><entry>
         <para>
-          <command>net-dumpxml</command>
-          <parameter>--network</parameter>
-          <replaceable>network-identifier</replaceable>
+          The name or UUID of the network whose XML configuration is to be
+          displayed.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Options</term>
-      <listitem>
-        <table id="table-net-dumpxml-options">
-          <title>Options</title>
-          <tgroup cols="3">
-            <thead>
-              <row>
-                <entry>Name</entry>
-                <entry>Required?</entry>
-                <entry>Description</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry>
-                  <para>
-                    <parameter>--network</parameter>
-                    <replaceable>network-identifier</replaceable>
-                  </para>
-                </entry>
-                <entry><para>Required</para></entry>
-                <entry>
-                  <para>
-                    The name or UUID of the network whose XML configuration
-                    is to be displayed.
-                  </para>
-                  <para>
-                    The word "<parameter>--network</parameter>" itself is
-                    optional.
-                  </para>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>Availability</term>
-      <listitem>
         <para>
-          Available from libvirt 0.2.0 onwards
+          The word "<emphasis role="strong">--network</emphasis>" itself is optional.
         </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Platform or Hypervisor specific notes</term>
-      <listitem>
-        <para>
-          <emphasis>None yet</emphasis>
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Examples</term>
-      <listitem>
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-dumpxml</command> <replaceable>mynetwork</replaceable>
-</screen>
-          <para>
-            Outputs the XML configuration for the virtual network named
-            "<emphasis>mynetwork</emphasis>". 
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-dumpxml</command> <parameter>--network</parameter> <replaceable>mynetwork</replaceable>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-dumpxml</command> <replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable>
-</screen>
-          <para>
-            Outputs the XML configuration for the virtual network that has a
-            UUID of
-            "<emphasis>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</emphasis>".
-          </para>
-        </example>
-
-        <example>
-          <title></title>
-          <screen>
-virsh # <command>net-dumpxml</command> <parameter>--network</parameter> <replaceable>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</replaceable>
-</screen>
-          <para>
-            Same as the above example.
-          </para>
-        </example>
-
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>Example in context</term>
-      <listitem>
-        <para>
-          Starting with a few virtual networks already defined:
-        </para>
+      </entry></row></tbody></tgroup></table></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Availability</term>
+    <listitem>
+      <para>Available from libvirt 0.2.0
+                  onwards
+                </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Platform or Hypervisor specific notes</term>
+    <listitem>
+      <para>
+        <emphasis>None yet</emphasis>
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Examples</term>
+    <listitem>
+      <screen>
+virsh # <emphasis role="strong">net-dumpxml</emphasis> <emphasis>mynetwork</emphasis></screen>
+      <para>
+        Outputs the XML configuration for the virtual network named
+        "<emphasis role="italic">mynetwork</emphasis>". 
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-dumpxml</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>mynetwork</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-dumpxml</emphasis> <emphasis>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</emphasis></screen>
+      <para>
+        Outputs the XML configuration for the virtual network that has a
+        UUID of "<emphasis role="italic">bfbc4c69-7d6a-cc9a-904c-09910ce179c0</emphasis>".
+      </para>
+    
+      <screen>
+virsh # <emphasis role="strong">net-dumpxml</emphasis> <emphasis role="italic">--network</emphasis> <emphasis>bfbc4c69-7d6a-cc9a-904c-09910ce179c0</emphasis></screen>
+      <para>
+        Same as the above example.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>Example in context</term>
+    <listitem>
+      <para>
+        Starting with a few virtual networks already defined:
+      </para>
 
 <screen>
 virsh # net-list --all
 Name                 State      Autostart
 -----------------------------------------
 default              active     yes
-examplenetwork       active     no
-</screen>
+examplenetwork       active     no</screen>
 
-        <para>
-          We use <emphasis role="strong">net-dumpxml</emphasis> to look at
-          the XML configuration for
-          "<replaceable>examplenetwork</replaceable>":
-        </para>
+      <para>
+        We use <emphasis role="strong">net-dumpxml</emphasis> to look at the XML configuration for
+        "<emphasis>examplenetwork</emphasis>":
+      </para>
 
 <screen>
-virsh # <command>net-dumpxml</command> <replaceable>examplenetwork</replaceable>
-<computeroutput>&lt;network&gt;</computeroutput>
-  <computeroutput>&lt;name&gt;examplenetwork&lt;/name&gt;</computeroutput>
-  <computeroutput>&lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;</computeroutput>
-  <computeroutput>&lt;forward mode='route'/&gt;</computeroutput>
-  <computeroutput>&lt;bridge name='virbr100' stp='on' delay='0' /&gt;</computeroutput>
-  <computeroutput>&lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;</computeroutput>
-  <computeroutput>&lt;/ip&gt;</computeroutput>
-<computeroutput>&lt;/network&gt;</computeroutput>
-</screen>
+virsh # <emphasis role="strong">net-dumpxml</emphasis> <emphasis>examplenetwork</emphasis>
+<emphasis role="strong">&lt;network&gt;</emphasis>
+  <emphasis role="strong">&lt;name&gt;examplenetwork&lt;/name&gt;</emphasis>
+  <emphasis role="strong">&lt;uuid&gt;b7005dec-be1a-fe9a-338a-0cb1301dfcfd&lt;/uuid&gt;</emphasis>
+  <emphasis role="strong">&lt;forward mode='route'/&gt;</emphasis>
+  <emphasis role="strong">&lt;bridge name='virbr100' stp='on' delay='0' /&gt;</emphasis>
+  <emphasis role="strong">&lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;</emphasis>
+  <emphasis role="strong">&lt;/ip&gt;</emphasis>
+<emphasis role="strong">&lt;/network&gt;</emphasis></screen>
 
-        <para>
-          Done.
-        </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>See also</term>
-      <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              <xref linkend="sect-net-list" /> - Displays a list of the
-              virtual networks libvirt is aware of. 
-            </para>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
-
-  </variablelist>
-</section>
+      <para>
+        Done.
+      </para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>See also</term>
+    <listitem>
+      <itemizedlist>
+        <listitem>
+          <para><xref linkend="sect-net-list" /> -
+                  
+        Displays a list of the virtual networks libvirt is aware of.
+      </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </varlistentry>
+</variablelist></section>
