@@ -275,7 +275,7 @@
           <entry><para>From libvirt 0.8.5</para></entry>
           <entry>
             <para>
-              Gets or sets the current memory paramters for a guest domain
+              Gets or sets the current memory parameters for a guest domain
             </para>
           </entry>
         </row>
@@ -697,7 +697,7 @@
           <entry><para>From libvirt 0.7.0</para></entry>
           <entry>
             <para>
-              Returns the MAC address for a physical host network interface 
+              Returns the MAC address for a physical host network interface
             </para>
           </entry>
         </row>
@@ -706,7 +706,7 @@
           <entry><para>From libvirt 0.7.0</para></entry>
           <entry>
             <para>
-              Returns the physical host interface name for a MAC address 
+              Returns the physical host interface name for a MAC address
             </para>
           </entry>
         </row>
@@ -1087,7 +1087,7 @@
           <entry><para>From libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              Creates a snapshot of a domain.
+              Creates a snapshot of a domain
             </para>
           </entry>
         </row>
@@ -1096,7 +1096,7 @@
           <entry><para>From libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              Gets the current snapshot for a domain.
+              Gets the current snapshot for a domain
             </para>
           </entry>
         </row>
@@ -1105,7 +1105,7 @@
           <entry><para>From libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              Removes a snapshot, and all of it's children, from a domain.
+              Removes a snapshot, and all of it's children, from a domain
             </para>
           </entry>
         </row>
@@ -1114,7 +1114,7 @@
           <entry><para>From libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              Displays the XML fragment for a domain snapshot.
+              Displays the XML fragment for a domain snapshot
             </para>
           </entry>
         </row>
@@ -1123,7 +1123,7 @@
           <entry><para>From libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              Lists the snapshots for a domain.
+              Lists the snapshots for a domain
             </para>
           </entry>
         </row>
@@ -1132,7 +1132,7 @@
           <entry><para>From libvirt 0.8.0</para></entry>
           <entry>
             <para>
-              Reverts a domain to a given snapshot.
+              Reverts a domain to a given snapshot
             </para>
           </entry>
         </row>
