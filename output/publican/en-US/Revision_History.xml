@@ -8,6 +8,23 @@
   <simpara>
     <revhistory>
       <revision>
+        <revnumber>1-0</revnumber>
+        <date>Wed Dec 07 2010</date>
+        <author>
+          <firstname>Justin</firstname>
+          <surname>Clift</surname>
+          <email>jclift@redhat.com</email>
+        </author>
+        <revdescription>
+          <simplelist>
+            <member>
+              Added a description for every virsh command, along with the
+              version of libvirt where it became available.
+            </member>
+          </simplelist>
+        </revdescription>
+      </revision>
+      <revision>
         <revnumber>0-0</revnumber>
         <date>Wed Nov 10 2010</date>
         <author>
@@ -17,7 +34,10 @@
         </author>
         <revdescription>
           <simplelist>
-            <member>Initial content added, covering the Virtual Networking commands.</member>
+            <member>
+              Initial content added, covering the Virtual Networking
+              commands.
+            </member>
           </simplelist>
         </revdescription>
       </revision>
