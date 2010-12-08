@@ -3,11 +3,15 @@
 <command>
   <name>nodedev-destroy</name>
 
-  <description />
+  <description>
+    <text>
+      Destroys a device on a physical host
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.5" />
  
   <notes />
  

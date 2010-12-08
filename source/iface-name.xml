@@ -3,11 +3,15 @@
 <command>
   <name>iface-name</name>
 
-  <description />
+  <description>
+    <text>
+      Returns the physical host interface name for a MAC address
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.0" />
  
   <notes />
  

@@ -3,11 +3,16 @@
 <command>
   <name>nodedev-dettach</name>
 
-  <description />
+  <description>
+    <text>
+      Detach a node device from its device driver before assigning to a
+      guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.1" />
  
   <notes />
  

@@ -3,11 +3,15 @@
 <command>
   <name>domuuid</name>
 
-  <description />
+  <description>
+    <text>
+      Convert a guest domain name or id to guest domain UUID
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.1" />
  
   <notes />
  

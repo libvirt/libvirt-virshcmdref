@@ -3,11 +3,15 @@
 <command>
   <name>vcpupin</name>
 
-  <description />
+  <description>
+    <text>
+      Pin guest domain virtual CPUs to physical host CPUs
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.4" />
  
   <notes />
  

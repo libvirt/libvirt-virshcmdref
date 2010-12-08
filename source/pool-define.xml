@@ -3,7 +3,12 @@
 <command>
   <name>pool-define</name>
 
-  <description />
+  <description>
+    <text>
+      Add a new <bold>persistent</bold> storage pool to the configuration,
+      without starting it, using settings from an XML file
+    </text>
+  </description>
 
   <options />
 

@@ -3,11 +3,15 @@
 <command>
   <name>define</name>
 
-  <description />
+  <description>
+    <text>
+      Define, but don't start, a guest domain from an XML file
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.6" />
  
   <notes />
  

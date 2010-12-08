@@ -3,11 +3,15 @@
 <command>
   <name>console</name>
 
-  <description />
+  <description>
+    <text>
+      Connect the virtual serial console for the guest
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
  

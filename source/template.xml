@@ -3,13 +3,18 @@
 <command>
   <name>__NAME__</name>
 
-  <description />
+  <description>
+    <text>
+      
+    </text>
+  </description>
 
   <options>
     <parameter requirement="required">
       <keyword requirement="optional">--network</keyword>
       <value type="string" requirement="required">network-name</value>
       <description>
+    <text>
         <text>
           TEXT
         </text>

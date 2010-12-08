@@ -3,11 +3,15 @@
 <command>
   <name>uri</name>
 
-  <description />
+  <description>
+    <text>
+      Display the hypervisor canonical URI
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.3.0" />
  
   <notes />
  

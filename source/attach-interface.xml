@@ -3,11 +3,15 @@
 <command>
   <name>attach-interface</name>
 
-  <description />
+  <description>
+    <text>
+      Attach network interface
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.3.0" />
  
   <notes />
  

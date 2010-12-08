@@ -3,11 +3,15 @@
 <command>
   <name>update-device</name>
 
-  <description />
+  <description>
+    <text>
+      Update device from an XML file
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

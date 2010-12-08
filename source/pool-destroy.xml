@@ -3,7 +3,12 @@
 <command>
   <name>pool-destroy</name>
 
-  <description />
+  <description>
+    <text>
+      Shuts down a storage pool (from the libvirt point of view), releasing
+      any resources in use by it
+    </text>
+  </description>
 
   <options />
 

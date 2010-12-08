@@ -3,7 +3,11 @@
 <command>
   <name>find-storage-pool-sources-as</name>
 
-  <description />
+  <description>
+    <text>
+      Discover potential storage pool sources
+    </text>
+  </description>
 
   <options />
 

@@ -3,7 +3,12 @@
 <command>
   <name>pool-edit</name>
 
-  <description />
+  <description>
+    <text>
+      Allows the user to edit the XML configuration of a storage pool, using
+      their preferred editor
+    </text>
+  </description>
 
   <options />
 

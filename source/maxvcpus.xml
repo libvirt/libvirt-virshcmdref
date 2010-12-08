@@ -3,11 +3,16 @@
 <command>
   <name>maxvcpus</name>
 
-  <description />
+  <description>
+    <text>
+      Show maximum number of virtual CPUs for guest domains on this
+      connection
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.5" />
  
   <notes />
  

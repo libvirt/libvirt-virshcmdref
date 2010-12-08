@@ -3,7 +3,11 @@
 <command>
   <name>pool-delete</name>
 
-  <description />
+  <description>
+    <text>
+      Delete a storage pool
+    </text>
+  </description>
 
   <options />
 

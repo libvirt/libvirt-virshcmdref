@@ -3,7 +3,11 @@
 <command>
   <name>__NAME__</name>
 
-  <description />
+  <description>
+    <text>
+      
+    </text>
+  </description>
 
   <options />
 

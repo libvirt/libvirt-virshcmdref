@@ -3,11 +3,15 @@
 <command>
   <name>vol-create-from</name>
 
-  <description />
+  <description>
+    <text>
+      Create a new storage volume from an existing storage volume
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.4" />
  
   <notes />
  

@@ -3,11 +3,15 @@
 <command>
   <name>restore</name>
 
-  <description />
+  <description>
+    <text>
+      Restore a guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.2" />
  
   <notes />
  

@@ -3,11 +3,15 @@
 <command>
   <name>migrate</name>
 
-  <description />
+  <description>
+    <text>
+      Migrates a guest domain to another host
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.3.2" />
  
   <notes />
  

@@ -3,11 +3,15 @@
 <command>
   <name>vol-pool</name>
 
-  <description />
+  <description>
+    <text>
+      Returns the storage pool name or UUID for a given storage volume
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.2" />
  
   <notes />
  

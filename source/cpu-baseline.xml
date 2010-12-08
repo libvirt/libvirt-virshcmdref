@@ -3,11 +3,15 @@
 <command>
   <name>cpu-baseline</name>
 
-  <description />
+  <description>
+    <text>
+      Compute baseline CPU
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.7" />
  
   <notes />
  

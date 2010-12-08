@@ -3,11 +3,15 @@
 <command>
   <name>nwfilter-list</name>
 
-  <description />
+  <description>
+    <text>
+      Returns the list of network filters
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

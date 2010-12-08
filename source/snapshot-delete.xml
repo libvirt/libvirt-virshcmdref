@@ -5,7 +5,7 @@
 
   <description>
     <text>
-      Removes a snapshot, and all of it's children, from a domain.
+      Removes a snapshot, and all of it's children, from a domain
     </text>
   </description>
 

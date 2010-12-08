@@ -3,11 +3,15 @@
 <command>
   <name>setvcpus</name>
 
-  <description />
+  <description>
+    <text>
+      Change the number of virtual CPUs in the guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  

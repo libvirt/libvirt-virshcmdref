@@ -3,11 +3,15 @@
 <command>
   <name>cpu-compare</name>
 
-  <description />
+  <description>
+    <text>
+      Compare host CPU with a CPU described by an XML file
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.5" />
  
   <notes />
  

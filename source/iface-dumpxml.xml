@@ -3,11 +3,16 @@
 <command>
   <name>iface-dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Output information for a physical host network interface, as an XML
+      dump to stdout
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.0" />
  
   <notes />
  

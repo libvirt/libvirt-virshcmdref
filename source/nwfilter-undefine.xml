@@ -3,11 +3,15 @@
 <command>
   <name>nwfilter-undefine</name>
 
-  <description />
+  <description>
+    <text>
+      Undefine a network filter
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

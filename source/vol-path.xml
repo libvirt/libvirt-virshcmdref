@@ -3,11 +3,16 @@
 <command>
   <name>vol-path</name>
 
-  <description />
+  <description>
+    <text>
+      When given a storage volume name or key, returns the corresponding
+      path for that volume
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.4.1" />
  
   <notes />
  

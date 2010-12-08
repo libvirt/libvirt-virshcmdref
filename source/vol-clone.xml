@@ -3,11 +3,16 @@
 <command>
   <name>vol-clone</name>
 
-  <description />
+  <description>
+    <text>
+      Copies an existing storage volume, including data, to a new storage
+      volume
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.4" />
  
   <notes />
  

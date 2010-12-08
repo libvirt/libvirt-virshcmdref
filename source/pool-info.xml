@@ -3,7 +3,11 @@
 <command>
   <name>pool-info</name>
 
-  <description />
+  <description>
+    <text>
+      Returns basic information about a storage pool
+    </text>
+  </description>
 
   <options />
 

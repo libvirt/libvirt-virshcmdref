@@ -3,11 +3,15 @@
 <command>
   <name>vol-delete</name>
 
-  <description />
+  <description>
+    <text>
+      Removes a storage volume from a storage pool
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.4.1" />
  
   <notes />
  

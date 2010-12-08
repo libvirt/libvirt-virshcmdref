@@ -3,11 +3,15 @@
 <command>
   <name>shutdown</name>
 
-  <description />
+  <description>
+    <text>
+      Run shutdown in a guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  

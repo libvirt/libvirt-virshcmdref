@@ -3,11 +3,15 @@
 <command>
   <name>nwfilter-define</name>
 
-  <description />
+  <description>
+    <text>
+      Define a new network filter or update an existing one
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

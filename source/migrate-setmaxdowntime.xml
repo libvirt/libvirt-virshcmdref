@@ -3,11 +3,16 @@
 <command>
   <name>migrate-setmaxdowntime</name>
 
-  <description />
+  <description>
+    <text>
+      Set maximum tolerable downtime of a guest domain which is being live
+      migrated to another host
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

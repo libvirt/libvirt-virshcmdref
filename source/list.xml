@@ -3,11 +3,15 @@
 <command>
   <name>list</name>
 
-  <description />
+  <description>
+    <text>
+      Returns a list of guest domains
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  

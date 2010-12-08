@@ -3,11 +3,15 @@
 <command>
   <name>ttyconsole</name>
 
-  <description />
+  <description>
+    <text>
+      Output the device for the TTY console
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.3.2" />
  
   <notes />
  

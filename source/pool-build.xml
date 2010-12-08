@@ -3,7 +3,11 @@
 <command>
   <name>pool-build</name>
 
-  <description />
+  <description>
+    <text>
+      Build a storage pool
+    </text>
+  </description>
 
   <options />
 

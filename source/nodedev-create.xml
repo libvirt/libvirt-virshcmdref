@@ -3,11 +3,16 @@
 <command>
   <name>nodedev-create</name>
 
-  <description />
+  <description>
+    <text>
+      Create a device on the physical host, which can then be assigned to a
+      guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.5" />
  
   <notes />
  

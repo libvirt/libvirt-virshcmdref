@@ -3,7 +3,12 @@
 <command>
   <name>pool-refresh</name>
 
-  <description />
+  <description>
+    <text>
+      Re-examines the storage in a storage pool, updating the internal list
+      of volumes present and their details
+    </text>
+  </description>
 
   <options />
 

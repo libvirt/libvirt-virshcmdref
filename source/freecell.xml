@@ -3,11 +3,15 @@
 <command>
   <name>freecell</name>
 
-  <description />
+  <description>
+    <text>
+      Display available free memory for a NUMA cell
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.3.3" />
  
   <notes />
  

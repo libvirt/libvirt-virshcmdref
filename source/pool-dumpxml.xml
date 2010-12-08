@@ -3,7 +3,11 @@
 <command>
   <name>pool-dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Displays the XML configuration for a storage pool (to stdout)
+    </text>
+  </description>
 
   <options />
 

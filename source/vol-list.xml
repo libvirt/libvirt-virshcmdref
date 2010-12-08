@@ -3,11 +3,16 @@
 <command>
   <name>vol-list</name>
 
-  <description />
+  <description>
+    <text>
+      Displays a list of the storage volumes libvirt is aware of, in a given
+      storage pool
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.4.1" />
  
   <notes />
  

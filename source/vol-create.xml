@@ -3,11 +3,16 @@
 <command>
   <name>vol-create</name>
 
-  <description />
+  <description>
+    <text>
+      Creates a new storage volume, on a given storage pool, using settings
+      from an XML file
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.4.1" />
  
   <notes />
  

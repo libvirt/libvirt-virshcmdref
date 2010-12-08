@@ -3,11 +3,16 @@
 <command>
   <name>autostart</name>
 
-  <description />
+  <description>
+    <text>
+      Enable and disable the automatic starting of a guest domain when the
+      libvirt daemon starts
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.2.1" />
  
   <notes />
  

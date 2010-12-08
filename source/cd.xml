@@ -3,11 +3,15 @@
 <command>
   <name>cd</name>
 
-  <description />
+  <description>
+    <text>
+      Change the current directory
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.0" />
  
   <notes />
  

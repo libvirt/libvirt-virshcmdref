@@ -3,11 +3,15 @@
 <command>
   <name>vcpuinfo</name>
 
-  <description />
+  <description>
+    <text>
+      Returns basic information about a guest domains virtual CPUs
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.4" />
  
   <notes />
  

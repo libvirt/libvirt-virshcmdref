@@ -3,11 +3,15 @@
 <command>
   <name>vol-wipe</name>
 
-  <description />
+  <description>
+    <text>
+      Ensure data previously on a volume is not accessible to future reads
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

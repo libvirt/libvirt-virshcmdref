@@ -3,7 +3,12 @@
 <command>
   <name>pool-name</name>
 
-  <description />
+  <description>
+    <text>
+      When given a pool UUID, returns the name of the corresponding storage
+      pool
+    </text>
+  </description>
 
   <options />
 

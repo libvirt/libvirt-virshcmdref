@@ -3,7 +3,12 @@
 <command>
   <name>pool-autostart</name>
 
-  <description />
+  <description>
+    <text>
+      Enable or disable the automatic starting of a storage pool, when the
+      libvirt daemon starts
+    </text>
+  </description>
 
   <options />
 

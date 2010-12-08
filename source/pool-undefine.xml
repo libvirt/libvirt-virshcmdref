@@ -3,7 +3,11 @@
 <command>
   <name>pool-undefine</name>
 
-  <description />
+  <description>
+    <text>
+      Removes an inactive storage pool from the libvirt configuration
+    </text>
+  </description>
 
   <options />
 

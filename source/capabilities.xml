@@ -3,11 +3,15 @@
 <command>
   <name>capabilities</name>
 
-  <description />
+  <description>
+    <text>
+      Returns capabilities of hypervisor/driver
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.2.1" />
  
   <notes />
  

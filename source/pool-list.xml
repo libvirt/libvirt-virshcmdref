@@ -3,7 +3,11 @@
 <command>
   <name>pool-list</name>
 
-  <description />
+  <description>
+    <text>
+      Displays a list of the storage pools libvirt is aware of
+    </text>
+  </description>
 
   <options />
 

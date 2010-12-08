@@ -3,11 +3,15 @@
 <command>
   <name>vol-dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Displays the XML configuration for a storage volume, to stdout
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.4.1" />
  
   <notes />
  

@@ -3,11 +3,15 @@
 <command>
   <name>domjobabort</name>
 
-  <description />
+  <description>
+    <text>
+      Aborts the currently running guest domain job
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.7" />
  
   <notes />
  

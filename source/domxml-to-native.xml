@@ -3,11 +3,15 @@
 <command>
   <name>domxml-to-native</name>
 
-  <description />
+  <description>
+    <text>
+      Convert guest domain XML config to a native guest configuration format
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.4" />
  
   <notes />
  

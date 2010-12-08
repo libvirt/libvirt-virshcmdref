@@ -3,11 +3,16 @@
 <command>
   <name>exit</name>
 
-  <description />
+  <description>
+    <text>
+      Quit this interactive terminal.  Alternative name for the
+      <bold>quit</bold> command, doing exactly the same thing.
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

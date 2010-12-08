@@ -3,11 +3,16 @@
 <command>
   <name>nodedev-reattach</name>
 
-  <description />
+  <description>
+    <text>
+      Reattach a node device to its device driver, once released by the
+      guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.6.1" />
  
   <notes />
  

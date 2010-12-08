@@ -3,11 +3,15 @@
 <command>
   <name>managedsave-remove</name>
 
-  <description />
+  <description>
+    <text>
+      Remove an existing managed save state file from a guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.3" />
  
   <notes />
  

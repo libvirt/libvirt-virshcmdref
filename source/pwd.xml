@@ -3,11 +3,15 @@
 <command>
   <name>pwd</name>
 
-  <description />
+  <description>
+    <text>
+      Displays the current directory
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.0" />
  
   <notes />
  

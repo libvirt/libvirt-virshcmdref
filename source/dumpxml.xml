@@ -3,11 +3,15 @@
 <command>
   <name>dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Output the guest domain information as an XML dump to stdout
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  

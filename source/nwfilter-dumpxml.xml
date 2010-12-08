@@ -3,11 +3,15 @@
 <command>
   <name>nwfilter-dumpxml</name>
 
-  <description />
+  <description>
+    <text>
+      Output the network filter information as an XML dump to stdout
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.8.0" />
  
   <notes />
  

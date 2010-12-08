@@ -3,11 +3,15 @@
 <command>
   <name>nodedev-list</name>
 
-  <description />
+  <description>
+    <text>
+      Enumerate devices on the host
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.5.0" />
  
   <notes />
  

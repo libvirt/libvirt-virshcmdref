@@ -3,11 +3,15 @@
 <command>
   <name>setmaxmem</name>
 
-  <description />
+  <description>
+    <text>
+      Change the maximum memory allocation limit in the guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.4" />
  
   <notes />
  

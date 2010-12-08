@@ -3,11 +3,15 @@
 <command>
   <name>vncdisplay</name>
 
-  <description />
+  <description>
+    <text>
+      Output the IP address and port number for the VNC display
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.2.0" />
  
   <notes />
  

@@ -3,11 +3,15 @@
 <command>
   <name>iface-list</name>
 
-  <description />
+  <description>
+    <text>
+      Returns a list of physical host network interfaces
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.0" />
  
   <notes />
  

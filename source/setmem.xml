@@ -3,11 +3,15 @@
 <command>
   <name>setmem</name>
 
-  <description />
+  <description>
+    <text>
+      Change the current memory allocation in the guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.4" />
  
   <notes />
  

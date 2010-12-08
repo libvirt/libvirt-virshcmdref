@@ -3,11 +3,16 @@
 <command>
   <name>iface-undefine</name>
 
-  <description />
+  <description>
+    <text>
+      Removes the configuration information for a physical host network
+      interface
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.7.0" />
  
   <notes />
  

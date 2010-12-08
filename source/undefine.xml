@@ -3,11 +3,15 @@
 <command>
   <name>undefine</name>
 
-  <description />
+  <description>
+    <text>
+      Remove the configuration for an inactive guest domain
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.1.6" />
  
   <notes />
  

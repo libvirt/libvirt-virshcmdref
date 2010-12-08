@@ -3,7 +3,11 @@
 <command>
   <name>qemu-monitor-command</name>
 
-  <description />
+  <description>
+    <text>
+      Qemu monitor command
+    </text>
+  </description>
 
   <options />
 

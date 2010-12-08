@@ -3,11 +3,15 @@
 <command>
   <name>schedinfo</name>
 
-  <description />
+  <description>
+    <text>
+      Show or set scheduler parameters
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.2.3" />
  
   <notes />
  

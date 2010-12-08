@@ -3,7 +3,11 @@
 <command>
   <name>pool-start</name>
 
-  <description />
+  <description>
+    <text>
+      Starts a (previously defined) inactive storage pool
+    </text>
+  </description>
 
   <options />
 

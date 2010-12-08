@@ -3,7 +3,12 @@
 <command>
   <name>pool-create</name>
 
-  <description />
+  <description>
+    <text>
+      Create and start a <bold>transient</bold> storage pool, that will not
+      persist across system restarts, using settings from an XML file
+    </text>
+  </description>
 
   <options />
 

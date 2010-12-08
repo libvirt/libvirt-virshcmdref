@@ -3,11 +3,16 @@
 <command>
   <name>destroy</name>
 
-  <description />
+  <description>
+    <text>
+      Immediately terminates a running guest domain, releasing any resources
+      in use by it
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  

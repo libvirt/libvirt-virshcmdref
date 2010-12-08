@@ -3,11 +3,16 @@
 <command>
   <name>help</name>
 
-  <description />
+  <description>
+    <text>
+      Prints global help, command specific help, or help for a group of
+      related commands
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  

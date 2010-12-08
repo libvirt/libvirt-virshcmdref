@@ -3,11 +3,15 @@
 <command>
   <name>connect</name>
 
-  <description />
+  <description>
+    <text>
+      Connect to local hypervisor
+    </text>
+  </description>
 
   <options />
 
-  <availability from="0.0.0" />
+  <availability from="0.0.1" />
  
   <notes />
  
