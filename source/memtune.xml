@@ -5,20 +5,171 @@
 
   <description>
     <text>
-      Gets or sets the current memory parameters for a guest domain
+      Allows you to display or set the memory parameters for a guest domain
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain-identifier</value>
+      <description>
+        <text>
+          The name, id, or UUID of the guest domain
+        </text>
+        <text>
+          The word "<bold>--domain</bold>" itself is optional.
+        </text>
+      </description>
+    </parameter>
+
+    <parameter requirement="optional">
+      <keyword requirement="required">--hard-limit</keyword>
+      <value type="number" requirement="required">kb</value>
+      <description>
+        <text>
+          Maximum memory the guest domain can use, in kilobytes.
+        </text>
+      </description>
+    </parameter>
+
+    <parameter requirement="optional">
+      <keyword requirement="required">--soft-limit</keyword>
+      <value type="number" requirement="required">kb</value>
+      <description>
+        <text>
+          Minimum memory allocated to the guest domain during contention, in
+          kilobytes.
+        </text>
+      </description>
+    </parameter>
+
+    <parameter requirement="optional">
+      <keyword requirement="required">--swap-hard-limit</keyword>
+      <value type="number" requirement="required">kb</value>
+      <description>
+        <text>
+          Maximum swap memory the guest domain can use, in kilobytes.
+        </text>
+      </description>
+    </parameter>
+
+    <parameter requirement="optional">
+      <keyword requirement="required">--min-guarantee</keyword>
+      <value type="number" requirement="required">kb</value>
+      <description>
+        <text>
+          Minimum amount of memory required to start a guest domain, in
+          kilobytes.  VMware ESX and vSphere only.
+        </text>
+      </description>
+    </parameter>
+
+  </options>
 
   <availability from="0.8.5" />
  
-  <notes />
+  <notes>
+    <note os="VMware ESX and vSphere">
+      <text>
+        The <italic>--min-guarantee</italic> parameter is only used by VMware ESX and
+        vSphere.
+      </text>
+    </note>
+  </notes>
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <text>
+        Without flags the current settings are displayed:
+      </text>
+      <terminal>
+virsh # <bold>memtune</bold> <value>domain-id</value></terminal>
+    </example>
 
-  <examples type="fullcontext" />
+    <example>
+      <text>
+        This command sets the memory hard limit:
+      </text>
+      <terminal>
+virsh # <bold>memtune</bold> <value>domain-id</value> <italic>--hard-limit</italic> <value>kilobytes</value></terminal>
+    </example>
 
-  <reference type="seealso" />
+    <example>
+      <text>
+        This command sets the memory soft limit:
+      </text>
+      <terminal>
+virsh # <bold>memtune</bold> <value>domain-id</value> <italic>--soft-limit</italic> <value>kilobytes</value></terminal>
+    </example>
+
+    <example>
+      <text>
+        This command sets the swap hard limit:
+      </text>
+      <terminal>
+virsh # <bold>memtune</bold> <value>domain-id</value> <italic>--swap-hard-limit</italic> <value>kilobytes</value></terminal>
+    </example>
+
+    <example>
+      <text>
+        Adding the following lines to a guest domain xml file will set the
+        given values for the memory tunables:
+      </text>
+      <terminal>
+&lt;memtune&gt;
+  &lt;hard_limit&gt;131072&lt;/hard_limit&gt;
+  &lt;soft_limit&gt;65536&lt;/soft_limit&gt;
+  &lt;swap_hard_limit&gt;262144&lt;/swap_hard_limit&gt;
+&lt;/memtune&gt;</terminal>
+    </example>
+
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        We run the memtune command giving only a guest domain first, to see
+        what the present values for the domain are: 
+      </text>
+      <terminal>
+virsh # memtune lxcbb1
+hard_limit     : 131072
+soft_limit     : 65536
+swap_hard_limit: 262144</terminal>
+      <text>
+        This shows the value for <bold>hard_limit</bold> is
+        <value>131072</value>, which means 128MB of memory.  To change it to
+        256MB, we run the memtune command again giving it the new value (256
+        x 1024 = 262144):
+      </text>
+
+      <terminal>
+virsh # memtune lxcbb1 --hard-limit 262144</terminal>
+
+      <text>
+        Then verify the change has taken effect:
+      </text>
+
+      <terminal>
+virsh # memtune lxcbb1
+hard_limit     : 262144
+soft_limit     : 65536
+swap_hard_limit: 262144</terminal>
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="external" href="http://www.libvirt.org/formatdomain.html#elementsResources" />
+      <name>
+        XML Guest Domain Format Reference page
+      </name>
+      <description>
+        Gives the details of the XML needed by
+        <link type="internal" href="memtune" />.
+      </description>
+    </item>
+  </reference>
 
 </command>

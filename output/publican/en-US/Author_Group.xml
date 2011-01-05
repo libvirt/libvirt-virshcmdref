@@ -4,6 +4,7 @@
 %BOOK_ENTITIES;
 ]>
 <authorgroup>
+
   <author>
     <firstname>Justin</firstname>
     <surname>Clift</surname>
@@ -13,4 +14,16 @@
     </affiliation>
     <email>jclift@redhat.com</email>
   </author>
+
+  <othercredit>
+    <firstname>Nikunj A.</firstname>
+    <surname>Dadhania</surname>
+    <contrib>Graciously provided the content for the memtune page</contrib>
+    <affiliation>
+      <jobtitle>Linux Kernel Developer</jobtitle>
+      <orgname>IBM Corporation</orgname>
+    </affiliation>
+    <email>nikunj@linux.vnet.ibm.com</email>
+  </othercredit>
+
 </authorgroup>

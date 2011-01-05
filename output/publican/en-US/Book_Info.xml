@@ -7,8 +7,8 @@
   <title>Virsh Command Reference</title>
   <subtitle></subtitle>
   <productname>libvirt</productname>
-  <productnumber>0.8.6</productnumber>
-  <edition>1</edition>
+  <productnumber>0.8.7</productnumber>
+  <edition>0</edition>
   <pubsnumber>0</pubsnumber>
   <abstract>
     <para>
