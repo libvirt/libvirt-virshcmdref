@@ -28,7 +28,8 @@
       <value type="number" requirement="required">kb</value>
       <description>
         <text>
-          Maximum memory the guest domain can use, in kilobytes.
+          Maximum memory the guest domain can use, in kilobytes.  QEMU and
+          LXC only.
         </text>
       </description>
     </parameter>
@@ -38,8 +39,8 @@
       <value type="number" requirement="required">kb</value>
       <description>
         <text>
-          Minimum memory allocated to the guest domain during contention, in
-          kilobytes.
+          Minimum memory guaranteed for the guest domain during contention,
+          in kilobytes.  QEMU and LXC only.
         </text>
       </description>
     </parameter>
@@ -49,7 +50,8 @@
       <value type="number" requirement="required">kb</value>
       <description>
         <text>
-          Maximum swap memory the guest domain can use, in kilobytes.
+          Maximum swap memory the guest domain can use, in kilobytes.  QEMU
+          and LXC only.
         </text>
       </description>
     </parameter>
@@ -70,6 +72,13 @@
   <availability from="0.8.5" />
  
   <notes>
+    <note os="QEMU and LXC">
+      <text>
+        The <italic>--hard-limit</italic>, <italic>--soft-limit</italic>,
+        and <italic>--swap-hard-limit</italic> parameters are only used by
+        QEMU and LXC.
+      </text>
+    </note>
     <note os="VMware ESX and vSphere">
       <text>
         The <italic>--min-guarantee</italic> parameter is only used by VMware ESX and
