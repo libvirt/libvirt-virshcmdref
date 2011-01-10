@@ -12,7 +12,7 @@
   <options>
     <parameter requirement="required">
       <keyword requirement="optional">--domain</keyword>
-      <value type="string" requirement="required">domain-identifier</value>
+      <value type="string" requirement="required">&lt;domain-identifier&gt;</value>
       <description>
         <text>
           The name, id, or UUID of the guest domain
@@ -25,44 +25,66 @@
 
     <parameter requirement="optional">
       <keyword requirement="required">--hard-limit</keyword>
-      <value type="number" requirement="required">kb</value>
+      <value type="number" requirement="required">&lt;limit&gt;</value>
       <description>
         <text>
-          Maximum memory the guest domain can use, in kilobytes.  QEMU and
-          LXC only.
+          Maximum memory the guest domain can use.
+        </text>
+        <text>
+          Limit is in kilobytes.
+        </text>
+        <text>
+          Applies to QEMU and LXC only.
         </text>
       </description>
     </parameter>
 
     <parameter requirement="optional">
       <keyword requirement="required">--soft-limit</keyword>
-      <value type="number" requirement="required">kb</value>
+      <value type="number" requirement="required">&lt;limit&gt;</value>
       <description>
         <text>
-          Minimum memory guaranteed for the guest domain during contention,
-          in kilobytes.  QEMU and LXC only.
+          A soft limit is enforced when host is running short on free
+          resources or during resource contention. Guest's resources are
+          then pushed to soft-limit as an attempt to regain free resources.
+        </text>
+        <text>
+          Limit is in kilobytes.
+        </text>
+        <text>
+          Applies to QEMU and LXC only.
         </text>
       </description>
     </parameter>
 
     <parameter requirement="optional">
       <keyword requirement="required">--swap-hard-limit</keyword>
-      <value type="number" requirement="required">kb</value>
+      <value type="number" requirement="required">&lt;limit&gt;</value>
       <description>
         <text>
-          Maximum swap memory the guest domain can use, in kilobytes.  QEMU
-          and LXC only.
+          Maximum swap memory the guest domain can use.
+        </text>
+        <text>
+          Limit is in kilobytes.
+        </text>
+        <text>
+          Applies to QEMU and LXC only.
         </text>
       </description>
     </parameter>
 
     <parameter requirement="optional">
       <keyword requirement="required">--min-guarantee</keyword>
-      <value type="number" requirement="required">kb</value>
+      <value type="number" requirement="required">&lt;quantity&gt;</value>
       <description>
         <text>
-          Minimum amount of memory required to start a guest domain, in
-          kilobytes.  VMware ESX and vSphere only.
+          Minimum amount of memory required to start a guest domain.
+        </text>
+        <text>
+          Quantity is in kilobytes.
+        </text>
+        <text>
+          VMware ESX and vSphere only.
         </text>
       </description>
     </parameter>

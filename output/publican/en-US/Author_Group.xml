@@ -18,12 +18,26 @@
   <othercredit>
     <firstname>Nikunj A.</firstname>
     <surname>Dadhania</surname>
-    <contrib>Graciously provided the content for the memtune page</contrib>
+    <contrib>Graciously provided the initial content for the memtune
+      page
+    </contrib>
     <affiliation>
       <jobtitle>Linux Developer</jobtitle>
       <orgname>IBM Corporation</orgname>
     </affiliation>
     <email>nikunj@linux.vnet.ibm.com</email>
+  </othercredit>
+
+  <othercredit>
+    <firstname>Zdenek</firstname>
+    <surname>Styblik</surname>
+    <contrib>Provided better wording and other updates for the memtune
+      page
+    </contrib>
+    <affiliation>
+      <orgname>Libvirt.org Community</orgname>
+    </affiliation>
+    <email>stybla@turnovfree.net</email>
   </othercredit>
 
 </authorgroup>

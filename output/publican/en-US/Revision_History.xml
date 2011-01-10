@@ -8,6 +8,23 @@
   <simpara>
     <revhistory>
       <revision>
+        <revnumber>3-0</revnumber>
+        <date>Tue Jan 11 2011</date>
+        <author>
+          <firstname>Justin</firstname>
+          <surname>Clift</surname>
+          <email>jclift@redhat.com</email>
+        </author>
+        <revdescription>
+          <simplelist>
+            <member>
+              Updated the memtune content with changes provided by
+              Zdenek Styblik.
+            </member>
+          </simplelist>
+        </revdescription>
+      </revision>
+      <revision>
         <revnumber>2-0</revnumber>
         <date>Wed Jan 05 2011</date>
         <author>
