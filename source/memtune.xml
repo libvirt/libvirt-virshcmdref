@@ -44,9 +44,10 @@
       <value type="number" requirement="required">&lt;limit&gt;</value>
       <description>
         <text>
-          A soft limit is enforced when host is running short on free
-          resources or during resource contention. Guest's resources are
-          then pushed to soft-limit as an attempt to regain free resources.
+          A soft limit is enforced when the host is running short on free
+          resources or during resource contention.  The guest domains'
+          resources are then reduced to the soft-limit as an attempt to
+          regain free resources.
         </text>
         <text>
           Limit is in kilobytes.

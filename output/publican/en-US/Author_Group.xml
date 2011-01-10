@@ -16,10 +16,23 @@
   </author>
 
   <othercredit>
+    <firstname>Eric</firstname>
+    <surname>Blake</surname>
+    <contrib>
+      Provided better wording for the memtune page
+    </contrib>
+    <affiliation>
+      <orgname>Red Hat, Inc.</orgname>
+      <orgdiv>Emerging Technologies - Virtualization</orgdiv>
+    </affiliation>
+    <email>eblake@redhat.com</email>
+  </othercredit>
+
+  <othercredit>
     <firstname>Nikunj A.</firstname>
     <surname>Dadhania</surname>
-    <contrib>Graciously provided the initial content for the memtune
-      page
+    <contrib>
+      Graciously provided the initial content for the memtune page
     </contrib>
     <affiliation>
       <jobtitle>Linux Developer</jobtitle>
@@ -31,8 +44,8 @@
   <othercredit>
     <firstname>Zdenek</firstname>
     <surname>Styblik</surname>
-    <contrib>Provided better wording and other updates for the memtune
-      page
+    <contrib>
+      Provided better wording and other updates for the memtune page
     </contrib>
     <affiliation>
       <orgname>Libvirt.org Community</orgname>
