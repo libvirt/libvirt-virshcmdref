@@ -5,7 +5,7 @@
 ]>
 <bookinfo id="book-Virsh_Command_Reference-Virsh_Command_Reference">
   <title>Virsh Command Reference</title>
-  <subtitle></subtitle>
+  <subtitle>A guide to virsh commands</subtitle>
   <productname>libvirt</productname>
   <productnumber>0.8.7</productnumber>
   <edition>1</edition>
