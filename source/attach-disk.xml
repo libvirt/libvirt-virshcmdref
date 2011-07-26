@@ -9,16 +9,300 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          The name of the domain to which a disk device is attached.
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--source</keyword>
+      <value type="string" requirement="required">source</value>
+      <description>
+        <text>
+          Source of disk device.
+        </text>
+        <text>
+          The word "--source" itself is optional.
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--target</keyword>
+      <value type="string" requirement="required">target</value>
+      <description>
+        <text>
+          Target of disk device, can be one of vdX, sdX or hdX, where
+          X is a, b, c, etc. Target determines the type of bus the disk
+          is connected. For vdX, the disk is connected to a virtio controller,
+          for sdX, the disk is connected to a scsi controller, for hdX, the
+          disk is connected to an IDE controller.
+        </text>
+        <text>
+          The world "--target" itself is optional.
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--driver</keyword>
+      <value type="string" requirement="required">driver</value>
+      <description>
+        <text>
+          Driver of disk device
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--subdriver</keyword>
+      <value type="string" requirement="required">subdriver</value>
+      <description>
+        <text>
+          Subdriver of disk device
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--cache</keyword>
+      <value type="string" requirement="required">cache</value>
+      <description>
+        <text>
+          Cache mode of disk device, can be one of <italic>none</italic>,
+          <italic>writeback</italic>, <italic>writethrough</italic> or
+          <italic>default</italic>
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--type</keyword>
+      <value type="string" requirement="required">type</value>
+      <description>
+        <text>
+          Target device type
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--mode</keyword>
+      <value type="string" requirement="required">mode</value>
+      <description>
+        <text>
+          Mode of device reading and writing, can be <value>readonly</value> or <value>shareable</value>.
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--persistent</keyword>
+      <description>
+        <text>
+          With this option, the domain xml file is updated to add an
+          element for the attached disk.
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--serial</keyword>
+      <value type="string" requirement="required">serial</value>
+      <description>
+        <text>
+          Serial of disk
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--shareable</keyword>
+      <description>
+        <text>
+          Shareable between domains
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--address</keyword>
+      <value type="string" requirement="required">address</value>
+      <description>
+        <text>
+          Address of disk device, in the style of pci:0000.00.00.0, scsi:00.00.0
+          or ide:00.00.0
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.3.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>attach-disk</bold> <value>domain-name</value> <italic>--source</italic> <value>/path/to/disk/image/file</value> <italic>--target</italic> <value>sdb</value></terminal>
+      <text>
+        Attaches to a domain named <value>domain-name</value> a scsi disk
+        whose corresponding image file is located at <value>/path/to/disk/image/file</value>.
+	The domain must be running.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>attach-disk</bold> <value>domain-name</value> <value>/path/to/disk/image/file</value> <value>sdb</value></terminal>
+      <text>
+        The same as above one. <italic>--source</italic> and <italic>--target</italic>
+	can be omitted.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>attach-disk</bold> <value>domain-name</value> <value>/path/to/disk/image/file</value> <value>vda</value> <italic>--address</italic> <value>pci:0000.00.11.0</value> <italic>--persistent</italic></terminal>
+      <text>
+        Attaches a virtio disk to domain-name using the specified pci address,
+        the domain config file is updated to reflect the change.
+      </text>
+    </example>
 
-  <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  </examples>
+
+  <examples type="fullcontext">
+    <example>
+      <text>
+        We start with a domain defined as:
+      </text>
+      <terminal>&lt;domain type='kvm' id='5'&gt;
+&lt;name&gt;example-domain&lt;/name&gt;
+  &lt;uuid&gt;6853c36f-af03-4968-a31d-1f3a9c3f699a&lt;/uuid&gt;
+  &lt;memory&gt;1048576&lt;/memory&gt;
+  &lt;currentMemory&gt;1048576&lt;/currentMemory&gt;
+  &lt;vcpu&gt;1&lt;/vcpu&gt;
+  &lt;os&gt;
+    &lt;type arch='x86_64' machine='pc-0.12'&gt;hvm&lt;/type&gt;
+    &lt;boot dev='hd'/&gt;
+  &lt;/os&gt;
+  &lt;features&gt;
+    &lt;acpi/&gt;
+    &lt;apic/&gt;
+    &lt;pae/&gt;
+  &lt;/features&gt;
+  &lt;clock offset='utc'/&gt;
+  &lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
+  &lt;on_reboot&gt;restart&lt;/on_reboot&gt;
+  &lt;on_crash&gt;destroy&lt;/on_crash&gt;
+  &lt;devices&gt;
+    &lt;emulator&gt;/usr/local/bin/qemu-system-x86_64&lt;/emulator&gt;
+    &lt;disk type='file' device='disk'&gt;
+      &lt;driver name='qemu' type='raw' cache='writeback'/&gt;
+      &lt;source file='/mnt/data/libvirt-images/vm2.img'/&gt;
+      &lt;target dev='vda' bus='virtio'/&gt;
+      &lt;alias name='virtio-disk0'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x08' function='0x0'/&gt;
+    &lt;/disk&gt;
+    &lt;interface type='network'&gt;
+      &lt;mac address='52:54:00:9a:88:73'/&gt;
+      &lt;source network='default'/&gt;
+      &lt;target dev='vnet0'/&gt;
+      &lt;alias name='net0'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+    &lt;/interface&gt;
+    &lt;input type='mouse' bus='ps2'/&gt;
+    &lt;graphics type='vnc' port='5900' autoport='yes'/&gt;
+    &lt;video&gt;
+      &lt;model type='cirrus' vram='9216' heads='1'/&gt;
+      &lt;alias name='video0'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/&gt;
+    &lt;/video&gt;
+    &lt;memballoon model='virtio'&gt;
+      &lt;alias name='balloon0'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/&gt;
+    &lt;/memballoon&gt;
+  &lt;/devices&gt;
+&lt;/domain&gt;</terminal>
+      <text>
+        Firstly, define and run the domain:
+      </text>
+      <terminal>virsh # define example-domain.xml
+Domain example-domain defined from example-domain.xml
+virsh # start example-domain
+Domain example-domain started</terminal>
+      <text>
+        To attach another virtio disk to the domain, we run the command:
+      </text>
+      <terminal>virsh attach-disk example-domain /path/to/another/image vdb --driver qemu --subdriver qcow2</terminal>
+      <text>
+        We can see it appears in the domain by running these commands from guest OS:
+      </text>
+      <terminal># fdisk -l
+Disk /dev/vdb doesn't contain a valid partition table
+
+Disk /dev/vda: 8589 MB, 8589934592 bytes
+16 heads, 63 sectors/track, 16644 cylinders
+Units = cylinders of 1008 * 512 = 516096 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00057a9e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *           3       15604     7863296   83  Linux
+Partition 1 does not end on cylinder boundary.
+/dev/vda2           15604       16645      524288   82  Linux swap / Solaris
+Partition 2 does not end on cylinder boundary.
+
+Disk /dev/vdb: 8589 MB, 8589934592 bytes
+16 heads, 63 sectors/track, 16644 cylinders
+Units = cylinders of 1008 * 512 = 516096 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+# lspci
+00:00.0 Host bridge: Intel Corporation 440FX - 82441FX PMC [Natoma] (rev 02)
+00:01.0 ISA bridge: Intel Corporation 82371SB PIIX3 ISA [Natoma/Triton II]
+00:01.1 IDE interface: Intel Corporation 82371SB PIIX3 IDE [Natoma/Triton II]
+00:01.2 USB Controller: Intel Corporation 82371SB PIIX3 USB [Natoma/Triton II] (rev 01)
+00:01.3 Bridge: Intel Corporation 82371AB/EB/MB PIIX4 ACPI (rev 03)
+00:02.0 VGA compatible controller: Cirrus Logic GD 5446
+00:03.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/8139C/8139C+ (rev 20)
+00:04.0 RAM memory: Red Hat, Inc Virtio memory balloon
+00:05.0 SCSI storage controller: Red Hat, Inc Virtio block device
+00:08.0 SCSI storage controller: Red Hat, Inc Virtio block device</terminal>
+      <text>
+        The corresponding xml element of the attached disk is(we can
+        check it out by running <italic>virsh dumpxml example-domain</italic>):
+      </text>
+      <terminal>    &lt;disk type='block' device='disk'&gt;
+      &lt;driver name='qemu' type='qcow2'/&gt;
+      &lt;source dev='/path/to/another/image'/&gt;
+      &lt;target dev='vdb' bus='virtio'/&gt;
+      &lt;alias name='virtio-disk1'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/&gt;
+    &lt;/disk&gt;</terminal>
+      <text>
+        We can see that libvirt assigns automatically an address for the
+        attached disk.
+      </text>
+    </example>
+  </examples>
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="detach-disk" />
+      <name>detach-disk</name>
+      <description>
+        detach a disk device from a domain
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="attach-device" />
+      <name>attach-device</name>
+      <description>
+        attach device from an XML file
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="detach-device" />
+      <name>detach-device</name>
+      <description>
+        detach device from an XML file
+      </description>
+    </item>
+  </reference>
 
 </command>
