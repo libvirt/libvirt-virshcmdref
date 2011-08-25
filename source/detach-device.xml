@@ -9,16 +9,132 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--file</keyword>
+      <value type="string" requirement="required">file</value>
+      <description>
+        <text>
+          the XML file describing the device to be detached
+        </text>
+        <text>
+          "--file" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--persistent</keyword>
+      <description>
+        <text>
+          with this option, the XML file of domain will be updated
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.2.3" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>detach-device</bold> <value>example-domain</value> <value>/tmp/nic.xml</value></terminal>
+      <text>
+        Detaches a NIC which is defined by <value>/tmp/nic.xml</value> from domain <value>example-domain</value>.
+      </text>
+    </example>
+  </examples>
 
-  <examples type="fullcontext" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        In this example we will detach a NIC from a domain which is defined as:
+      </text>
+      <terminal>
+&lt;domain type='kvm'&gt;
+  &lt;name&gt;example-domain&lt;/name&gt;
+  &lt;uuid&gt;6853c36f-af03-4968-a31d-1f3a9c3f699a&lt;/uuid&gt;
+  &lt;memory&gt;1048576&lt;/memory&gt;
+  &lt;currentMemory&gt;1048576&lt;/currentMemory&gt;
+  &lt;vcpu&gt;1&lt;/vcpu&gt;
+  &lt;os&gt;
+    &lt;type arch='x86_64' machine='pc-0.12'&gt;hvm&lt;/type&gt;
+    &lt;boot dev='hd'/&gt;
+  &lt;/os&gt;
+  &lt;features&gt;
+    &lt;acpi/&gt;
+    &lt;apic/&gt;
+    &lt;pae/&gt;
+  &lt;/features&gt;
+  &lt;clock offset='utc'/&gt;
+  &lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
+  &lt;on_reboot&gt;restart&lt;/on_reboot&gt;
+  &lt;on_crash&gt;restart&lt;/on_crash&gt;
+  &lt;devices&gt;
+    &lt;emulator&gt;/usr/local/bin/qemu-system-x86_64&lt;/emulator&gt;
+    &lt;disk type='file' device='disk'&gt;
+      &lt;driver name='qemu' type='raw' cache='writeback'/&gt;
+      &lt;source file='/mnt/data/libvirt-images/vm2.img'/&gt;
+      &lt;target dev='vda' bus='virtio'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/&gt;
+    &lt;/disk&gt;
+    &lt;interface type='network'&gt;
+      &lt;mac address='52:54:00:93:20:3c'/&gt;
+      &lt;source network='default'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/&gt;
+    &lt;/interface&gt;
+    &lt;input type='mouse' bus='ps2'/&gt;
+    &lt;graphics type='vnc' port='-1' autoport='yes'/&gt;
+    &lt;video&gt;
+      &lt;model type='cirrus' vram='9216' heads='1'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/&gt;
+    &lt;/video&gt;
+    &lt;memballoon model='virtio'&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+    &lt;/memballoon&gt;
+  &lt;/devices&gt;
+&lt;/domain&gt;</terminal>
+    <text>
+      To detach the NIC, we run the command:
+    </text>
+    <terminal>virsh # <bold>detach-device</bold> <value>example-domain</value> <value>/tmp/nic.xml</value></terminal>
+    <text>
+      the content of file <value>/tmp/nic.xml</value> is:
+    </text>
+    <terminal>&lt;interface type='network'&gt;
+  &lt;mac address='52:54:00:93:20:3c'/&gt;
+  &lt;source network='default'/&gt;
+&lt;/interface&gt;</terminal>
+      <text>
+        Notice the mac address is included in the xml file. We must provide
+        enough information to identify the device to be detached.
+      </text>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="attach-device" />
+      <name>
+        attach-device
+      </name>
+      <description>
+        Attach a device from an XML file
+      </description>
+    </item>
+  </reference>
 
 </command>
