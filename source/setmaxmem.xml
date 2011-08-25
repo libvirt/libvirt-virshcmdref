@@ -9,16 +9,58 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--kilobytes</keyword>
+      <value type="number" requirement="required">size</value>
+      <description>
+        <text>
+          size of maximum memory that can be allocated in the guest domain.
+        </text>
+        <text>
+          "--kilobytes" itself is optional
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.1.4" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>setmaxmem</bold> <value>example-domain</value> <value>1048576</value></terminal>
+      <text>
+        change the maximum memory allocation limit to 1G for domain <value>example-domain</value>.
+      </text>
+
+    </example>
+  </examples>
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
-
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="setmem" />
+      <name>
+        setmem
+      </name>
+      <description>
+        Change the current memory allocation in the guest domain.
+      </description>
+    </item>
+  </reference>
 </command>
