@@ -10,16 +10,61 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--disable</keyword>
+      <description>
+        <text>
+          with this option, disable autostarting; without this option,
+          enable autostarting
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.2.1" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>autostart</bold> <value>example-domain</value></terminal>
+      <text>
+        Enable autostarting of domain <value>example-domain</value>.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>autostart</bold> <value>example-domain</value> <italic>--disable</italic></terminal>
+      <text>
+        Disable autostarting of domain <value>example-domain</value>.
+      </text>
+    </example>
+  </examples>
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="dominfo" />
+      <name>
+        dominfo
+      </name>
+      <description>
+        This command can show autostarting status of a domain.
+      </description>
+    </item>
+  </reference>
 
 </command>
