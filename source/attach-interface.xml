@@ -9,16 +9,188 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--type</keyword>
+      <value type="string" requirement="required">type</value>
+      <description>
+        <text>
+          network interface type
+        </text>
+        <text>
+          "--type" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--source</keyword>
+      <value type="string" requirement="required">source</value>
+      <description>
+        <text>
+          source of network interface
+        </text>
+        <text>
+          "--source" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--target</keyword>
+      <value type="string" requirement="required">target</value>
+      <description>
+        <text>
+          target network name
+        </text>
+        <text>
+          "--target" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--target</keyword>
+      <value type="string" requirement="required">target</value>
+      <description>
+        <text>
+          target network name
+        </text>
+        <text>
+          "--target" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--mac</keyword>
+      <value type="string" requirement="required">mac</value>
+      <description>
+        <text>
+          MAC address
+        </text>
+        <text>
+          "--mac" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--script</keyword>
+      <value type="string" requirement="required">script</value>
+      <description>
+        <text>
+          script used to bridge network interface
+        </text>
+        <text>
+          "--script" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--model</keyword>
+      <value type="string" requirement="required">model</value>
+      <description>
+        <text>
+          model type
+        </text>
+        <text>
+          "--model" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--persistent</keyword>
+      <description>
+        <text>
+          persist interface attachment
+        </text>
+      </description>
+    </parameter>
+  </options>
+
 
   <availability from="0.3.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>attach-interface</bold> <value>example-domain</value> <italic>--type</italic> <value>network</value> <italic>--source</italic> <value>default</value> <italic>--persistent</italic></terminal>
+      <text>
+        attaches a NIC which is connected to virtual network <value>default</value>.
+      </text>
+    </example>
+  </examples>
 
-  <examples type="fullcontext" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        In this example we will bridge a domain to a local LAN by attaching
+        a NIC to the domain. Before attaching NIC, we have to setup a bridge
+        and add the host NIC that is connected to the local LAN to the bridge.
+      </text>
+      <text>
+        the host NIC connected to the local LAN is:
+      </text>
+      <terminal># ifconfig vmnet8
+vmnet8    Link encap:Ethernet  HWaddr 00:50:56:C0:00:08  
+          inet addr:172.16.244.1  Bcast:172.16.244.255  Mask:255.255.255.0
+          inet6 addr: fe80::250:56ff:fec0:8/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:30 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</terminal>
+        <text>
+          setup a bridge and add the host NIC to it:
+        </text>
+        <terminal># brctl addbr myvnet0
+# brctl show
+bridge name	bridge id		STP enabled	interfaces
+myvnet0		8000.000000000000	no
+# ifconfig vmnet8 0.0.0.0
+# brctl addif myvnet0 vmnet8
+# brctl show
+bridge name	bridge id		STP enabled	interfaces
+myvnet0		8000.005056c00008	no		vmnet8</terminal>
+        <text>
+          attach a NIC to the domain:
+        </text>
+        <terminal>virsh attach-interface example-domain --type bridge --source myvnet0</terminal>
+        <text>
+          Bring up bridge <value>myvnet0</value>, now domain <value>example-domain</value>
+          is bridged to the local LAN that <value>vmnet8</value> is connected to.
+        </text>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="detach-interface" />
+      <name>
+        detach-interface
+      </name>
+      <description>
+        Detach a network interface
+      </description>
+    </item>
+    <item>
+      <link type="external" href="http://libvirt.org/formatdomain.html#elementsNICS" />
+      <name>
+        domain XML format of network interfaces
+      </name>
+      <description>
+        describes the XML format of network interfaces
+      </description>
+    </item>
+  </reference>
 
 </command>
