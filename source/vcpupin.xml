@@ -5,20 +5,124 @@
 
   <description>
     <text>
-      Pin guest domain virtual CPUs to physical host CPUs
+      Pin guest domain virtual CPUs to physical host CPUs or show pinning information
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--vcpu</keyword>
+      <value type="string" requirement="required">vcpu-number</value>
+      <description>
+        <text>
+          vcpu number
+        </text>
+        <text>
+          "--vcpu" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--vcpu</keyword>
+      <value type="string" requirement="required">vcpu-number</value>
+      <description>
+        <text>
+          vcpu number
+        </text>
+        <text>
+          "--vcpu" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--cpulist</keyword>
+      <value type="string" requirement="required">cpulist</value>
+      <description>
+        <text>
+          list of physical cpus to which vcpu is pinned.
+        </text>
+        <text>
+          "--cpulist" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--config</keyword>
+      <description>
+        <text>
+          affect next boot
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--live</keyword>
+      <description>
+        <text>
+          affect running domain
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--current</keyword>
+      <description>
+        <text>
+          affect current domain
+        </text>
+      </description>
+    </parameter>
+  </options>
+
 
   <availability from="0.1.4" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>vcpupin</bold> <value>example-domain</value></terminal>
+      <text>
+        shows vpu pinning information of domain <value>example-domain</value>.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>vcpupin</bold> <value>example-domain</value> <value>0</value> <value>0,2</value></terminal>
+      <text>
+        pins virtual cpu 0 of domain <value>example-domain</value> to physical cpus 0 and 2.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>vcpupin</bold> <value>example-domain</value> <value>1</value> <value>0-2,5</value></terminal>
+      <text>
+        pins virtual cpu 1 of domain <value>example-domain</value> to physical cpus 0, 1, 2 and 5.
+      </text>
+    </example>
+
+  </examples>
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="vcpuinfo" />
+      <name>
+        vcpuinfo
+      </name>
+      <description>
+        shows domain virtual cpu information.
+      </description>
+    </item>
+  </reference>
 
 </command>
