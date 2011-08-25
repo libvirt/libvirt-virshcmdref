@@ -90,6 +90,33 @@
       </description>
     </parameter>
 
+    <parameter requirement="optional">
+      <keyword requirement="required">--config</keyword>
+      <description>
+        <text>
+          affect next boot
+        </text>
+      </description>
+    </parameter>
+
+    <parameter requirement="optional">
+      <keyword requirement="required">--live</keyword>
+      <description>
+        <text>
+          affect running domain
+        </text>
+      </description>
+    </parameter>
+
+    <parameter requirement="optional">
+      <keyword requirement="required">--current</keyword>
+      <description>
+        <text>
+          affect current domain
+        </text>
+      </description>
+    </parameter>
+
   </options>
 
   <availability from="0.8.5" />
