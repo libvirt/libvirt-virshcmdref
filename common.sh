@@ -1,12 +1,12 @@
 # List of source files
 DOMAIN_COMMANDS="attach-device attach-disk attach-interface autostart
-  console cpu-baseline cpu-compare create define destroy detach-device
-  detach-disk detach-interface domid domjobabort domjobinfo domname domuuid
-  domxml-from-native domxml-to-native dump dumpxml echo edit freecell
-  hostname managedsave managedsave-remove maxvcpus memtune migrate
-  migrate-setmaxdowntime reboot restore resume save schedinfo setmaxmem
-  setmem setvcpus shutdown start suspend ttyconsole undefine update-device
-  vcpucount vcpuinfo vcpupin version vncdisplay"
+  blkiotune console cpu-baseline cpu-compare create define destroy
+  detach-device detach-disk detach-interface domid domjobabort domjobinfo
+  domname domuuid domxml-from-native domxml-to-native dump dumpxml echo
+  edit freecell hostname managedsave managedsave-remove maxvcpus memtune
+  migrate migrate-setmaxdowntime reboot restore resume save schedinfo
+  setmaxmem setmem setvcpus shutdown start suspend ttyconsole undefine
+  update-device vcpucount vcpuinfo vcpupin version vncdisplay"
 
 MONITOR_COMMANDS="domblkinfo domblkstat domifstat dominfo dommemstat
   domstate list"

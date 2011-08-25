@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<command>
+  <name>blkiotune</name>
+
+  <description>
+    <text>
+      Get or set blkio parameters
+    </text>
+  </description>
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--weight</keyword>
+      <value type="number" requirement="required">weight</value>
+      <description>
+        <text>
+          IO weight in range [100, 1000]
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--config</keyword>
+      <description>
+        <text>
+          affect next boot
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--live</keyword>
+      <description>
+        <text>
+          affect running domain
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--current</keyword>
+      <description>
+        <text>
+          affect current domain
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability from="0.8.9" />
+ 
+  <notes />
+ 
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>blkiotune</bold> <value>example-domain</value></terminal>
+      <text>
+        Shows the values of blkio parameters of domain <value>example-domain</value>.
+      </text>
+    </example>
+    <example>
+      <terminal>
+virsh # <bold>blkiotune</bold> <value>example-domain</value> <italic>--weight</italic> <value>500</value></terminal>
+      <text>
+        Sets IO weight of domain <value>example-domain</value> to <value>500</value>.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext" />
+
+  <reference type="seealso" />
+
+</command>
