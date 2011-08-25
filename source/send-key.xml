@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<command>
+  <name>send-key</name>
+
+  <description>
+    <text>
+      Send keycodes to the guest
+    </text>
+  </description>
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--codeset</keyword>
+      <description>
+        <text>
+          the codeset of keycodes, possible values are: linux, xt, atset1,
+          atset2, atset3, os_x, xt_kbd, usb, win32, and rfb. default:linux
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--holdtime</keyword>
+      <description>
+        <text>
+          the time (in milliseconds) the keys will be held for
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <value type="string" requirement="required">keycode</value>
+      <description>
+        <text>
+          key codes to send to domain
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability from="0.9.4" />
+
+  <notes />
+
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>send-key</bold> <value>example-domain</value> <value>37 18 21</value></terminal>
+      <text>
+        sends keys 'k', 'e' and 'y' to domain <value>example-domain</value>.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>send-key</bold> <value>example-domain</value> <value>KEY_RIGHTCTRL KEY_C</value></terminal>
+      <text>
+        sends keys right CTRL and 'c' to domain <value>example-domain</value>.
+      </text>
+    </example>
+    <example>
+      <terminal>virsh # <bold>send-key</bold> <value>example-domain</value> <italic>--holdtime</italic> 1000 <value>0x15 18 0xf</value></terminal>
+      <text>
+        sends keys 'y', 'e' and TAB to domain <value>example-domain</value>, holding them for 1 second.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext" />
+
+  <reference type="seealso" />
+</command>
