@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<command>
+  <name>inject-nmi</name>
+
+  <description>
+    <text>
+      Inject NMI to the guest
+    </text>
+  </description>
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability from="0.9.2" />
+
+  <notes />
+
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>inject-nmi</bold> <value>example-domain</value></terminal>
+      <text>
+        inject NMI to domain <value>example-domain</value>.
+      </text>
+    </example>
+  </examples>
+
+  <examples type="fullcontext" />
+
+  <reference type="seealso" />
+</command>
