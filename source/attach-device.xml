@@ -5,20 +5,151 @@
 
   <description>
     <text>
-      Attach device from an XML file
+      Attach a device from an XML file
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--file</keyword>
+      <value type="string" requirement="required">file</value>
+      <description>
+        <text>
+          the XML file describing the device to be attached
+        </text>
+        <text>
+          "--file" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--persistent</keyword>
+      <description>
+        <text>
+          with this option, the XML file of domain will be updated
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.2.3" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>
+virsh # <bold>attach-device</bold> <value>example-domain</value> <value>/tmp/new-nic.xml</value></terminal>
+      <text>
+        Attaches a NIC which is defined by <value>/tmp/new-nic.xml</value> to domain <value>example-domain</value>.
+      </text>
+    </example>
+  </examples>
 
-  <examples type="fullcontext" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        In this example we will attach a NIC to a running domain which doesn't have a NIC.
+        The domain is defined as:
+      </text>
+      <terminal>
+&lt;domain type='kvm'&gt;
+  &lt;name&gt;example-domain&lt;/name&gt;
+  &lt;uuid&gt;6853c36f-af03-4968-a31d-1f3a9c3f699a&lt;/uuid&gt;
+  &lt;memory&gt;1048576&lt;/memory&gt;
+  &lt;currentMemory&gt;1048576&lt;/currentMemory&gt;
+  &lt;vcpu&gt;1&lt;/vcpu&gt;
+  &lt;os&gt;
+    &lt;type arch='x86_64' machine='pc-0.12'&gt;hvm&lt;/type&gt;
+    &lt;boot dev='hd'/&gt;
+  &lt;/os&gt;
+  &lt;features&gt;
+    &lt;acpi/&gt;
+    &lt;apic/&gt;
+    &lt;pae/&gt;
+  &lt;/features&gt;
+  &lt;clock offset='utc'/&gt;
+  &lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
+  &lt;on_reboot&gt;restart&lt;/on_reboot&gt;
+  &lt;on_crash&gt;restart&lt;/on_crash&gt;
+  &lt;devices&gt;
+    &lt;emulator&gt;/usr/local/bin/qemu-system-x86_64&lt;/emulator&gt;
+    &lt;disk type='file' device='disk'&gt;
+      &lt;driver name='qemu' type='raw' cache='writeback'/&gt;
+      &lt;source file='/mnt/data/libvirt-images/vm2.img'/&gt;
+      &lt;target dev='vda' bus='virtio'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/&gt;
+    &lt;/disk&gt;
+    &lt;input type='mouse' bus='ps2'/&gt;
+    &lt;graphics type='vnc' port='-1' autoport='yes'/&gt;
+    &lt;video&gt;
+      &lt;model type='cirrus' vram='9216' heads='1'/&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/&gt;
+    &lt;/video&gt;
+    &lt;memballoon model='virtio'&gt;
+      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+    &lt;/memballoon&gt;
+  &lt;/devices&gt;
+&lt;/domain&gt;</terminal>
+      <text>
+        Bring up the domain. From the output of <value>lspci</value> we can see that there is no NIC
+        present.
+      </text>
+      <terminal>00:00.0 Host bridge: Intel Corporation 440FX - 82441FX PMC [Natoma] (rev 02)
+00:01.0 ISA bridge: Intel Corporation 82371SB PIIX3 ISA [Natoma/Triton II]
+00:01.1 IDE interface: Intel Corporation 82371SB PIIX3 IDE [Natoma/Triton II]
+00:01.2 USB Controller: Intel Corporation 82371SB PIIX3 USB [Natoma/Triton II] (rev 01)
+00:01.3 Bridge: Intel Corporation 82371AB/EB/MB PIIX4 ACPI (rev 03)
+00:02.0 VGA compatible controller: Cirrus Logic GD 5446
+00:03.0 RAM memory: Red Hat, Inc Virtio memory balloon
+00:04.0 SCSI storage controller: Red Hat, Inc Virtio block device</terminal>
+      <text>
+        Now we attach a NIC to the domain:
+      </text>
+      <terminal>virsh # <bold>attach-device</bold> <value>example-domain</value> <value>/tmp/new-nic.xml</value></terminal>
+      <text>
+        the content of <value>/tmp/new-nic.xml</value> is:
+      </text>
+      <terminal>
+&lt;interface type='network'&gt;
+  &lt;source network='default'/&gt;
+&lt;/interface&gt;</terminal>
+      <text>
+        We can see that the attached NIC is listed by <value>lspci</value>:
+      </text>
+      <terminal>00:00.0 Host bridge: Intel Corporation 440FX - 82441FX PMC [Natoma] (rev 02)
+00:01.0 ISA bridge: Intel Corporation 82371SB PIIX3 ISA [Natoma/Triton II]
+00:01.1 IDE interface: Intel Corporation 82371SB PIIX3 IDE [Natoma/Triton II]
+00:01.2 USB Controller: Intel Corporation 82371SB PIIX3 USB [Natoma/Triton II] (rev 01)
+00:01.3 Bridge: Intel Corporation 82371AB/EB/MB PIIX4 ACPI (rev 03)
+00:02.0 VGA compatible controller: Cirrus Logic GD 5446
+00:03.0 RAM memory: Red Hat, Inc Virtio memory balloon
+00:04.0 SCSI storage controller: Red Hat, Inc Virtio block device
+00:05.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/8139C/8139C+ (rev 20)</terminal>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
-
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="detach-device" />
+      <name>
+        detach-device
+      </name>
+      <description>
+        Detach a device from an XML file
+      </description>
+    </item>
+  </reference>
 </command>
