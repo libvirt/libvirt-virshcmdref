@@ -5,20 +5,51 @@
 
   <description>
     <text>
-      Returns basic information about a guest domains virtual CPUs
+      Returns basic information about a guest domain's virtual CPUs
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.1.4" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>vcpuinfo</bold> <value>example-domain</value></terminal>
+      <text>
+        shows basic virtual CPUs information of domain <value>example-domain</value>.
+      </text>
+    </example>
+  </examples>
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="vcpupin" />
+      <name>
+        vcpupin
+      </name>
+      <description>
+        Pin guest domain virtual CPUs to physical host CPUs or show
+        pinning information.
+      </description>
+    </item>
+  </reference>
 
 </command>
