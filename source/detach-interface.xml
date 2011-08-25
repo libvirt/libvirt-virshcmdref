@@ -9,16 +9,75 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--type</keyword>
+      <value type="string" requirement="required">type</value>
+      <description>
+        <text>
+          type can be <value>network</value> and <value>bridge</value>
+        </text>
+        <text>
+          "--type" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--mac</keyword>
+      <value type="string" requirement="required">mac</value>
+      <description>
+        <text>
+          MAC address of the network interface to be detached
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--persistent</keyword>
+      <description>
+        <text>
+          persist interface detachment
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.3.0" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>detach-interface</bold> <value>example-domain</value> <italic>--mac</italic> <value>'52:54:00:06:76:dd'</value> <italic>--type</italic> <value>bridge</value></terminal>
+      <text>
+        detach NIC which has mac <value>52:54:00:06:76:dd</value> and type <value>bridge</value>.
+      </text>
+    </example>
+  </examples>
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="attach-interface" />
+      <name>
+        attach-interface
+      </name>
+      <description>
+        Attach a network interface
+      </description>
+    </item>
+  </reference>
 
 </command>
