@@ -9,13 +9,85 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--set</keyword>
+      <value type="string" requirement="required">string</value>
+      <description>
+        <text>
+          parameter=value
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--weight</keyword>
+      <value type="number" requirement="required">weight</value>
+      <description>
+        <text>
+          weight for XEN_CREDIT
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--cap</keyword>
+      <value type="number" requirement="required">cap</value>
+      <description>
+        <text>
+          cap for XEN_CREDIT
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--current</keyword>
+      <description>
+        <text>
+          get/set current scheduler info
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--config</keyword>
+      <description>
+        <text>
+          get/set value to be used on next boot
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--live</keyword>
+      <description>
+        <text>
+          get/set value from running domain
+        </text>
+      </description>
+    </parameter>
+  </options>
+
 
   <availability from="0.2.3" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>schedinfo</bold> <value>example-domain</value> <italic>--set</italic> <value>cpu_shares=800</value></terminal>
+      <text>
+        sets <value>cpu</value> cgroup parameter cpu.shares to <value>800</value>.
+      </text>
+    </example>
+  </examples>
 
   <examples type="fullcontext" />
 
