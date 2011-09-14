@@ -5,20 +5,123 @@
 
   <description>
     <text>
-      Core dump a guest domain
+      dump the core of a domain to a file for analysis
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--live</keyword>
+      <description>
+        <text>
+          perform a live core dump if supported
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--crash</keyword>
+      <description>
+        <text>
+          crash the domain after core dump
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--bypass-cache</keyword>
+      <description>
+        <text>
+          avoid file system cache when dumping
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--file</keyword>
+      <value type="string" requirement="required">file</value>
+      <description>
+        <text>
+          file in which the core of the domain is saved
+        </text>
+        <text>
+          '--file' itself is optional
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.1.9" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>dump</bold> <value>example-domain</value> <value>/mnt/data/dumps/example-domain.dump</value></terminal>
+      <text>
+        Dumps the core of <value>example-domain</value> to file <value>/mnt/data/dumps/example-domain.dump</value>.
+      </text>
+    </example>
+  </examples>
 
-  <examples type="fullcontext" />
+  <examples type="fullcontext">
+    <example>
+      <text>
+        In this example we will dump the core of a domain and analyze it
+        using a tool called crash.
+      </text>
+      <text>
+        For the purpose of showing how to use virsh dump combined with crash,
+        we will crash the domain by pressing ALT-SysRq-c, the SysRq command
+        to crash system by a NULL pointer dereference. Steps are:
+      </text>
+      <text>
+        Enable SysRq in example-domain:
+      </text>
+      <terminal>example-domain# echo 1 > /proc/sys/kernel/sysrq</terminal>
+      <text>
+        Disable kdump in example-domain:
+      </text>
+      <terminal>example-domain# /etc/init.d/kdump stop</terminal>
+      <text>
+        Send key ALT-SysRq-c:
+      </text>
+      <terminal>virsh # <bold>send-key</bold> <value>example-domain</value> KEY_LEFTALT KEY_SYSRQ KEY_C</terminal>
+      <text>
+        Now example-domain is crashed, dump the core of it:
+      </text>
+      <terminal>virsh # dump example-domain /mnt/data/dumps/example-domain.dump</terminal>
+      <text>
+        After dump finished, we can analyze the core file by crash:
+      </text>
+      <terminal>crash /patch/to/vmlinux /mnt/data/dumps/example-domain.dump</terminal>
+      <text>
+        the vmlinux is the file containing debug information, usually it is
+	located at the root of the kernel source dir if you compile the kernel
+	by yourself, or is shipped with package kernel-debuginfo.
+      </text>
+    </example>
+  </examples>
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="external" href="http://people.redhat.com/anderson/" />
+      <name>
+        crash
+      </name>
+      <description>
+        Kernel analysis utility for live systems, netdump, diskdump, kdump, LKCD or mcore dumpfiles
+      </description>
+    </item>
+  </reference>
 
 </command>
