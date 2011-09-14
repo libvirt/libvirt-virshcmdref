@@ -9,7 +9,60 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--maximum</keyword>
+      <description>
+        <text>
+          get maximum cap on vcpus
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--active</keyword>
+      <description>
+        <text>
+          get number of currently active vcpus
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--config</keyword>
+      <description>
+        <text>
+          get value to be used on next boot
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--live</keyword>
+      <description>
+        <text>
+          get value from running domain
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--current</keyword>
+      <description>
+        <text>
+          get value according to curent domain state
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.8.5" />
  
@@ -19,6 +72,16 @@
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="setvcpus" />
+      <name>
+        setvcpus
+      </name>
+      <description>
+        change the number of vurtual CPUs in the guest domain
+      </description>
+    </item>
+  </reference>
 
 </command>
