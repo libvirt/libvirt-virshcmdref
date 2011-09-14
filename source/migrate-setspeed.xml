@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<command>
+  <name>migrate-setspeed</name>
+
+  <description>
+    <text>
+      Set the maximum migration bandwidth
+    </text>
+  </description>
+
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--bandwidth</keyword>
+      <value type="number" requirement="required">bandwidth</value>
+      <description>
+        <text>
+          migration bandwidth limit in Mbps
+        </text>
+        <text>
+          "--bandwidth" itself is optional
+        </text>
+      </description>
+    </parameter>
+  </options>
+
+  <availability from="0.9.3" />
+ 
+  <notes />
+ 
+  <examples type="usage" />
+
+  <examples type="fullcontext" />
+
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="migrate" />
+      <name>
+        migrate
+      </name>
+      <description>
+        migrate a domain to another host
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="migrate-getspeed" />
+      <name>
+        migrate-getspeed
+      </name>
+      <description>
+        get the maximum migration bandwidth
+      </description>
+    </item>
+  </reference>
+</command>

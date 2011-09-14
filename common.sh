@@ -4,7 +4,8 @@ DOMAIN_COMMANDS="attach-device attach-disk attach-interface autostart
   detach-device detach-disk detach-interface domid domjobabort domjobinfo
   domname domuuid domxml-from-native domxml-to-native dump dumpxml echo
   edit freecell hostname inject-nmi managedsave managedsave-remove
-  maxvcpus memtune migrate migrate-setmaxdowntime reboot restore resume
+  maxvcpus memtune migrate migrate-setmaxdowntime migrate-setspeed
+  reboot restore resume
   save schedinfo send-key setmaxmem setmem setvcpus shutdown start
   suspend ttyconsole undefine update-device vcpucount vcpuinfo vcpupin
   version vncdisplay"
