@@ -27,7 +27,9 @@
       <value type="string" requirement="required">file</value>
       <description>
         <text>
-          the XML file describing the device to be attached
+          the XML file describing the device to be attached, with
+          a root element of something that belongs inside &lt;devices&gt;
+          of domain xml
         </text>
         <text>
           "--file" itself is optional

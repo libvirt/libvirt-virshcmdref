@@ -27,7 +27,8 @@
       <value type="string" requirement="required">file</value>
       <description>
         <text>
-          the XML file describing the device to be detached
+          the XML file describing the device to be detached, with
+          a root element of something that belongs inside &lt;devices&gt;
         </text>
         <text>
           "--file" itself is optional
