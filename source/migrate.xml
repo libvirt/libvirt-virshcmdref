@@ -9,13 +9,177 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--live</keyword>
+      <description>
+        <text>
+          live migration
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--p2p</keyword>
+      <description>
+        <text>
+          peer-2-peer migration
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--direct</keyword>
+      <description>
+        <text>
+          direct migration
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--tunnelled</keyword>
+      <description>
+        <text>
+          tunnelled migration
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--persistent</keyword>
+      <description>
+        <text>
+          persist VM on destination
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--undefinesource</keyword>
+      <description>
+        <text>
+          undefine VM on source
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--suspend</keyword>
+      <description>
+        <text>
+          do not restart the domain on the destination host
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--copy-storage-all</keyword>
+      <description>
+        <text>
+          migration with non-shared storage with full disk copy
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--copy-storage-inc</keyword>
+      <description>
+        <text>
+          migration with non-shared storage with incremental copy
+          (same base image shared between source and destination)
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--change-protection</keyword>
+      <description>
+        <text>
+          prevent any configuration changes to domain until migration ends
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--verbose</keyword>
+      <description>
+        <text>
+          display the progress of migration
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--desturi</keyword>
+      <value type="string" requirement="required">desturi</value>
+      <description>
+        <text>
+          connection URI of the destination host as seen from the
+          client (normal migration) or source (p2p migration)
+        </text>
+        <text>
+          "--desturi" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--migrateuri</keyword>
+      <value type="string" requirement="required">migrateuri</value>
+      <description>
+        <text>
+          migration URI, usually can be omitted
+        </text>
+        <text>
+          "--migrateuri" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--dname</keyword>
+      <value type="string" requirement="required">dname</value>
+      <description>
+        <text>
+          rename to new name during migration (if supported)
+        </text>
+        <text>
+          "--dname" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--timeout</keyword>
+      <value type="number" requirement="required">timeout</value>
+      <description>
+        <text>
+          force guest to suspend if live migration exceeds timeout (in seconds)
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="optional">--xml</keyword>
+      <value type="string" requirement="required">xmlfile</value>
+      <description>
+        <text>
+          filename containing updated XML for the target
+        </text>
+      </description>
+    </parameter>
+</options>
 
   <availability from="0.3.2" />
  
   <notes />
  
-  <examples type="usage" />
+  <examples type="usage">
+    <example>
+      <terminal>virsh # <bold>migrate</bold> <value>example-domain</value> <value>qemu+ssh://root@192.168.0.10/system</value></terminal>
+      <text>
+        migrates domain <value>example-domain</value> to host <value>192.168.0.10</value>.
+      </text>
+    </example>
+  </examples>
 
   <examples type="fullcontext" />
 
