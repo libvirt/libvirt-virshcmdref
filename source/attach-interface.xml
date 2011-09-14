@@ -87,7 +87,11 @@
       <value type="string" requirement="required">script</value>
       <description>
         <text>
-          script used to bridge network interface
+          script used to bridge network interface, for qemu domains the
+          script parameter is only acceptable when the interface type
+          is "ethernet" (a "generic ethernet" interface), for Xen domains
+          the script parameter is only acceptable when the interface type
+          is "bridge", in all other cases it is currently ignored.
         </text>
         <text>
           "--script" itself is optional
