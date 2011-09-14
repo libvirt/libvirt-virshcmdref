@@ -9,7 +9,50 @@
     </text>
   </description>
 
-  <options />
+  <options>
+    <parameter requirement="required">
+      <keyword requirement="optional">--domain</keyword>
+      <value type="string" requirement="required">domain</value>
+      <description>
+        <text>
+          domain name, id or uuid
+        </text>
+        <text>
+          "--domain" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="required">
+      <keyword requirement="optional">--file</keyword>
+      <value type="string" requirement="required">file</value>
+      <description>
+        <text>
+          the XML file describing the device to be updated, with
+          a root element of something that belongs inside &lt;devices&gt;
+          of domain xml
+        </text>
+        <text>
+          "--file" itself is optional
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--persistent</keyword>
+      <description>
+        <text>
+          with this option, the XML file of domain will be updated
+        </text>
+      </description>
+    </parameter>
+    <parameter requirement="optional">
+      <keyword requirement="required">--force</keyword>
+      <description>
+        <text>
+          force device update
+        </text>
+      </description>
+    </parameter>
+  </options>
 
   <availability from="0.8.0" />
  
@@ -19,6 +62,25 @@
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
+  <reference type="seealso">
+    <item>
+      <link type="internal" href="attach-device" />
+      <name>
+        attach-device
+      </name>
+      <description>
+        attach a device from an XML file
+      </description>
+    </item>
+    <item>
+      <link type="internal" href="detach-device" />
+      <name>
+        detach-device
+      </name>
+      <description>
+        Detach a device from an XML file
+      </description>
+    </item>
+  </reference>
 
 </command>

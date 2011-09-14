@@ -153,5 +153,14 @@ virsh # <bold>attach-device</bold> <value>example-domain</value> <value>/tmp/new
         Detach a device from an XML file
       </description>
     </item>
+    <item>
+      <link type="internal" href="update-device" />
+      <name>
+        update-device
+      </name>
+      <description>
+        Update a device from an XML file
+      </description>
+    </item>
   </reference>
 </command>
