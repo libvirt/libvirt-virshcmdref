@@ -9,16 +9,46 @@
     </text>
   </description>
 
-  <options />
+  <options>
+   <parameter requirement="optional">
+     <keyword requirement="optional">--dir</keyword>
+     <value type="string" requirement="optional">path</value>
+     <description>
+       <text>
+          directory to switch to (default: home or else root)
+       </text>
+       <text>
+	  --dir itself is optional
+       </text>
+     </description>
+    </parameter>
+  </options>
 
   <availability from="0.7.0" />
- 
+
   <notes />
- 
-  <examples type="usage" />
+
+  <examples type="usage" >
+   <example>
+    <terminal>
+virsh # <bold> cd </bold> <value>/tmp</value> </terminal>
+    <text>
+	    Changes the current working directory to <value> /tmp </value>
+    </text>
+   </example>
+  </examples>
 
   <examples type="fullcontext" />
 
-  <reference type="seealso" />
-
+  <reference type="seealso" >
+   <item>
+    <link type="internal" href="pwd"/>
+    <name>
+	 pwd
+    </name>
+    <description>
+	 Displays the current directory
+    </description>
+   </item>
+  </reference>
 </command>
